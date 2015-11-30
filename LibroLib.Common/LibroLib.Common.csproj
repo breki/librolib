@@ -94,6 +94,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="FileSystem\ApplicationInfo.cs" />
     <Compile Include="FileSystem\DummyApplicationInfo.cs" />
     <Compile Include="FileSystem\IApplicationInfo.cs" />

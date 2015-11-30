@@ -1,9 +1,8 @@
-- nuspec
-	- separate for .net frameworks
-	- extra nuspec for WebUtils
-- publishing to nuget
 - migrate more common code
+- publishing to nuget
 - what to do with logging?
+- what to do with Code Contracts?
 - nuspec 
+	- check Code Contracts packaging
 	- link to license URL (once the project is public)
 	- implement writing nuspec changeLog on build
