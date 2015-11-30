@@ -1,3 +1,9 @@
+- multi targeting
+	- approaches
+		- separate projects: http://stackoverflow.com/questions/17700089/whats-the-best-way-to-target-multiple-versions-of-the-net-framework
+		- other options: http://stackoverflow.com/questions/2923210/conditional-compilation-and-framework-targets
+		- http://shazwazza.com/post/multi-targeting-a-single-net-project-to-build-for-different-framework-versions/
+
 - migrate more common code
 - publishing to nuget
 - what to do with logging?
