@@ -113,6 +113,7 @@
     <None Include="..\LibroLib.snk">
       <Link>LibroLib.snk</Link>
     </None>
+    <None Include="LibroLib.WebUtils.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
