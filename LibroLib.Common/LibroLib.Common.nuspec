@@ -1,0 +1,28 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>LibroLib.Common</id>
+    <version>$version$</version>
+    <authors>Igor Brejc</authors>
+    <projectUrl>https://bitbucket.org/breki-os/librolib</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>LibroLib library containing basic common functionality.</description>
+    <copyright>Copyright 2010-2015 Igor Brejc</copyright>
+    <tags>common</tags>
+    <frameworkAssemblies>
+    </frameworkAssemblies>
+
+    <references>
+      <group>
+        <reference file="LibroLib.Common.dll" />
+      </group>
+    </references>
+  </metadata>
+  <files>
+    <file src="LibroLib.Common.dll" target="lib" />
+    <file src="LibroLib.Common.pdb" target="lib" />
+    <file src="LibroLib.Common.xml" target="lib" />
+    <file src="CodeContracts\LibroLib.Common.Contracts.dll" target="lib" />
+    <file src="CodeContracts\LibroLib.Common.Contracts.pdb" target="lib" />
+  </files>
+</package>
