@@ -1,3 +1,9 @@
-- what to do with logging?
 - nuspec
+	- separate for .net frameworks
+	- extra nuspec for WebUtils
 - publishing to nuget
+- migrate more common code
+- what to do with logging?
+- nuspec 
+	- link to license URL (once the project is public)
+	- implement writing nuspec changeLog on build

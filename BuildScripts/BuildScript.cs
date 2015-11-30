@@ -1,10 +1,12 @@
 ﻿using System;
+using System.IO;
 using Flubu;
 using Flubu.Builds;
 using Flubu.Builds.Tasks.AnalysisTasks;
 using Flubu.Builds.Tasks.TestingTasks;
 using Flubu.Targeting;
 
+//css_inc PublishNuGetPackageTask;
 //css_ref Flubu.dll;
 //css_ref Flubu.Contrib.dll;
 
@@ -35,7 +37,7 @@ namespace BuildScripts
 
             targetTree.AddTarget("release")
                 .SetDescription ("Builds the library, runs tests on it and publishes it on the NuGet server")
-                .DependsOn ("rebuild");
+                .DependsOn ("rebuild", "nuget");
 
             targetTree.GetTarget ("fetch.build.version")
                 .Do (TargetFetchBuildVersion);
@@ -50,6 +52,14 @@ namespace BuildScripts
                     {
                         TargetRunTestsWithCoverage(r, "LibroLib.Tests");
                     }).DependsOn ("load.solution");
+
+            targetTree.AddTarget ("nuget")
+                .SetDescription ("Produces NuGet packages for the library and publishes them to the NuGet server")
+                .Do (c =>
+                {
+                    TargetNuGet(c, "LibroLib.Common");
+                    TargetNuGet(c, "LibroLib.WebUtils");
+                }).DependsOn ("fetch.build.version");
         }
 
         private static void ConfigureBuildProperties (TaskSession session)
@@ -86,5 +96,17 @@ namespace BuildScripts
             task.FailBuildOnViolations = false;
             task.Execute (context);
         }
-   }
+
+        private static void TargetNuGet (ITaskContext context, string projectName)
+        {
+            string nuspecFileName = Path.Combine(projectName, projectName) + ".nuspec";
+
+            PublishNuGetPackageTask publishTask = new PublishNuGetPackageTask (
+                projectName, nuspecFileName);
+            publishTask.BasePath = Path.GetFullPath(Path.Combine(
+                projectName, "bin", context.Properties[BuildProps.BuildConfiguration]));
+            publishTask.ForApiKeyUseEnvironmentVariable ();
+            publishTask.Execute (context);
+        }
+    }
 }
