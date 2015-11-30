@@ -1,0 +1,34 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>LibroLib.WebUtils</id>
+    <version>$version$</version>
+    <authors>Igor Brejc</authors>
+    <projectUrl>https://bitbucket.org/breki-os/librolib</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>LibroLib library containing various Web-related utility classes.</description>
+    <copyright>Copyright 2010-2015 Igor Brejc</copyright>
+    <tags>common web</tags>
+    <frameworkAssemblies>
+    </frameworkAssemblies>
+
+    <dependencies>
+      <group>
+        <dependency id="LibroLib.Common" />
+      </group>      
+    </dependencies>
+    
+    <references>
+      <group>
+        <reference file="LibroLib.WebUtils.dll" />
+      </group>
+    </references>
+  </metadata>
+  <files>
+    <file src="LibroLib.WebUtils.dll" target="lib" />
+    <file src="LibroLib.WebUtils.pdb" target="lib" />
+    <file src="LibroLib.WebUtils.xml" target="lib" />
+    <file src="CodeContracts\LibroLib.WebUtils.Contracts.dll" target="lib" />
+    <file src="CodeContracts\LibroLib.WebUtils.Contracts.pdb" target="lib" />
+  </files>
+</package>
