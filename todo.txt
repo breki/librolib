@@ -1,6 +1,5 @@
+- R# annotations
 - migrate more common code
-	- ISignal, ITimeService, IWaitHandle
-- publishing to nuget
 - what to do with logging?
 - nuspec 
 	- check Code Contracts packaging
