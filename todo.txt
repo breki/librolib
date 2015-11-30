@@ -1,4 +1,5 @@
 - migrate more common code
+	- ISignal, ITimeService, IWaitHandle
 - publishing to nuget
 - what to do with logging?
 - nuspec 
