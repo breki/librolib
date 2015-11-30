@@ -27,7 +27,11 @@ namespace LibroLib.DataStructures
             values.Add(value);
         }
 
+#if NET35
+        public HashSet<TValue> this[TKey key]
+#else
         public ISet<TValue> this[TKey key]
+#endif
         {
             get
             {
