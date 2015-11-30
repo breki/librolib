@@ -3,7 +3,9 @@ using System.IO;
 using Flubu;
 using Flubu.Builds;
 using Flubu.Builds.Tasks.AnalysisTasks;
+using Flubu.Builds.Tasks.SolutionTasks;
 using Flubu.Builds.Tasks.TestingTasks;
+using Flubu.Builds.VSSolutionBrowsing;
 using Flubu.Targeting;
 
 //css_inc PublishNuGetPackageTask;
@@ -22,18 +24,10 @@ namespace BuildScripts
 
         private static void ConstructTargets (TargetTree targetTree)
         {
-            targetTree.AddTarget("clean.output.debug")
-                .DependsOn("load.solution")
-                .Do(c =>
-                        {
-                            c.Properties.Set(BuildProps.BuildConfiguration, "Debug");
-                            targetTree.GetTarget("clean.output").Execute(c);
-                        });
-
             targetTree.AddTarget ("rebuild")
                 .SetAsDefault ()
                 .SetDescription ("Builds the library and runs tests on it")
-                .DependsOn ("compile", "dupfinder", "tests");
+                .DependsOn ("compile-3.5", "compile", "dupfinder", "tests");
 
             targetTree.AddTarget("release")
                 .SetDescription ("Builds the library, runs tests on it and publishes it on the NuGet server")
@@ -41,6 +35,12 @@ namespace BuildScripts
 
             targetTree.GetTarget ("fetch.build.version")
                 .Do (TargetFetchBuildVersion);
+
+            targetTree
+                .AddTarget("compile-3.5")
+                .SetAsHidden()
+                .DependsOn("load.solution")
+                .Do(TargetCompile35);
 
             targetTree.AddTarget ("dupfinder")
                 .SetDescription ("Runs R# dupfinder to find code duplicates")
@@ -71,6 +71,7 @@ namespace BuildScripts
             session.Properties.Set (BuildProps.SolutionFileName, "LibroLib.sln");
             session.Properties.Set (BuildProps.TargetDotNetVersion, FlubuEnvironment.Net40VersionNumber);
             session.Properties.Set (BuildProps.VersionControlSystem, VersionControlSystem.Mercurial);
+            session.Properties.Set (BuildProps.BuildConfiguration, "Release-4.0");
         }
 
         private static void TargetFetchBuildVersion (ITaskContext context)
@@ -79,6 +80,17 @@ namespace BuildScripts
             version = new Version (version.Major, version.Minor, BuildTargets.FetchBuildNumberFromFile (context));
             context.Properties.Set (BuildProps.BuildVersion, version);
             context.WriteInfo ("The build version will be {0}", version);
+        }
+
+        private static void TargetCompile35(ITaskContext context)
+        {
+            new CompileSolutionTask (
+                context.Properties.Get<VSSolution> (BuildProps.Solution).SolutionFileName.ToString (), 
+                "Release-3.5", 
+                context.Properties.Get<string> (BuildProps.TargetDotNetVersion))
+                {
+                    MaxCpuCount = context.Properties.Get ("CompileMaxCpuCount", 3)
+                }.Execute (context);
         }
 
         private static void TargetDupFinder (ITaskContext context)
