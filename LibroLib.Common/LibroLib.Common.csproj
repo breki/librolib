@@ -97,6 +97,16 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Caching\DefaultDiskCache.cs" />
+    <Compile Include="Caching\IDiskCache.cs" />
+    <Compile Include="ConsoleShells\ConsoleShell.cs" />
+    <Compile Include="ConsoleShells\ConsoleShellResult.cs" />
+    <Compile Include="ConsoleShells\HelpConsoleCommand.cs" />
+    <Compile Include="ConsoleShells\IConsoleCommand.cs" />
+    <Compile Include="ConsoleShells\IConsoleEnvironment.cs" />
+    <Compile Include="ConsoleShells\StandardConsoleCommandBase.cs" />
+    <Compile Include="DataStructures\LruCaching\ILruCache.cs" />
+    <Compile Include="DataStructures\LruCaching\LruCache.cs" />
     <Compile Include="FileSystem\ApplicationInfo.cs" />
     <Compile Include="FileSystem\DummyApplicationInfo.cs" />
     <Compile Include="FileSystem\IApplicationInfo.cs" />
