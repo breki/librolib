@@ -41,12 +41,12 @@ namespace BuildScripts
 
             targetTree.AddTarget("compile-4.0")
                 .SetAsHidden()
-                .DependsOn("load.solution")
+                .DependsOn ("load.solution", "generate.commonassinfo")
                 .Do(TargetCompile40);
             
             targetTree.AddTarget("compile-3.5")
                 .SetAsHidden()
-                .DependsOn("load.solution")
+                .DependsOn ("load.solution", "generate.commonassinfo")
                 .Do(TargetCompile35);
 
             targetTree.AddTarget ("dupfinder")
