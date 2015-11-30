@@ -1,0 +1,9 @@
+- StyleCop
+	- Dictionary
+- what to do with logging?
+- signing
+- include tests
+- build script 
+- dupfinder, dotcover
+- nuspec
+- publishing to nuget
