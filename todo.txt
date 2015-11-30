@@ -4,6 +4,8 @@
 		- other options: http://stackoverflow.com/questions/2923210/conditional-compilation-and-framework-targets
 		- http://shazwazza.com/post/multi-targeting-a-single-net-project-to-build-for-different-framework-versions/
 	- fix the build script to run (and test) for both configurations
+		- separate steps of compile and test
+		- common step for nuget
 	- update nuspec to include both targets
 
 - migrate more common code
