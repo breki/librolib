@@ -86,12 +86,12 @@ namespace LibroLib
         }
 
         [SuppressMessage ("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "char")]
-        public static string ExtractUpTo (this string value, char upToChar)
+        public static string ExtractUpTo (this string value, char extractUpToChar)
         {
             Contract.Requires(value != null);
             Contract.Ensures(Contract.Result<string>() != null);
 
-            int i = value.IndexOf(upToChar);
+            int i = value.IndexOf(extractUpToChar);
             if (i == -1)
                 throw new InvalidOperationException();
 
@@ -197,7 +197,7 @@ namespace LibroLib
         public static IList<string> SplitIntoWords (this string value)
         {
             Contract.Requires (value != null);
-            Contract.Ensures (Contract.Result<IList<string>> () != null);
+            Contract.Ensures (Contract.Result<IList<string>>() != null);
 
             List<string> words = new List<string>();
 
