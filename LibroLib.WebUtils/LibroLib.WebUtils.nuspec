@@ -14,7 +14,7 @@
 
     <dependencies>
       <group>
-        <dependency id="LibroLib.Common" />
+        <dependency id="LibroLib.Common" version="$version$" />
       </group>      
     </dependencies>
     
@@ -25,10 +25,16 @@
     </references>
   </metadata>
   <files>
-    <file src="LibroLib.WebUtils.dll" target="lib" />
-    <file src="LibroLib.WebUtils.pdb" target="lib" />
-    <file src="LibroLib.WebUtils.xml" target="lib" />
-    <file src="CodeContracts\LibroLib.WebUtils.Contracts.dll" target="lib" />
-    <file src="CodeContracts\LibroLib.WebUtils.Contracts.pdb" target="lib" />
+    <file src="bin\Release-4.0\LibroLib.WebUtils.dll" target="lib\net40" />
+    <file src="bin\Release-4.0\LibroLib.WebUtils.pdb" target="lib\net40" />
+    <file src="bin\Release-4.0\LibroLib.WebUtils.xml" target="lib\net40" />
+    <file src="bin\Release-4.0\CodeContracts\LibroLib.WebUtils.Contracts.dll" target="lib\net40" />
+    <file src="bin\Release-4.0\CodeContracts\LibroLib.WebUtils.Contracts.pdb" target="lib\net40" />
+
+    <file src="bin\Release-3.5\LibroLib.WebUtils.dll" target="lib\net35" />
+    <file src="bin\Release-3.5\LibroLib.WebUtils.pdb" target="lib\net35" />
+    <file src="bin\Release-3.5\LibroLib.WebUtils.xml" target="lib\net35" />
+    <file src="bin\Release-3.5\CodeContracts\LibroLib.WebUtils.Contracts.dll" target="lib\net35" />
+    <file src="bin\Release-3.5\CodeContracts\LibroLib.WebUtils.Contracts.pdb" target="lib\net35" />
   </files>
 </package>
