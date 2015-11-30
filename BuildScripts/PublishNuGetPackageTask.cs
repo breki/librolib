@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using Flubu;
@@ -150,6 +151,7 @@ namespace BuildScripts
         private readonly string packageId;
         private readonly string nuspecFileName;
         private bool allowPushOnInteractiveBuild;
+        [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1305:FieldNamesMustNotUseHungarianNotation", Justification = "Reviewed. Suppression is OK here.")]
         private string nuGetServerUrl;
         private Func<ITaskContext, string> apiKeyFunc;
         private string basePath;

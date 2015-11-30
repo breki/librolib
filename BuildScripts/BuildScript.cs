@@ -3,12 +3,15 @@ using System.IO;
 using Flubu;
 using Flubu.Builds;
 using Flubu.Builds.Tasks.AnalysisTasks;
-using Flubu.Builds.Tasks.SolutionTasks;
-using Flubu.Builds.Tasks.TestingTasks;
 using Flubu.Builds.VSSolutionBrowsing;
 using Flubu.Targeting;
 
+//css_inc CompileSolutionTask;
+//css_inc NUnitWithDotCoverTask;
+//css_inc NUnitTask;
 //css_inc PublishNuGetPackageTask;
+//css_inc StringEx;
+//css_ref System.Xml;
 //css_ref Flubu.dll;
 //css_ref Flubu.Contrib.dll;
 
@@ -27,7 +30,7 @@ namespace BuildScripts
             targetTree.AddTarget ("rebuild")
                 .SetAsDefault ()
                 .SetDescription ("Builds the library and runs tests on it")
-                .DependsOn ("compile-3.5", "compile", "dupfinder", "tests");
+                .DependsOn ("compile-4.0", "compile-3.5", "dupfinder", "tests-4.0", "tests-3.5");
 
             targetTree.AddTarget("release")
                 .SetDescription ("Builds the library, runs tests on it and publishes it on the NuGet server")
@@ -36,8 +39,12 @@ namespace BuildScripts
             targetTree.GetTarget ("fetch.build.version")
                 .Do (TargetFetchBuildVersion);
 
-            targetTree
-                .AddTarget("compile-3.5")
+            targetTree.AddTarget("compile-4.0")
+                .SetAsHidden()
+                .DependsOn("load.solution")
+                .Do(TargetCompile40);
+            
+            targetTree.AddTarget("compile-3.5")
                 .SetAsHidden()
                 .DependsOn("load.solution")
                 .Do(TargetCompile35);
@@ -46,11 +53,18 @@ namespace BuildScripts
                 .SetDescription ("Runs R# dupfinder to find code duplicates")
                 .Do (TargetDupFinder);
 
-            targetTree.AddTarget("tests")
-                .SetDescription("Runs tests on the project")
+            targetTree.AddTarget("tests-4.0")
+                .SetDescription("Runs tests on the .NET 4.0-targeted assemblies (+ measuring code coverage)")
                 .Do (r =>
                     {
-                        TargetRunTestsWithCoverage(r, "LibroLib.Tests");
+                        TargetRun40TestsWithCoverage(r, "LibroLib.Tests");
+                    }).DependsOn ("load.solution");
+
+            targetTree.AddTarget("tests-3.5")
+                .SetDescription("Runs tests on the .NET 3.5-targeted assemblies")
+                .Do (r =>
+                    {
+                        TargetRun35Tests(r, "LibroLib.Tests");
                     }).DependsOn ("load.solution");
 
             targetTree.AddTarget ("nuget")
@@ -84,13 +98,28 @@ namespace BuildScripts
 
         private static void TargetCompile35(ITaskContext context)
         {
-            new CompileSolutionTask (
-                context.Properties.Get<VSSolution> (BuildProps.Solution).SolutionFileName.ToString (), 
+            CompileSolutionTask task = new CompileSolutionTask (
+                context.Properties.Get<VSSolution>(BuildProps.Solution).SolutionFileName.ToString (), 
                 "Release-3.5", 
-                context.Properties.Get<string> (BuildProps.TargetDotNetVersion))
-                {
-                    MaxCpuCount = context.Properties.Get ("CompileMaxCpuCount", 3)
-                }.Execute (context);
+                context.Properties.Get<string>(BuildProps.TargetDotNetVersion));
+
+            task.MaxCpuCount = context.Properties.Get("CompileMaxCpuCount", 3);
+            task.Target = "Rebuild";
+            
+            task.Execute(context);
+        }
+
+        private static void TargetCompile40(ITaskContext context)
+        {
+            CompileSolutionTask task = new CompileSolutionTask (
+                context.Properties.Get<VSSolution>(BuildProps.Solution).SolutionFileName.ToString (), 
+                "Release-4.0", 
+                context.Properties.Get<string>(BuildProps.TargetDotNetVersion));
+
+            task.MaxCpuCount = context.Properties.Get("CompileMaxCpuCount", 3);
+            task.Target = "Rebuild";
+            
+            task.Execute(context);
         }
 
         private static void TargetDupFinder (ITaskContext context)
@@ -99,13 +128,24 @@ namespace BuildScripts
             task.Execute (context);
         }
 
-        private static void TargetRunTestsWithCoverage (ITaskContext context, string projectName)
+        private static void TargetRun40TestsWithCoverage (ITaskContext context, string projectName)
         {
-            NUnitWithDotCoverTask task = NUnitWithDotCoverTask.ForProject (
-                projectName,
+            NUnitWithDotCoverTask task = new NUnitWithDotCoverTask(
+                Path.Combine(projectName, "bin", context.Properties[BuildProps.BuildConfiguration], projectName) + ".dll",
                 @"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe");
             task.DotCoverFilters = "-:module=*.Tests;-:class=*Contract;-:class=*Contract`*";
+            task.NUnitCmdLineOptions = "/framework:4.0 /labels /nodots";
             task.FailBuildOnViolations = false;
+            task.Execute (context);
+        }
+
+        private static void TargetRun35Tests (ITaskContext context, string projectName)
+        {
+            string testAssemblyDir = Path.Combine(projectName, "bin", "Release-3.5");
+            string testAssemblyFileName = projectName + ".dll";
+
+            NUnitTask task = new NUnitTask(testAssemblyFileName, @"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe", testAssemblyDir);
+            task.TargetFramework = "3.5";
             task.Execute (context);
         }
 
