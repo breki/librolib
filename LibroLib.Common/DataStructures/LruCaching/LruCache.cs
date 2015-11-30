@@ -132,6 +132,7 @@ namespace LibroLib.DataStructures.LruCaching
             {
                 get
                 {
+                    Contract.Ensures(!ReferenceEquals(Contract.Result<TItemKey>(), null));
                     return key;
                 }
             }
