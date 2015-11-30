@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibroLib.WebUtils", "LibroL
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{CD614A6D-FC61-4F96-82FA-BD3437836F18}"
 	ProjectSection(SolutionItems) = preProject
+		CodeAnalysisRules.ruleset = CodeAnalysisRules.ruleset
+		CustomDictionary.xml = CustomDictionary.xml
+		EditStyleCopRules.bat = EditStyleCopRules.bat
+		LibroLib-MIT-license.txt = LibroLib-MIT-license.txt
+		Settings.StyleCop = Settings.StyleCop
 		todo.txt = todo.txt
 	EndProjectSection
 EndProject

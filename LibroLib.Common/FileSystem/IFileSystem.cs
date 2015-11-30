@@ -132,25 +132,25 @@ namespace LibroLib.FileSystem
         public IFileInformation[] GetDirectoryFiles(string dirPath)
         {
             Contract.Requires(dirPath != null);
-            Contract.Ensures (Contract.Result<IFileInformation[]> () != null);
-            Contract.Ensures (Contract.ForAll(Contract.Result<IFileInformation[]> (), x => x != null));
-            return default (IFileInformation[]);
+            Contract.Ensures (Contract.Result<IFileInformation[]>() != null);
+            Contract.Ensures (Contract.ForAll(Contract.Result<IFileInformation[]>(), x => x != null));
+            return default(IFileInformation[]);
         }
 
         public IFileInformation[] GetDirectoryFiles(string dirPath, string searchPattern)
         {
             Contract.Requires (dirPath != null);
-            Contract.Ensures (Contract.Result<IFileInformation[]> () != null);
-            Contract.Ensures (Contract.ForAll (Contract.Result<IFileInformation[]> (), x => x != null));
-            return default (IFileInformation[]);
+            Contract.Ensures (Contract.Result<IFileInformation[]>() != null);
+            Contract.Ensures (Contract.ForAll (Contract.Result<IFileInformation[]>(), x => x != null));
+            return default(IFileInformation[]);
         }
 
         public IDirectoryInformation[] GetDirectorySubdirectories(string dirPath)
         {
             Contract.Requires (dirPath != null);
-            Contract.Ensures (Contract.Result<IDirectoryInformation[]> () != null);
-            Contract.Ensures (Contract.ForAll (Contract.Result<IDirectoryInformation[]> (), x => x != null));
-            return default (IDirectoryInformation[]);
+            Contract.Ensures (Contract.Result<IDirectoryInformation[]>() != null);
+            Contract.Ensures (Contract.ForAll (Contract.Result<IDirectoryInformation[]>(), x => x != null));
+            return default(IDirectoryInformation[]);
         }
 
         public IFileInformation GetFileInformation(string filePath)
@@ -181,63 +181,63 @@ namespace LibroLib.FileSystem
         public Stream OpenFile(string fileName, FileMode fileMode, FileAccess fileAccess, FileShare fileShare, int bufferSize, FileOptions fileOptions)
         {
             Contract.Requires(fileName != null);
-            Contract.Ensures (Contract.Result<Stream> () != null);
+            Contract.Ensures (Contract.Result<Stream>() != null);
             throw new NotImplementedException();
         }
 
         public Stream OpenFileToRead(string fileName)
         {
             Contract.Requires(fileName != null);
-            Contract.Ensures (Contract.Result<Stream> () != null);
+            Contract.Ensures (Contract.Result<Stream>() != null);
             throw new NotImplementedException ();
         }
 
         public Stream OpenFileToRead(string fileName, FileOptions fileOptions)
         {
             Contract.Requires(fileName != null);
-            Contract.Ensures (Contract.Result<Stream> () != null);
+            Contract.Ensures (Contract.Result<Stream>() != null);
             throw new NotImplementedException ();
         }
 
         public Stream OpenFileToWrite(string fileName)
         {
             Contract.Requires(fileName != null);
-            Contract.Ensures (Contract.Result<Stream> () != null);
+            Contract.Ensures (Contract.Result<Stream>() != null);
             throw new NotImplementedException ();
         }
 
         public Stream OpenFileToWrite(string fileName, FileOptions fileOptions)
         {
             Contract.Requires(fileName != null);
-            Contract.Ensures (Contract.Result<Stream> () != null);
+            Contract.Ensures (Contract.Result<Stream>() != null);
             throw new NotImplementedException ();
         }
 
         public byte[] ReadFileAsBytes(string fileName)
         {
             Contract.Requires (fileName != null);
-            Contract.Ensures (Contract.Result<byte[]> () != null);
+            Contract.Ensures (Contract.Result<byte[]>() != null);
             throw new NotImplementedException ();
         }
 
         public string ReadFileAsString(string fileName)
         {
             Contract.Requires (fileName != null);
-            Contract.Ensures (Contract.Result<string> () != null);
+            Contract.Ensures (Contract.Result<string>() != null);
             throw new NotImplementedException ();
         }
 
         public XmlDocument ReadFileAsXmlDocument(string fileName)
         {
             Contract.Requires (fileName != null);
-            Contract.Ensures (Contract.Result<XmlDocument> () != null);
+            Contract.Ensures (Contract.Result<XmlDocument>() != null);
             throw new NotImplementedException ();
         }
 
         public IEnumerable<string> ReadFileAsStringLines(string fileName)
         {
             Contract.Requires (fileName != null);
-            Contract.Ensures (Contract.Result<IEnumerable<string>> () != null);
+            Contract.Ensures (Contract.Result<IEnumerable<string>>() != null);
             throw new NotImplementedException ();
         }
 

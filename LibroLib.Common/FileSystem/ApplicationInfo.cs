@@ -12,7 +12,7 @@ namespace LibroLib.FileSystem
         {
             get
             {
-                Contract.Ensures (Contract.Result<string> () != null);
+                Contract.Ensures (Contract.Result<string>() != null);
 
                 if (appRootDirectory == null)
                 {
@@ -24,14 +24,17 @@ namespace LibroLib.FileSystem
                 return appRootDirectory;
             }
 
-            set { appRootDirectory = value; }
+            set
+            {
+                appRootDirectory = value;
+            }
         }
 
         public Version AppVersion
         {
             get
             {
-                Contract.Ensures (Contract.Result<System.Version> () != null);
+                Contract.Ensures (Contract.Result<System.Version>() != null);
 
                 FileVersionInfo version = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
                 string fileVersion = version.FileVersion;

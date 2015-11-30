@@ -213,7 +213,7 @@ namespace LibroLib.FileSystem
 
         public Stream OpenFileToRead(string fileName, FileOptions fileOptions)
         {
-            return new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 128*1024, fileOptions);
+            return new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 128 * 1024, fileOptions);
         }
 
         public Stream OpenFileToWrite(string fileName)
