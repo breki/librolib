@@ -1,6 +1,3 @@
 - what to do with logging?
-- include tests
-- build script 
-- dupfinder, dotcover
 - nuspec
 - publishing to nuget

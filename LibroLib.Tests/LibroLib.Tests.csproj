@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonTests\StringExTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebUtilsTests\RestClientTests.cs" />
   </ItemGroup>
