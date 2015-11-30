@@ -107,6 +107,8 @@
     <Compile Include="ConsoleShells\StandardConsoleCommandBase.cs" />
     <Compile Include="DataStructures\LruCaching\ILruCache.cs" />
     <Compile Include="DataStructures\LruCaching\LruCache.cs" />
+    <Compile Include="DataStructures\MultiDictionary.cs" />
+    <Compile Include="DataStructures\MultiSet.cs" />
     <Compile Include="FileSystem\ApplicationInfo.cs" />
     <Compile Include="FileSystem\DummyApplicationInfo.cs" />
     <Compile Include="FileSystem\IApplicationInfo.cs" />
