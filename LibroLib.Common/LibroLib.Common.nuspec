@@ -19,10 +19,16 @@
     </references>
   </metadata>
   <files>
-    <file src="LibroLib.Common.dll" target="lib" />
-    <file src="LibroLib.Common.pdb" target="lib" />
-    <file src="LibroLib.Common.xml" target="lib" />
-    <file src="CodeContracts\LibroLib.Common.Contracts.dll" target="lib" />
-    <file src="CodeContracts\LibroLib.Common.Contracts.pdb" target="lib" />
+    <file src="bin\Release-4.0\LibroLib.Common.dll" target="lib\net40" />
+    <file src="bin\Release-4.0\LibroLib.Common.pdb" target="lib\net40" />
+    <file src="bin\Release-4.0\LibroLib.Common.xml" target="lib\net40" />
+    <file src="bin\Release-4.0\CodeContracts\LibroLib.Common.Contracts.dll" target="lib\net40" />
+    <file src="bin\Release-4.0\CodeContracts\LibroLib.Common.Contracts.pdb" target="lib\net40" />
+
+    <file src="bin\Release-3.5\LibroLib.Common.dll" target="lib\net35" />
+    <file src="bin\Release-3.5\LibroLib.Common.pdb" target="lib\net35" />
+    <file src="bin\Release-3.5\LibroLib.Common.xml" target="lib\net35" />
+    <file src="bin\Release-3.5\CodeContracts\LibroLib.Common.Contracts.dll" target="lib\net35" />
+    <file src="bin\Release-3.5\CodeContracts\LibroLib.Common.Contracts.pdb" target="lib\net35" />
   </files>
 </package>

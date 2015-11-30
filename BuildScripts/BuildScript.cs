@@ -155,8 +155,7 @@ namespace BuildScripts
 
             PublishNuGetPackageTask publishTask = new PublishNuGetPackageTask (
                 projectName, nuspecFileName);
-            publishTask.BasePath = Path.GetFullPath(Path.Combine(
-                projectName, "bin", context.Properties[BuildProps.BuildConfiguration]));
+            publishTask.BasePath = Path.GetFullPath(projectName);
             publishTask.ForApiKeyUseEnvironmentVariable ();
             publishTask.Execute (context);
         }
