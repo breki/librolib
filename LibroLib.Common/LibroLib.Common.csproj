@@ -162,6 +162,7 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Annotations\Annotations.cs" />
     <Compile Include="Caching\DefaultDiskCache.cs" />
     <Compile Include="Caching\IDiskCache.cs" />
     <Compile Include="ConsoleShells\ConsoleShell.cs" />
@@ -187,6 +188,10 @@
     <Compile Include="FileSystem\WindowsDirectoryInformation.cs" />
     <Compile Include="FileSystem\WindowsFileInformation.cs" />
     <Compile Include="FileSystem\WindowsFileSystem.cs" />
+    <Compile Include="GoodPolicies\ThreadSafeAttribute.cs" />
+    <Compile Include="GoodPolicies\ThreadUnsafeAttribute.cs" />
+    <Compile Include="Misc\FactoryLease.cs" />
+    <Compile Include="Misc\IFactory.cs" />
     <Compile Include="Misc\ITimeService.cs" />
     <Compile Include="Misc\RealTimeService.cs" />
     <Compile Include="Misc\TimeMachine.cs" />

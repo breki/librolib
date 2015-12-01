@@ -164,10 +164,14 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LibroLib.Common\Annotations\Annotations.cs">
+      <Link>Annotations\Annotations.cs</Link>
     </Compile>
     <Compile Include="IWebConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,6 +182,13 @@
     <Compile Include="Rest\RestClientFactory.cs" />
     <Compile Include="Rest\RestClientResponse.cs" />
     <Compile Include="Rest\RestException.cs" />
+    <Compile Include="WebClients\LibroLibWebClient.cs" />
+    <Compile Include="WebClients\IWebClient.cs" />
+    <Compile Include="WebClients\IWebClientFactory.cs" />
+    <Compile Include="WebClients\WebClientEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebClients\WebClientFactory.cs" />
     <Compile Include="WebConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>

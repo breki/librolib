@@ -6,6 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using JetBrains.Annotations;
 
 namespace LibroLib
 {
@@ -116,7 +117,8 @@ namespace LibroLib
         }
 
         [SuppressMessage ("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Fmt")]
-        public static string Fmt (this string format, params object[] args)
+        [StringFormatMethod ("format")]
+        public static string Fmt ([NotNull]this string format, [NotNull]params object[] args)
         {
             Contract.Requires(format != null);
             Contract.Requires(args != null);
