@@ -1,6 +1,7 @@
+- what to do with logging?
+	- some adapter? or direct log4net?
 - R# annotations
 - migrate more common code
-- what to do with logging?
 - nuspec 
 	- check Code Contracts packaging
 	- link to license URL (once the project is public)
