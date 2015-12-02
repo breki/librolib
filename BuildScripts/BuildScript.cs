@@ -3,13 +3,12 @@ using System.IO;
 using Flubu;
 using Flubu.Builds;
 using Flubu.Builds.Tasks.AnalysisTasks;
+using Flubu.Builds.Tasks.NuGetTasks;
+using Flubu.Builds.Tasks.SolutionTasks;
+using Flubu.Builds.Tasks.TestingTasks;
 using Flubu.Builds.VSSolutionBrowsing;
 using Flubu.Targeting;
 
-//css_inc CompileSolutionTask;
-//css_inc NUnitWithDotCoverTask;
-//css_inc NUnitTask;
-//css_inc PublishNuGetPackageTask;
 //css_inc StringEx;
 //css_ref System.Xml;
 //css_ref Flubu.dll;
