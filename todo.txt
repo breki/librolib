@@ -1,6 +1,7 @@
 - what to do with logging?
 	- some adapter? or direct log4net?
 - R# annotations
+- Code Contracts - build should disable caching for appveyor builds
 - migrate more common code
 - nuspec 
 	- check Code Contracts packaging
