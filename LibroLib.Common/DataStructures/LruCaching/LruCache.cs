@@ -176,6 +176,12 @@ namespace LibroLib.DataStructures.LruCaching
                 return EqualityComparer<TItemKey>.Default.GetHashCode(key);
             }
 
+            [ContractInvariantMethod]
+            private void Invariant()
+            {
+                Contract.Invariant(!ReferenceEquals (key, null));
+            }
+
             private readonly TItemKey key;
             private TItemValue value;
             private bool isDirty;
@@ -184,7 +190,7 @@ namespace LibroLib.DataStructures.LruCaching
         private readonly int cacheSize;
         private readonly Func<TKey, TValue> readItemFunc;
         private readonly Action<TKey, TValue> writeItemAction;
-        private Dictionary<TKey, LinkedListNode<CachedItem<TKey, TValue>>> cachedItems = new Dictionary<TKey, LinkedListNode<CachedItem<TKey, TValue>>>();
-        private LinkedList<CachedItem<TKey, TValue>> cachedItemsByUsage = new LinkedList<CachedItem<TKey, TValue>>();
+        private readonly Dictionary<TKey, LinkedListNode<CachedItem<TKey, TValue>>> cachedItems = new Dictionary<TKey, LinkedListNode<CachedItem<TKey, TValue>>>();
+        private readonly LinkedList<CachedItem<TKey, TValue>> cachedItemsByUsage = new LinkedList<CachedItem<TKey, TValue>>();
     }
 }
