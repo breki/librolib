@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Text;
 using LibroLib.WebUtils;
 using LibroLib.WebUtils.Rest;
 using NUnit.Framework;
@@ -35,7 +36,19 @@ namespace LibroLib.Tests.WebUtilsTests
             {
                 client.Get ("http://posttestserver.com/post.php").Do ();
                 Assert.AreEqual ((int)HttpStatusCode.OK, client.StatusCode);
-                Assert.AreEqual(141, client.Response.AsBytes().Length);
+                byte[] responseBytes = client.Response.AsBytes();
+                StringAssert.StartsWith ("Successfully dumped 0 post variables", Encoding.ASCII.GetString (responseBytes));
+            }
+        }
+
+        [Test]
+        public void CheckResponseHeaders()
+        {
+            using (IRestClient client = restClientFactory.CreateRestClient ())
+            {
+                client.Get ("http://posttestserver.com/post.php").Do ();
+                Assert.AreEqual ((int)HttpStatusCode.OK, client.StatusCode);
+                Assert.GreaterOrEqual(client.Response.Headers.Count, 1);
             }
         }
 
