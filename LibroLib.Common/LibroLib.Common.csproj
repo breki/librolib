@@ -197,6 +197,7 @@
     <Compile Include="Misc\TimeMachine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringEx.cs" />
+    <Compile Include="Text\FormattingUtils.cs" />
     <Compile Include="Threading\AutoResetSignal.cs" />
     <Compile Include="Threading\ISemaphore.cs" />
     <Compile Include="Threading\ISignal.cs" />

@@ -1,3 +1,6 @@
+1.0.3.0
+- added FormattingUtils
+
 1.0.2.2
 - marked assemblies as CLS-compliant
 
