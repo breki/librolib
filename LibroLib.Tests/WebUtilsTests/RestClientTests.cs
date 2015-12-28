@@ -28,6 +28,17 @@ namespace LibroLib.Tests.WebUtilsTests
             }
         }
 
+        [Test]
+        public void CheckBytesResponse()
+        {
+            using (IRestClient client = restClientFactory.CreateRestClient ())
+            {
+                client.Get ("http://posttestserver.com/post.php").Do ();
+                Assert.AreEqual ((int)HttpStatusCode.OK, client.StatusCode);
+                Assert.AreEqual(141, client.Response.AsBytes().Length);
+            }
+        }
+
         [Test, ExpectedException(typeof(RestException))]
         public void RequestThatTimeouts()
         {

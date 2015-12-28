@@ -53,7 +53,6 @@ namespace LibroLib.DataStructures.LruCaching
 
         public void Flush()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

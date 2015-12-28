@@ -1,3 +1,7 @@
+1.0.5.0
+- added more properties and methods to IRestClientResponse
+- added more contracts to LruCache
+
 1.0.3.0
 - added FormattingUtils
 

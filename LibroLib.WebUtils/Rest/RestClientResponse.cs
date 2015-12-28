@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Net;
-using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -34,6 +33,20 @@ namespace LibroLib.WebUtils.Rest
         public int StatusCode
         {
             get { return (int)webResponse.StatusCode; }
+        }
+
+        public WebHeaderCollection Headers
+        {
+            get { return webResponse.Headers; }
+        }
+
+        public byte[] AsBytes()
+        {
+            using (MemoryStream memoryStream = new MemoryStream ())
+            {
+                responseStream.CopyTo (memoryStream);
+                return memoryStream.ToArray ();
+            }
         }
 
         public JObject AsJson()
