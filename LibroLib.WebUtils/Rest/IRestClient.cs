@@ -15,6 +15,7 @@ namespace LibroLib.WebUtils.Rest
         IRestClient Do();
         [System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = "Get")]
         IRestClient Get (string url);
+        IRestClient Head (string url);
         IRestClient Post (string url);
         IRestClient Put (string url);
         IRestClient Request(string text);
@@ -64,6 +65,13 @@ namespace LibroLib.WebUtils.Rest
         }
 
         IRestClient IRestClient.Get(string url)
+        {
+            Contract.Requires(url != null);
+            Contract.Ensures(Contract.Result<IRestClient>() != null);
+            throw new NotImplementedException();
+        }
+
+        IRestClient IRestClient.Head(string url)
         {
             Contract.Requires(url != null);
             Contract.Ensures(Contract.Result<IRestClient>() != null);
