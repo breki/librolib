@@ -43,6 +43,13 @@ namespace LibroLib.WebUtils.Rest
             return this;
         }
 
+        public IRestClient Head(string url)
+        {
+            this.url = url;
+            method = "HEAD";
+            return this;
+        }
+
         public IRestClient Post(string url)
         {
             this.url = url;

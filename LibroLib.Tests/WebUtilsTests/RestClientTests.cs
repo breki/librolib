@@ -129,6 +129,16 @@ namespace LibroLib.Tests.WebUtilsTests
             }
         }
 
+        [Test]
+        public void HeadRequest()
+        {
+            using (IRestClient client = restClientFactory.CreateRestClient ())
+            {
+                var reponse = client.Head("http://posttestserver.com/post.php").Do().Response;
+                Assert.IsNotNull(reponse);
+            }
+        }
+
         [SetUp]
         public void Setup()
         {
