@@ -76,6 +76,7 @@
     <Compile Include="CommonTests\ConsoleShellsTests\TestStandardConsoleCommand.cs" />
     <Compile Include="CommonTests\DataStructuresTests\LruCacheTests.cs" />
     <Compile Include="CommonTests\DiskCacheTests.cs" />
+    <Compile Include="CommonTests\PathBuilderTests.cs" />
     <Compile Include="CommonTests\StringExTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebUtilsTests\RestClientTests.cs" />

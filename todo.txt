@@ -1,4 +1,3 @@
-- move Flubu tasks to Flubu
 - what to do with logging?
 	- some adapter? or direct log4net?
 - R# annotations
