@@ -33,12 +33,20 @@ namespace LibroLib.FileSystem
 
         Version IApplicationInfo.AppVersion
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                Contract.Ensures(Contract.Result<System.Version>() != null);
+                throw new NotImplementedException();
+            }
         }
 
         string IApplicationInfo.AppVersionString
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                Contract.Ensures (Contract.Result<string>() != null);
+                throw new NotImplementedException ();
+            }
         }
 
         bool IApplicationInfo.IsMono
