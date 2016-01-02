@@ -34,8 +34,6 @@ namespace LibroLib.FileSystem
         {
             get
             {
-                Contract.Ensures (Contract.Result<System.Version>() != null);
-
                 FileVersionInfo version = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
                 string fileVersion = version.FileVersion;
                 return new Version(fileVersion);
