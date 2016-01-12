@@ -72,6 +72,7 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Constants.cs" />
     <Compile Include="CommonTests\ConsoleShellsTests\ConsoleShellTests.cs" />
     <Compile Include="CommonTests\ConsoleShellsTests\TestStandardConsoleCommand.cs" />
     <Compile Include="CommonTests\DataStructuresTests\LruCacheTests.cs" />
@@ -79,6 +80,9 @@
     <Compile Include="CommonTests\PathBuilderTests.cs" />
     <Compile Include="CommonTests\StringExTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebUtilsTests\FtpTests\FtpCommunicatorTests.cs" />
+    <Compile Include="WebUtilsTests\FtpTests\FtpSessionTests.cs" />
+    <Compile Include="WebUtilsTests\FtpTests\RealFtpTests.cs" />
     <Compile Include="WebUtilsTests\RestClientTests.cs" />
   </ItemGroup>
   <ItemGroup>

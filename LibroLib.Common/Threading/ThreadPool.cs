@@ -26,36 +26,39 @@ namespace LibroLib.Threading
         {
             //log.Info("Signaling all threads to stop");
 
-            foreach (IThread thread in threads)
-                thread.SignalToStop();
-
-            List<IThread> remainingThreads = new List<IThread>(threads);
-
-            for (int i = 0; remainingThreads.Count > 0 && i < settings.MaxStoppingLoops; i++)
+            lock (threads)
             {
-                Thread.Sleep (i == 0 ? settings.InitialStoppingTimeout : settings.SubsequentStoppingTimeout);
+                foreach (IThread thread in threads)
+                    thread.SignalToStop();
 
-                List<IThread> threadsToProcess = new List<IThread>(remainingThreads);
-                foreach (IThread thread in threadsToProcess)
+                List<IThread> remainingThreads = new List<IThread>(threads);
+
+                for (int i = 0; remainingThreads.Count > 0 && i < settings.MaxStoppingLoops; i++)
                 {
-                    if (thread.Join(TimeSpan.Zero))
-                    {
-                        //if (log.IsDebugEnabled)
-                        //    log.DebugFormat("Thread {0} stopped normally", thread.ManagedThreadId);
+                    Thread.Sleep(i == 0 ? settings.InitialStoppingTimeout : settings.SubsequentStoppingTimeout);
 
-                        remainingThreads.Remove(thread);
-                        thread.Dispose();
+                    List<IThread> threadsToProcess = new List<IThread>(remainingThreads);
+                    foreach (IThread thread in threadsToProcess)
+                    {
+                        if (thread.IsAlive || thread.Join(TimeSpan.Zero))
+                        {
+                            //if (log.IsDebugEnabled)
+                            //    log.DebugFormat("Thread {0} stopped normally", thread.ManagedThreadId);
+
+                            remainingThreads.Remove(thread);
+                            thread.Dispose();
+                        }
                     }
                 }
-            }
 
-            foreach (IThread thread in remainingThreads)
-            {
-                //log.WarnFormat("Aborting thread {0} since it failed to stop normally", thread.ManagedThreadId);
-                thread.Abort();
-            }
+                foreach (IThread thread in remainingThreads)
+                {
+                    //log.WarnFormat("Aborting thread {0} since it failed to stop normally", thread.ManagedThreadId);
+                    thread.Abort();
+                }
 
-            threads.Clear();
+                threads.Clear();
+            }
         }
 
         public void Dispose()

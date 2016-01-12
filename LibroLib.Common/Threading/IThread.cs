@@ -7,6 +7,7 @@ namespace LibroLib.Threading
         string Name { get; set; }
         int ManagedThreadId { get; }
         ISignal ThreadStopSignal { get; }
+        bool IsAlive { get; }
         bool IsStopping { get; }
 
         void Start ();

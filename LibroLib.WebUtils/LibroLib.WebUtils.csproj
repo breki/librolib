@@ -173,6 +173,20 @@
     <Compile Include="..\LibroLib.Common\Annotations\Annotations.cs">
       <Link>Annotations\Annotations.cs</Link>
     </Compile>
+    <Compile Include="Ftp\FtpChannelFactoryUsingSockets.cs" />
+    <Compile Include="Ftp\FtpChannelUsingSocket.cs" />
+    <Compile Include="Ftp\FtpCommunicator.cs" />
+    <Compile Include="Ftp\FtpConnectionData.cs" />
+    <Compile Include="Ftp\FtpException.cs" />
+    <Compile Include="Ftp\FtpReturnCode.cs" />
+    <Compile Include="Ftp\FtpServerResponse.cs" />
+    <Compile Include="Ftp\FtpSession.cs" />
+    <Compile Include="Ftp\FtpSessionFactory.cs" />
+    <Compile Include="Ftp\IFtpChannel.cs" />
+    <Compile Include="Ftp\IFtpChannelFactory.cs" />
+    <Compile Include="Ftp\IFtpCommunicator.cs" />
+    <Compile Include="Ftp\IFtpSession.cs" />
+    <Compile Include="Ftp\IFtpSessionFactory.cs" />
     <Compile Include="IWebConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rest\IRestClient.cs" />

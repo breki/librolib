@@ -177,6 +177,7 @@
     <Compile Include="DataStructures\MultiSet.cs" />
     <Compile Include="FileSystem\ApplicationInfo.cs" />
     <Compile Include="FileSystem\DummyApplicationInfo.cs" />
+    <Compile Include="FileSystem\FileSet.cs" />
     <Compile Include="FileSystem\IApplicationInfo.cs" />
     <Compile Include="FileSystem\IDirectoryInformation.cs" />
     <Compile Include="FileSystem\IFileEntryInformation.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="GoodPolicies\ThreadSafeAttribute.cs" />
     <Compile Include="GoodPolicies\ThreadUnsafeAttribute.cs" />
     <Compile Include="Misc\FactoryLease.cs" />
+    <Compile Include="Misc\IExecutionContext.cs" />
     <Compile Include="Misc\IFactory.cs" />
     <Compile Include="Misc\ITimeService.cs" />
     <Compile Include="Misc\RealTimeService.cs" />
