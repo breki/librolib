@@ -131,7 +131,7 @@ namespace BuildScripts
             NUnitWithDotCoverTask task = new NUnitWithDotCoverTask(
                 Path.Combine(projectName, "bin", context.Properties[BuildProps.BuildConfiguration], projectName) + ".dll",
                 @"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe");
-            task.DotCoverFilters = "-:module=*.Tests;-:class=*Contract;-:class=*Contract`*";
+            task.DotCoverFilters = "-:module=*.Tests;-:class=*Contract;-:class=*Contract`*;-:class=JetBrains.Annotations.*";
             task.NUnitCmdLineOptions = "/framework:4.0 /labels /nodots";
             task.FailBuildOnViolations = false;
             task.Execute (context);
