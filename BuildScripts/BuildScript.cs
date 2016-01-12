@@ -78,7 +78,7 @@ namespace BuildScripts
         private static void ConfigureBuildProperties (TaskSession session)
         {
             session.Properties.Set (BuildProps.CompanyName, "Igor Brejc");
-            session.Properties.Set (BuildProps.CompanyCopyright, "Copyright (C) 2010-2015 Igor Brejc");
+            session.Properties.Set (BuildProps.CompanyCopyright, "Copyright (C) 2010-2016 Igor Brejc");
             session.Properties.Set (BuildProps.ProductId, "LibroLib");
             session.Properties.Set (BuildProps.ProductName, "LibroLib");
             session.Properties.Set (BuildProps.SolutionFileName, "LibroLib.sln");

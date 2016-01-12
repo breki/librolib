@@ -36,6 +36,11 @@ namespace LibroLib.Threading
             get { return threadStopSignal; }
         }
 
+        public bool IsAlive
+        {
+            get { return thread.IsAlive; }
+        }
+
         public bool IsStopping
         {
             get { return isStopping; }

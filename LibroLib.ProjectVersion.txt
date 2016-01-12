@@ -1,3 +1,8 @@
+1.1.0.0
+- imported FTP client code from Brejc.Common.Library
+- new property: IThread.IsAlive
+- ThreadPool has some bug fixes
+
 1.0.6.1
 - imported PathBuilderTests
 
