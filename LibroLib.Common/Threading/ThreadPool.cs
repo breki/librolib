@@ -40,7 +40,7 @@ namespace LibroLib.Threading
                     List<IThread> threadsToProcess = new List<IThread>(remainingThreads);
                     foreach (IThread thread in threadsToProcess)
                     {
-                        if (thread.IsAlive || thread.Join(TimeSpan.Zero))
+                        if (!thread.IsAlive || thread.Join(TimeSpan.Zero))
                         {
                             //if (log.IsDebugEnabled)
                             //    log.DebugFormat("Thread {0} stopped normally", thread.ManagedThreadId);
