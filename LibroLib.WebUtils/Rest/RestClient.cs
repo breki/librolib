@@ -8,6 +8,11 @@ namespace LibroLib.WebUtils.Rest
 {
     public class RestClient : IRestClient
     {
+        public WebHeaderCollection RequestHeaders
+        {
+            get { return requestHeaders; }
+        }
+
         public IRestClientResponse Response
         {
             get { return response; }
@@ -21,6 +26,18 @@ namespace LibroLib.WebUtils.Rest
         public HttpWebRequest NativeWebRequest
         {
             get { return webRequest; }
+        }
+
+        public IRestClient AddHeader(HttpRequestHeader header, string value)
+        {
+            requestHeaders.Add (header, value);
+            return this;
+        }
+
+        public IRestClient AddHeader(string name, string value)
+        {
+            requestHeaders.Add(name, value);
+            return this;
         }
 
         public IRestClient AddQuery(string name, object value)
@@ -86,6 +103,7 @@ namespace LibroLib.WebUtils.Rest
         public IRestClient Do()
         {
             PrepareWebRequest ();
+            webRequest.Headers = requestHeaders;
 
             if (timeout != null)
                 webRequest.Timeout = (int)timeout.Value.TotalMilliseconds;
@@ -144,6 +162,7 @@ namespace LibroLib.WebUtils.Rest
         private string url;
         private string method;
         private readonly NameValueCollection queryParameters = new NameValueCollection();
+        private readonly WebHeaderCollection requestHeaders = new WebHeaderCollection();
         private bool requestBodySet;
         private string requestString;
         private RestClientResponse response;

@@ -165,6 +165,7 @@ namespace LibroLib.ConsoleShells
                 }
             }
 
+            Contract.Assume(settingArg != null);
             if (!settingArg.IsSwitch)
                 return ParseSettingArg(consoleEnvironment, arg, valueIndex, settingArg);
             

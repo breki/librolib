@@ -1,3 +1,7 @@
+1.2.0.0
+- IRestClient now has RequestHeaders property and AddHeader() methods
+- improved code contracts
+
 1.1.1.0
 - ThreadPool has some bug fixes and unit tests
 

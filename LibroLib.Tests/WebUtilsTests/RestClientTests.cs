@@ -75,6 +75,16 @@ namespace LibroLib.Tests.WebUtilsTests
         }
 
         [Test]
+        public void SendSomeHeaders()
+        {
+            using (IRestClient client = restClientFactory.CreateRestClient ())
+            {
+                client.Get ("http://google.com").AddHeader("test-head", "test-value").Do ();
+                Assert.AreEqual ((int)HttpStatusCode.OK, client.StatusCode);
+            }
+        }
+
+        [Test]
         public void SendPostRequest()
         {
             using (IRestClient client = restClientFactory.CreateRestClient ())

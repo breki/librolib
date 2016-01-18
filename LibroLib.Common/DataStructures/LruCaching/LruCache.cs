@@ -63,6 +63,7 @@ namespace LibroLib.DataStructures.LruCaching
                 return false;
 
             cachedItems.Remove(key);
+            Contract.Assume(node != null);
             cachedItemsByUsage.Remove(node);
 
             return true;

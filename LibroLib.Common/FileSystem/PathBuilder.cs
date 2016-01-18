@@ -108,11 +108,15 @@ namespace LibroLib.FileSystem
 
         public string ToUnixPath ()
         {
-            return ToStringInternal('/');
+            Contract.Ensures (Contract.Result<string>() != null);
+
+            return ToStringInternal ('/');
         }
 
         private string ToStringInternal(char directorySeparatorChar)
         {
+            Contract.Ensures(Contract.Result<string>() != null);
+
             StringBuilder s = new StringBuilder();
             char? separator = null;
 
