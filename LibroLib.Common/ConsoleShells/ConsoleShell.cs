@@ -48,6 +48,7 @@ namespace LibroLib.ConsoleShells
         public ConsoleShellResult ParseCommandLine (string[] args)
         {
             Contract.Requires(args != null);
+            Contract.Requires(args.Length < 1 || !ReferenceEquals(args[0], null));
             Contract.Ensures(Contract.Result<ConsoleShellResult>() != null);
 
             ShowBanner();
@@ -59,6 +60,7 @@ namespace LibroLib.ConsoleShells
             }
 
             string commandId = args[0];
+            Contract.Assume(!ReferenceEquals (commandId, null));
 
             IConsoleCommand command;
             if (!cmds.TryGetValue(commandId, out command))

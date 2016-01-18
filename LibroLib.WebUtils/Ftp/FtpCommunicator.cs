@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -22,11 +23,16 @@ namespace LibroLib.WebUtils.Ftp
         {
             string responseText = ReadResponseLine();
 
+            if (responseText == null)
+                throw new FtpException ("responseText == null");
+
             if (singlelineResponseRegex.IsMatch(responseText))
                 return new FtpServerResponse(responseText);
 
             if (!multilineResponseRegex.IsMatch(responseText))
                 throw new FtpException();
+
+            Contract.Assume(responseText.Length >= 4);
 
             FtpServerResponse firstResponseLine = new FtpServerResponse(responseText);
 
@@ -40,7 +46,9 @@ namespace LibroLib.WebUtils.Ftp
                 if (!singlelineResponseRegex.IsMatch(responseText))
                     continue;
 
-                FtpServerResponse response = new FtpServerResponse(responseText);
+                Contract.Assume (responseText.Length >= 4);
+
+                FtpServerResponse response = new FtpServerResponse (responseText);
                 if (response.ReturnCode == firstResponseLine.ReturnCode)
                     return firstResponseLine;
             }
