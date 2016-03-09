@@ -3,7 +3,7 @@
   <metadata>
     <id>LibroLib.Common</id>
     <version>$version$</version>
-    <authors>Igor Brejc</authors>
+    <authors>Igor Brejc, Žan Slana</authors>
     <projectUrl>https://bitbucket.org/breki-os/librolib</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>LibroLib library containing basic common functionality.</description>

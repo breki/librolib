@@ -1,3 +1,7 @@
+1.2.1.0
+- added custom StyleCop and FxCop rules written by Žan Slana and fixed the code
+	to conform to them
+
 1.2.0.0
 - IRestClient now has RequestHeaders property and AddHeader() methods
 - improved code contracts
