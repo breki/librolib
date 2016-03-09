@@ -102,7 +102,8 @@ namespace LibroLib.WebUtils.Ftp
 
             PathBuilder parentPathBuilder = new PathBuilder(parentPath);
             parentPath = parentPathBuilder.ToUnixPath();
-            if (parentPath == "/" || (createdDirectories != null && createdDirectories.Contains(parentPath)))
+            bool doesCreatedDirectoriesContainParentPath = createdDirectories != null && createdDirectories.Contains(parentPath);
+            if (parentPath == "/" || doesCreatedDirectoriesContainParentPath)
                 return;
 
             EnsurePathExists(parentPath, createdDirectories, beforeDirectoryCreatedCallback);
