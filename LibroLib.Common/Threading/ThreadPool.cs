@@ -15,8 +15,8 @@ namespace LibroLib.Threading
         public IThread CreateThread (Action<IThread> threadAction)
         {
             ThreadWrapper thread = new ThreadWrapper(this, syncObjectsFactory, threadAction);
-            
-            lock (this)
+
+            lock (threads)
                 threads.Add(thread);
 
             return thread;
@@ -76,7 +76,7 @@ namespace LibroLib.Threading
                 if (disposing)
                 {
                     // clean managed resources    
-                    lock (this)
+                    lock (threads)
                     {
                         foreach (IThread thread in threads)
                             thread.Dispose();
@@ -86,7 +86,7 @@ namespace LibroLib.Threading
                 disposed = true;
             }
         }
-
+        
         private readonly ISyncObjectsFactory syncObjectsFactory;
         private bool disposed;
         private readonly List<IThread> threads = new List<IThread>();

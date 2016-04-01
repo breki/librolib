@@ -63,7 +63,12 @@ namespace LibroLib.WebUtils.Ftp
             Contract.Requires(remoteFileName != null);
         }
 
-        void IFtpSession.UploadFiles(IExecutionContext taskExecutionContext, FileSet localFiles, string rootRemoteDirectory, Action<string> beforeDirectoryCreatedCallback, Action<string, string> beforeFileUploadedCallback)
+        void IFtpSession.UploadFiles(
+            IExecutionContext taskExecutionContext, 
+            FileSet localFiles, 
+            string rootRemoteDirectory, 
+            Action<string> beforeDirectoryCreatedCallback, 
+            Action<string, string> beforeFileUploadedCallback)
         {
             Contract.Requires(localFiles != null);
             Contract.Requires(rootRemoteDirectory != null);
