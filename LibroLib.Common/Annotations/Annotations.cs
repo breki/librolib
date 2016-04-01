@@ -1015,12 +1015,12 @@ namespace JetBrains.Annotations
     [Conditional ("JETBRAINS_ANNOTATIONS")]
     internal sealed class AspTypePropertyAttribute : Attribute
     {
-        public bool CreateConstructorReferences { get; private set; }
-
-        public AspTypePropertyAttribute (bool createConstructorReferences)
+        public AspTypePropertyAttribute(bool createConstructorReferences)
         {
             CreateConstructorReferences = createConstructorReferences;
         }
+
+        public bool CreateConstructorReferences { get; private set; }
     }
 
     [AttributeUsage (AttributeTargets.Assembly, AllowMultiple = true)]

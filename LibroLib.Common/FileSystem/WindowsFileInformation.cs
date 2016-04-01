@@ -5,6 +5,11 @@ namespace LibroLib.FileSystem
 {
     public class WindowsFileInformation : IFileInformation
     {
+        public WindowsFileInformation(FileInfo fileInfo)
+        {
+            this.fileInfo = fileInfo;
+        }
+
         public string FullName 
         {
             get { return fileInfo.FullName; }
@@ -50,12 +55,7 @@ namespace LibroLib.FileSystem
                 fileInfo.Attributes = value;
             }
         }
-
-        public WindowsFileInformation (FileInfo fileInfo)
-        {
-            this.fileInfo = fileInfo;
-        }
-
+       
         public void CopyTo (string destFileName, bool overwrite)
         {
             fileInfo.CopyTo (destFileName, overwrite);
