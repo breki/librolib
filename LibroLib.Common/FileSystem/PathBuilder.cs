@@ -113,6 +113,18 @@ namespace LibroLib.FileSystem
             return ToStringInternal ('/');
         }
 
+        private PathBuilder()
+        {
+        }
+
+        private PathBuilder(PathBuilder copyFrom)
+        {
+            Contract.Requires(copyFrom != null);
+
+            pathRoot = copyFrom.pathRoot;
+            pathComponents.AddRange(copyFrom.pathComponents);
+        }
+
         private string ToStringInternal(char directorySeparatorChar)
         {
             Contract.Ensures(Contract.Result<string>() != null);
@@ -154,18 +166,6 @@ namespace LibroLib.FileSystem
                 if (path.Equals(pathRoot))
                     break;
             }
-        }
-
-        private PathBuilder ()
-        {
-        }
-
-        private PathBuilder (PathBuilder copyFrom)
-        {
-            Contract.Requires (copyFrom != null);
-
-            pathRoot = copyFrom.pathRoot;
-            pathComponents.AddRange(copyFrom.pathComponents);
         }
 
         private string pathRoot = string.Empty;
