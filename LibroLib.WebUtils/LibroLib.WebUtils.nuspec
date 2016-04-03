@@ -3,7 +3,7 @@
   <metadata>
     <id>LibroLib.WebUtils</id>
     <version>$version$</version>
-    <authors>Igor Brejc</authors>
+    <authors>Igor Brejc, Žan Slana</authors>
     <projectUrl>https://bitbucket.org/breki-os/librolib</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>LibroLib library containing various Web-related utility classes.</description>
@@ -15,6 +15,7 @@
     <dependencies>
       <group>
         <dependency id="LibroLib.Common" version="$version$" />
+        <dependency id="Newtonsoft.Json" version="7.0.0" />
       </group>      
     </dependencies>
     

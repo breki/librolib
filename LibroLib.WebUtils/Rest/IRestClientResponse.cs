@@ -20,10 +20,6 @@ namespace LibroLib.WebUtils.Rest
     // ReSharper disable once InconsistentNaming
     internal abstract class IRestClientResponseContract : IRestClientResponse
     {
-        void IDisposable.Dispose()
-        {
-        }
-
         WebHeaderCollection IRestClientResponse.Headers
         {
             get
@@ -31,6 +27,10 @@ namespace LibroLib.WebUtils.Rest
                 Contract.Ensures (Contract.Result<WebHeaderCollection>() != null);
                 throw new NotImplementedException ();
             }
+        }
+
+        void IDisposable.Dispose()
+        {
         }
 
         byte[] IRestClientResponse.AsBytes()

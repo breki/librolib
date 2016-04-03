@@ -22,7 +22,7 @@ namespace LibroLib.Tests.CommonTests
         public void ConcatTest()
         {
             int[] values = new[] { 10, 20, 30 };
-            Assert.AreEqual("10, 20, 30", values.Concat(x => x.ToString(), ", "));
+            Assert.AreEqual("10, 20, 30", values.Concat(x => x.ToString(CultureInfo.InvariantCulture), ", "));
         }
 
         [Test]

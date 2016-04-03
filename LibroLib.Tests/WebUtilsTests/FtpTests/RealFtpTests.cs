@@ -74,15 +74,14 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
         [Test]
         public void UploadFiles()
         {
-            string[] files = new[] { @"D:\MyStuff\projects\Maperitive\trunk\bin\Debug\Maperitive\Tiles\13\4448\2895.png", @"D:\MyStuff\projects\Maperitive\trunk\bin\Debug\Maperitive\Tiles\13\4449\2895.png" };
+            string[] files =
+                {
+                    @"D:\MyStuff\projects\Maperitive\trunk\bin\Debug\Maperitive\Tiles\13\4448\2895.png",
+                    @"D:\MyStuff\projects\Maperitive\trunk\bin\Debug\Maperitive\Tiles\13\4449\2895.png"
+                };
             FileSet fileSet = new FileSet(@"D:\MyStuff\projects\Maperitive\trunk\bin\Debug\Maperitive\Tiles", files);
 
-            FtpAction(c => c.UploadFiles(
-                null,
-                fileSet,
-                "tiles2",
-                null,
-                null));
+            FtpAction(c => c.UploadFiles(null, fileSet, "tiles2", null, null));
         }
 
         //[Test]

@@ -31,10 +31,6 @@ namespace LibroLib.WebUtils.Rest
     // ReSharper disable once InconsistentNaming
     internal abstract class IRestClientContract : IRestClient
     {
-        void IDisposable.Dispose()
-        {
-        }
-
         WebHeaderCollection IRestClient.RequestHeaders
         {
             get
@@ -56,6 +52,10 @@ namespace LibroLib.WebUtils.Rest
         int IRestClient.StatusCode
         {
             get { throw new InvalidOperationException(); }
+        }
+
+        void IDisposable.Dispose()
+        {
         }
 
         IRestClient IRestClient.AddHeader(string name, string value)
