@@ -6,7 +6,9 @@ namespace LibroLib.Caching
 {
     public class DefaultDiskCache : IDiskCache
     {
-        public DefaultDiskCache(
+        public const string DefaultCacheRootDir = "Cache";
+
+        public DefaultDiskCache (
             IFileSystem fileSystem,
             IApplicationInfo applicationInfo)
         {
@@ -68,8 +70,6 @@ namespace LibroLib.Caching
             string fullPath = GetFullFilePath(localCachePath);
             fileSystem.WriteFile(fullPath, data);
         }
-
-        public const string DefaultCacheRootDir = "Cache";
 
         private readonly string cacheRootDirectory = DefaultCacheRootDir;
         private readonly IApplicationInfo applicationInfo;
