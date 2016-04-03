@@ -59,7 +59,7 @@ namespace LibroLib.ConsoleShells
                 oneLiner.AppendFormat(CultureInfo.InvariantCulture, " {1}<{0}>{2}", arg.ArgName, arg.IsRequired ? null : "[", arg.IsRequired ? null : "]");
 
             if (settingsArgs.Count > 0)
-                oneLiner.AppendFormat(" [settings]");
+                oneLiner.AppendFormat(CultureInfo.InvariantCulture, " [settings]");
 
             completeText.AppendLine(oneLiner.ToString());
             completeText.AppendLine();
