@@ -5,7 +5,7 @@ using Rhino.Mocks;
 
 namespace LibroLib.Tests.CommonTests
 {
-    public class DiskCacheTests
+    public class DiskCacheUnitTests
     {
         [Test]
         public void CheckDiskCachePaths()
