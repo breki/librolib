@@ -46,6 +46,12 @@ namespace LibroLib.WebUtils.Rest
             return this;
         }
 
+        public IRestClient Credentials(ICredentials credentials)
+        {
+            this.credentials = credentials;
+            return this;
+        }
+
         public IRestClient Delete(string url)
         {
             this.url = url;
@@ -74,6 +80,12 @@ namespace LibroLib.WebUtils.Rest
             return this;
         }
 
+        public IRestClient PreAuthenticate()
+        {
+            this.preAuthenticate = preAuthenticate;
+            return this;
+        }
+
         public IRestClient Put(string url)
         {
             this.url = url;
@@ -85,6 +97,12 @@ namespace LibroLib.WebUtils.Rest
         {
             requestString = text;
             requestBodySet = true;
+            return this;
+        }
+
+        public IRestClient UseDefaultCredentials()
+        {
+            this.useDefaultCredentials = useDefaultCredentials;
             return this;
         }
 
@@ -103,7 +121,11 @@ namespace LibroLib.WebUtils.Rest
         public IRestClient Do()
         {
             PrepareWebRequest ();
+
+            webRequest.PreAuthenticate = preAuthenticate;
+            webRequest.UseDefaultCredentials = useDefaultCredentials;
             webRequest.Headers = requestHeaders;
+            webRequest.Credentials = credentials;
 
             if (timeout != null)
                 webRequest.Timeout = (int)timeout.Value.TotalMilliseconds;
@@ -158,15 +180,18 @@ namespace LibroLib.WebUtils.Rest
             webRequest.Method = method;
         }
 
+        private ICredentials credentials;
         private bool disposed;
         private string url;
         private string method;
-        private readonly NameValueCollection queryParameters = new NameValueCollection();
+        private bool preAuthenticate;
+        private readonly NameValueCollection queryParameters = new NameValueCollection ();
         private readonly WebHeaderCollection requestHeaders = new WebHeaderCollection();
         private bool requestBodySet;
         private string requestString;
         private RestClientResponse response;
         private TimeSpan? timeout;
+        private bool useDefaultCredentials;
         private IWebConfiguration webConfiguration;
         private HttpWebRequest webRequest;
     }

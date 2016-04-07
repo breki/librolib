@@ -14,6 +14,7 @@ namespace LibroLib.WebUtils.Rest
         IRestClient AddHeader(string name, string value);
         IRestClient AddHeader (HttpRequestHeader header, string value);
         IRestClient AddQuery (string name, object value);
+        IRestClient Credentials (ICredentials credentials);
         IRestClient Delete (string url);
         [System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = "Do")]
         IRestClient Do();
@@ -21,8 +22,10 @@ namespace LibroLib.WebUtils.Rest
         IRestClient Get (string url);
         IRestClient Head (string url);
         IRestClient Post (string url);
+        IRestClient PreAuthenticate ();
         IRestClient Put (string url);
-        IRestClient Request(string text);
+        IRestClient Request (string text);
+        IRestClient UseDefaultCredentials ();
         IRestClient WithConfiguration(IWebConfiguration webConfiguration);
         IRestClient WithTimeout(TimeSpan timeout);
     }
@@ -78,6 +81,13 @@ namespace LibroLib.WebUtils.Rest
             throw new NotImplementedException();
         }
 
+        IRestClient IRestClient.Credentials (ICredentials credentials)
+        {
+            Contract.Requires(credentials != null);
+            Contract.Ensures (Contract.Result<IRestClient>() != null);
+            throw new NotImplementedException ();
+        }
+
         IRestClient IRestClient.Delete(string url)
         {
             Contract.Requires(url != null);
@@ -112,9 +122,21 @@ namespace LibroLib.WebUtils.Rest
             throw new NotImplementedException();
         }
 
-        IRestClient IRestClient.Put(string url)
+        IRestClient IRestClient.PreAuthenticate ()
+        {
+            Contract.Ensures(Contract.Result<IRestClient>() != null);
+            throw new NotImplementedException();
+        }
+
+        IRestClient IRestClient.Put (string url)
         {
             Contract.Requires(url != null);
+            Contract.Ensures(Contract.Result<IRestClient>() != null);
+            throw new NotImplementedException();
+        }
+
+        IRestClient IRestClient.UseDefaultCredentials ()
+        {
             Contract.Ensures(Contract.Result<IRestClient>() != null);
             throw new NotImplementedException();
         }
