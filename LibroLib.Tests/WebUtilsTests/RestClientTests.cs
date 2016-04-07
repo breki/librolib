@@ -149,6 +149,36 @@ namespace LibroLib.Tests.WebUtilsTests
             }
         }
 
+        [Test]
+        public void BasicAuthenticationWithCorrectCredentials()
+        {
+            using (IRestClient client = restClientFactory.CreateRestClient ())
+            {
+                const string Username = "user";
+                const string Password = "crocodile";
+                client.Credentials(new NetworkCredential(Username, Password));
+
+                var reponse = client.Get (
+                    "http://httpbin.org/basic-auth/{0}/{1}".Fmt(Username, Password)).Do ().Response;
+                Assert.IsNotNull (reponse);
+            }
+        }
+
+        [Test]
+        public void BasicAuthenticationWithIncorrectCredentials()
+        {
+            using (IRestClient client = restClientFactory.CreateRestClient ())
+            {
+                const string Username = "user";
+                const string Password = "crocodile";
+                client.Credentials(new NetworkCredential(Username, Password));
+
+                RestException ex = Assert.Throws<RestException>(
+                    () => client.Get("http://httpbin.org/basic-auth/{0}/{1}".Fmt(Username, "hamster")).Do());
+                Assert.AreEqual((int)HttpStatusCode.Unauthorized, ex.StatusCode);
+            }
+        }
+
         [SetUp]
         public void Setup()
         {

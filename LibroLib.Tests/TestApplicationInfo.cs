@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics;
-using System.Diagnostics.Contracts;
 using System.IO;
 using System.Reflection;
 using LibroLib.FileSystem;
@@ -10,17 +9,10 @@ namespace LibroLib.Tests
 {
     public class TestApplicationInfo : IApplicationInfo
     {
-        public string GetAppDirectoryPath (string subpath)
-        {
-            string path = Path.Combine (AppRootDirectory, subpath);
-            return path;
-        }
-
         public string AppRootDirectory
         {
             get
             {
-                Contract.Ensures (Contract.Result<string>() != null);
                 return appRootDirectoryOverride ?? TestContext.CurrentContext.TestDirectory;
             }
 
@@ -82,6 +74,12 @@ namespace LibroLib.Tests
         public long GCTotalMemory
         {
             get { throw new System.NotImplementedException (); }
+        }
+
+        public string GetAppDirectoryPath (string subpath)
+        {
+            string path = Path.Combine (AppRootDirectory, subpath);
+            return path;
         }
 
         private string appRootDirectoryOverride;
