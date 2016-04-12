@@ -91,8 +91,11 @@ namespace LibroLib.WebUtils.WebClients
             }
         }
 
-        public void DownloadData(Uri url, TimeSpan timeout, Action<Stream> streamAction)
+        public void DownloadData(Uri url, TimeSpan timeout, [NotNull] Action<Stream> streamAction)
         {
+            if (streamAction == null)
+                throw new ArgumentNullException(nameof(streamAction));
+
             WebRequest request = PrepareRequest(url, timeout);
 
             Log(false, "Sending the request to URL '{0}'", url);

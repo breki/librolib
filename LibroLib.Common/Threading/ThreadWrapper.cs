@@ -12,9 +12,13 @@ namespace LibroLib.Threading
             ISyncObjectsFactory syncObjectsFactory,
             Action<IThread> threadAction)
         {
+            this.ownerThreadPool = ownerThreadPool;
             Contract.Requires(syncObjectsFactory != null);
+            Contract.Requires(threadAction != null);
 
+#pragma warning disable CC0031 // Check for null before calling a delegate
             thread = new Thread(() => threadAction(this));
+#pragma warning restore CC0031 // Check for null before calling a delegate
             thread.CurrentCulture = CultureInfo.InvariantCulture;
             thread.CurrentUICulture = CultureInfo.InvariantCulture;
             threadStopSignal = syncObjectsFactory.CreateManualResetSignal(false);
@@ -94,6 +98,7 @@ namespace LibroLib.Threading
         }
 
         private bool disposed;
+        private readonly IThreadPool ownerThreadPool;
         private readonly Thread thread;
         private readonly ISignal threadStopSignal;
         private bool isStopping;
