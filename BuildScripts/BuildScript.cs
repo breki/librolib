@@ -102,13 +102,22 @@ namespace BuildScripts
 
         private static void TargetRun40TestsWithCoverage (ITaskContext context, string projectName)
         {
-            NUnitWithDotCoverTask task = new NUnitWithDotCoverTask(
-                Path.Combine(projectName, "bin", context.Properties[BuildProps.BuildConfiguration], projectName) + ".dll",
-                @"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe");
-            task.DotCoverFilters = "-:module=*.Tests;-:class=*Contract;-:class=*Contract`*;-:class=JetBrains.Annotations.*";
-            task.NUnitCmdLineOptions = "/framework:4.0 /labels /nodots";
-            task.FailBuildOnViolations = false;
-            task.Execute (context);
+            // currently dotTrace is not used since it stopped working after VS 2015 migration
+
+            string testAssemblyDir = Path.Combine(projectName, "bin", "Release-4.0");
+            string testAssemblyFileName = projectName + ".dll";
+            
+            NUnitTask task = new NUnitTask(testAssemblyFileName, @"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe", testAssemblyDir);
+            //task.SetTargetFramework("4.0");
+            task.Execute(context);
+
+            //NUnitWithDotCoverTask task = new NUnitWithDotCoverTask(
+            //    Path.Combine(projectName, "bin", context.Properties[BuildProps.BuildConfiguration], projectName) + ".dll",
+            //    @"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe");
+            //task.DotCoverFilters = "-:module=*.Tests;-:class=*Contract;-:class=*Contract`*;-:class=JetBrains.Annotations.*";
+            //task.NUnitCmdLineOptions = "/framework:4.0 /labels /nodots";
+            //task.FailBuildOnViolations = false;
+            //task.Execute (context);
         }
 
         private static void TargetNuGet (ITaskContext context, string projectName)
