@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.IO;
-using System.Security.AccessControl;
-using System.Security.Principal;
 using System.Text;
 using System.Xml;
 
@@ -158,12 +156,6 @@ namespace LibroLib.FileSystem
             Contract.Requires (filePath != null);
             Contract.Ensures(Contract.Result<IFileInformation>() != null);
             throw new NotImplementedException ();
-        }
-
-        public bool HasRights(string path, WindowsIdentity identity, FileSystemRights rights)
-        {
-            Contract.Requires(path != null);
-            throw new NotImplementedException();
         }
 
         public bool IsDriveReady(string drive)

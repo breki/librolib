@@ -16,9 +16,9 @@ namespace LibroLib.WebUtils.Rest
         IRestClient AddQuery (string name, object value);
         IRestClient Credentials (ICredentials credentials);
         IRestClient Delete (string url);
-        [System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = "Do")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = nameof(Do))]
         IRestClient Do();
-        [System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = "Get")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = nameof(Get))]
         IRestClient Get (string url);
         IRestClient Head (string url);
         IRestClient Post (string url);
