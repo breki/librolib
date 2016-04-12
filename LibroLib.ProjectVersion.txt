@@ -1,3 +1,9 @@
+1.5.0.0
+- migrated to VS 2015
+- updated Flubu
+- removed building of .NET 3.5 targets
+- build script no longer uses dotCover since it stopped working after VS 2015 migration
+
 1.4.0.0
 - added some basic authentication properties to IRestClient
 

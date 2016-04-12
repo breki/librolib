@@ -44,7 +44,7 @@ namespace LibroLib.FileSystem
             Contract.Requires(path != null);
 
             if (!path.IsRelative)
-                throw new ArgumentException ("Cannot combine a path with an absolute path", "path");
+                throw new ArgumentException ("Cannot combine a path with an absolute path", nameof(path));
 
             PathBuilder combined = new PathBuilder(this);
             combined.pathComponents.AddRange(path.pathComponents);

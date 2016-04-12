@@ -64,10 +64,10 @@ namespace LibroLib.FileSystem
         public void WriteToStream (Stream stream, byte[] buffer)
         {
             if (stream == null)
-                throw new ArgumentNullException ("stream");                
+                throw new ArgumentNullException (nameof(stream));                
             
             if (buffer == null)
-                throw new ArgumentNullException ("buffer");                
+                throw new ArgumentNullException (nameof(buffer));                
             
             using (FileStream fs = this.fileInfo.OpenRead ())
             {
