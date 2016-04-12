@@ -7,7 +7,7 @@
     <projectUrl>https://bitbucket.org/breki-os/librolib</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>LibroLib library containing various Web-related utility classes.</description>
-    <copyright>Copyright 2010-2015 Igor Brejc</copyright>
+    <copyright>Copyright 2010-2016 Igor Brejc</copyright>
     <tags>common web</tags>
     <frameworkAssemblies>
     </frameworkAssemblies>
@@ -31,11 +31,5 @@
     <file src="bin\Release-4.0\LibroLib.WebUtils.xml" target="lib\net40" />
     <file src="bin\Release-4.0\CodeContracts\LibroLib.WebUtils.Contracts.dll" target="lib\net40" />
     <file src="bin\Release-4.0\CodeContracts\LibroLib.WebUtils.Contracts.pdb" target="lib\net40" />
-
-    <file src="bin\Release-3.5\LibroLib.WebUtils.dll" target="lib\net35" />
-    <file src="bin\Release-3.5\LibroLib.WebUtils.pdb" target="lib\net35" />
-    <file src="bin\Release-3.5\LibroLib.WebUtils.xml" target="lib\net35" />
-    <file src="bin\Release-3.5\CodeContracts\LibroLib.WebUtils.Contracts.dll" target="lib\net35" />
-    <file src="bin\Release-3.5\CodeContracts\LibroLib.WebUtils.Contracts.pdb" target="lib\net35" />
   </files>
 </package>
