@@ -178,7 +178,9 @@ namespace LibroLib.DataStructures.LruCaching
             }
 
             [ContractInvariantMethod]
+#pragma warning disable CC0091 // Use static method
             private void Invariant()
+#pragma warning restore CC0091 // Use static method
             {
                 Contract.Invariant(!ReferenceEquals (key, null));
             }

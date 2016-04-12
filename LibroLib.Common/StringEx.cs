@@ -39,7 +39,9 @@ namespace LibroLib
             foreach (TItem item in items)
             {
                 s.Append(actualDelimiter);
+#pragma warning disable CC0031 // Check for null before calling a delegate
                 s.Append(formatterFunc(item));
+#pragma warning restore CC0031 // Check for null before calling a delegate
                 actualDelimiter = itemDelimiter;
             }
 
@@ -66,7 +68,9 @@ namespace LibroLib
                 if (index >= startingIndex && index < startingIndex + length)
                 {
                     s.Append(actualDelimiter);
+#pragma warning disable CC0031 // Check for null before calling a delegate
                     s.Append(formatterFunc(item));
+#pragma warning restore CC0031 // Check for null before calling a delegate
                     actualDelimiter = itemDelimiter;
                 }
 
@@ -109,14 +113,16 @@ namespace LibroLib
             index = 0;
             for (; index < value.Length; index++)
             {
+#pragma warning disable CC0031 // Check for null before calling a delegate
                 if (charPredicate (value[index]))
+#pragma warning restore CC0031 // Check for null before calling a delegate
                     break;
             }
 
             return value.Substring(0, index);
         }
 
-        [SuppressMessage ("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Fmt")]
+        [SuppressMessage ("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = nameof(Fmt))]
         [StringFormatMethod ("format")]
         public static string Fmt ([NotNull]this string format, [NotNull]params object[] args)
         {

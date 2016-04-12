@@ -1,3 +1,5 @@
+- remove all 3.5 leftovers from the solution
+
 - add support for AutomaticDecompression for IRestClient
 
 - what to do with logging?

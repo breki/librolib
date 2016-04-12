@@ -29,7 +29,7 @@ namespace BuildScripts
             targetTree.AddTarget ("rebuild")
                 .SetAsDefault ()
                 .SetDescription ("Builds the library and runs tests on it")
-                .DependsOn ("compile-4.0", "compile-3.5", "dupfinder", "tests-4.0", "tests-3.5");
+                .DependsOn ("compile-4.0", "dupfinder", "tests-4.0");
 
             targetTree.AddTarget("release")
                 .SetDescription ("Builds the library, runs tests on it and publishes it on the NuGet server")
@@ -42,11 +42,6 @@ namespace BuildScripts
                 .SetAsHidden()
                 .DependsOn ("load.solution", "generate.commonassinfo")
                 .Do(TargetCompile40);
-            
-            targetTree.AddTarget("compile-3.5")
-                .SetAsHidden()
-                .DependsOn ("load.solution", "generate.commonassinfo")
-                .Do(TargetCompile35);
 
             targetTree.AddTarget ("dupfinder")
                 .SetDescription ("Runs R# dupfinder to find code duplicates")
@@ -57,13 +52,6 @@ namespace BuildScripts
                 .Do (r =>
                     {
                         TargetRun40TestsWithCoverage(r, "LibroLib.Tests");
-                    }).DependsOn ("load.solution");
-
-            targetTree.AddTarget("tests-3.5")
-                .SetDescription("Runs tests on the .NET 3.5-targeted assemblies")
-                .Do (r =>
-                    {
-                        TargetRun35Tests(r, "LibroLib.Tests");
                     }).DependsOn ("load.solution");
 
             targetTree.AddTarget ("nuget")
@@ -82,7 +70,7 @@ namespace BuildScripts
             session.Properties.Set (BuildProps.ProductId, "LibroLib");
             session.Properties.Set (BuildProps.ProductName, "LibroLib");
             session.Properties.Set (BuildProps.SolutionFileName, "LibroLib.sln");
-            session.Properties.Set (BuildProps.TargetDotNetVersion, FlubuEnvironment.Net40VersionNumber);
+            session.Properties.Set (BuildProps.MSBuildToolsVersion, "14.0");
             session.Properties.Set (BuildProps.VersionControlSystem, VersionControlSystem.Mercurial);
             session.Properties.Set (BuildProps.BuildConfiguration, "Release-4.0");
         }
@@ -94,25 +82,11 @@ namespace BuildScripts
             context.WriteInfo ("The build version will be {0}", version);
         }
 
-        private static void TargetCompile35(ITaskContext context)
-        {
-            CompileSolutionTask task = new CompileSolutionTask (
-                context.Properties.Get<VSSolution>(BuildProps.Solution).SolutionFileName.ToString (), 
-                "Release-3.5", 
-                context.Properties.Get<string>(BuildProps.TargetDotNetVersion));
-
-            task.MaxCpuCount = context.Properties.Get("CompileMaxCpuCount", 3);
-            task.Target = "Rebuild";
-            
-            task.Execute(context);
-        }
-
         private static void TargetCompile40(ITaskContext context)
         {
             CompileSolutionTask task = new CompileSolutionTask (
                 context.Properties.Get<VSSolution>(BuildProps.Solution).SolutionFileName.ToString (), 
-                "Release-4.0", 
-                context.Properties.Get<string>(BuildProps.TargetDotNetVersion));
+                "Release-4.0");
 
             task.MaxCpuCount = context.Properties.Get("CompileMaxCpuCount", 3);
             task.Target = "Rebuild";
@@ -134,16 +108,6 @@ namespace BuildScripts
             task.DotCoverFilters = "-:module=*.Tests;-:class=*Contract;-:class=*Contract`*;-:class=JetBrains.Annotations.*";
             task.NUnitCmdLineOptions = "/framework:4.0 /labels /nodots";
             task.FailBuildOnViolations = false;
-            task.Execute (context);
-        }
-
-        private static void TargetRun35Tests (ITaskContext context, string projectName)
-        {
-            string testAssemblyDir = Path.Combine(projectName, "bin", "Release-3.5");
-            string testAssemblyFileName = projectName + ".dll";
-
-            NUnitTask task = new NUnitTask(testAssemblyFileName, @"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe", testAssemblyDir);
-            task.TargetFramework = "3.5";
             task.Execute (context);
         }
 

@@ -1,0 +1,514 @@
+﻿13:52:47.465 |I|                               | JetBrains dotCover Console Runner 10.0.2. Build 104.0.20151218.125453
+13:52:47.473 |I|                               | LogLevel: TRACE
+13:52:47.499 |V| JetDispatcher                 | Thread <NULL>:1 pwned.
+13:52:47.502 |V| JetDispatcher                 | Thread <NULL>:1 created an Avalon marshaller.
+13:52:47.507 |T| IsRecurringActivityAllowed    | New property Boolean::Threading.IsRecurringActivityAllowed initialized with value False.
+13:52:47.525 |T| IsApplicationActive           | New property Boolean::ReentrancyAlarm.IsApplicationActive initialized with value True.
+13:52:47.530 |T| NearestDeadline               | New property DateTime::ReentrancyAlarm.NearestDeadline initialized with value “1.1.0001 0:00:00”.
+13:52:47.539 |T| JetDispatcher                 | Queueing “Signal.FlowDeferredInto”.
+13:52:47.541 |T| JetDispatcher                 | BeginInvokeCore: calling Marshaller.BeginInvoke after enqueueing “Signal.FlowDeferredInto” to schedulle processing of 1 items in queue (1 queued since last execution). Conditions: (True)(False).
+13:52:47.570 |V| JetScheduler                  | Thread 'JetPool Manager' started
+13:52:47.692 |I|                               | 'cover' command
+13:52:47.692 |I|                               | /TargetExecutable=LibroLib.Tests\bin\Release-4.0\LibroLib.Tests.dll (CommandLine)
+13:52:47.693 |I|                               | /TargetArguments=nunit-console.exe /framework:4.0 /labels /nodots (CommandLine)
+13:52:47.693 |I|                               | /TargetWorkingDir=D:\hg\librolib\packages\NUnit.Runners.2.6.4\tools (CommandLine)
+13:52:47.693 |I|                               | /Filters=-:module=*.Tests;-:class=*Contract;-:class=*Contract`*;-:class=JetBrains.Annotations.* (CommandLine)
+13:52:47.693 |I|                               | /AttributeFilters=*.ExcludeFromCodeCoverageAttribute (CommandLine)
+13:52:47.693 |I|                               | /Output=Builds\nunit-console-coverage.dcvr (CommandLine)
+13:52:47.693 |I|                               | /ReturnTargetExitCode= (CommandLine)
+13:52:47.693 |I|                               | /LogLevel=Trace (CommandLine)
+13:52:47.693 |I|                               | /LogFile=dotcover.log (CommandLine)
+13:52:47.693 |I|                               | Current directory: D:\hg\librolib
+13:52:47.693 |I|                               | Validating command...
+13:52:47.694 |I|                               | Executing command...
+13:52:47.701 |I|                               | Parameter LibroLib.Tests\bin\Release-4.0\LibroLib.Tests.dll converted to D:\hg\librolib\LibroLib.Tests\bin\Release-4.0\LibroLib.Tests.dll
+13:52:47.736 |I|                               | Parameter Builds\nunit-console-coverage.dcvr converted to D:\hg\librolib\Builds\nunit-console-coverage.dcvr
+13:52:50.292 |T| ActiveSnapshotContainer       | New property ILightContainer::EmbeddedWorkspace.ActiveSnapshotContainer initialized with value <NULL>.
+13:52:50.294 |T| ActiveContainer               | New property ILightContainer::ActiveSnapshotContainerTracker.ActiveContainer initialized with value <NULL>.
+13:52:50.308 |V| WorkspaceSnapshotManager      | SnapshotChangedSignalId = WorkspaceSnapshotChanged (95855143-3d47-46ed-bb0f-9dbba309f52e)
+13:52:50.308 |V| WorkspaceSnapshotManager      | TemporarySnapshotChangedSignalId = WorkspaceTemporarySnapshotChanged (825bffac-8ac4-420f-879a-c159a0114fe1)
+13:52:50.308 |V| WorkspaceSnapshotManager      | PersistentSnapshotChangedSignalId = WorkspacePersistentSnapshotChanged (ad5e9898-3a8e-4554-9517-a068359e4185)
+13:52:50.309 |V| WorkspaceUnitTestSessionOperationManager| OperationCompletedSignalId = OperationCompleted (d4f27e24-1688-4a9f-b2f9-89c542a8c031)
+13:52:50.309 |V| WorkspaceUnitTestSessionOperationManager| LatestOperationResultDroppedSignalId = LatestOperationResultDropped (e1f6aa8b-f267-4600-8272-e4dde4a1bfc1)
+13:52:50.325 |I|                               | Coverage session started [12.4.2016 13:52:50]
+13:52:50.330 |I| CoverageSession#0             | Starting coverage session
+13:52:50.330 |I| CoverageSession#0             | Expected configuration ids: ''
+13:52:50.331 |I| CoverageSession#0             | Queueing add configuration command (configuration id: '')
+13:52:50.332 |I| CoverageSession#0             | Waiting for the session to finish (Timeout=-1)
+13:52:50.335 |V| JetDispatcher                 | Thread StaExecutor:7 pwned.
+13:52:50.336 |V| JetDispatcher                 | Thread StaExecutor:7 created an Avalon marshaller.
+13:52:50.338 |I| CoverageSession#0             | Adding configuration (configuration id: '')
+13:52:50.338 |I| CoverageSession#0             | Queueing configuration execution (configuration id: '')
+13:52:50.341 |T| JetDispatcher                 | ProcessQueue: extracted action to be executed now.
+13:52:50.344 |I| CoverageSession#0             | Executing configuration (configuration id: '')
+13:52:50.344 |I| CoverageSession#0             | Launching coverage analysis (configuration id: '')
+13:52:50.346 |T| Finished                      | New property Boolean::CoverageConfigurationRunner.Finished initialized with value False.
+13:52:50.348 |T|                               | +[JetDispatcher] Executing “Signal.FlowDeferredInto”.
+  13:52:50.359 |V| LauncherController            | List exclude executables for global mode (1pc)[JetBrains.dotCover.WorkspaceHost.exe]
+13:52:50.361 |T|                               | -[JetDispatcher] Executing “Signal.FlowDeferredInto”.
+13:52:50.361 |T| JetDispatcher                 | ProcessQueue: Queue now empty.
+13:52:50.387 |V| LauncherController            | Configuration:
+	﻿<?xml version="1.0" encoding="utf-8"?>
+	<Configuration>
+		<HostParameters type="LocalHostParameters" />
+		<Argument type="StandaloneArgument">
+			<Arguments>nunit-console.exe /framework:4.0 /labels /nodots</Arguments>
+			<FileName>D:\hg\librolib\LibroLib.Tests\bin\Release-4.0\LibroLib.Tests.dll</FileName>
+			<ProfileChildProcesses>True</ProfileChildProcesses>
+			<WorkingDirectory>D:\hg\librolib\packages\NUnit.Runners.2.6.4\tools</WorkingDirectory>
+			<Scope>
+				<ProcessFilters />
+			</Scope>
+		</Argument>
+		<Info type="CoverageInfo">
+			<CyclomaticComplexityGather>True</CyclomaticComplexityGather>
+			<InjectInfo>
+				<SymbolSearch>
+					<SearchPaths />
+				</SymbolSearch>
+				<Scope>
+					<PatternFilters>
+						<Item />
+						<Item>
+							<AssemblyFilter>*.Tests</AssemblyFilter>
+							<Type>Deny</Type>
+						</Item>
+						<Item>
+							<Type>Deny</Type>
+							<TypeFilter>*Contract</TypeFilter>
+						</Item>
+						<Item>
+							<Type>Deny</Type>
+							<TypeFilter>*Contract`*</TypeFilter>
+						</Item>
+						<Item>
+							<Type>Deny</Type>
+							<TypeFilter>JetBrains.Annotations.*</TypeFilter>
+						</Item>
+						<Item>
+							<AssemblyFilter>mscorlib</AssemblyFilter>
+							<Type>Deny</Type>
+						</Item>
+						<Item>
+							<AssemblyFilter>System</AssemblyFilter>
+							<Type>Deny</Type>
+						</Item>
+						<Item>
+							<AssemblyFilter>System.*</AssemblyFilter>
+							<Type>Deny</Type>
+						</Item>
+						<Item>
+							<AssemblyFilter>Microsoft.*</AssemblyFilter>
+							<Type>Deny</Type>
+						</Item>
+						<Item>
+							<AssemblyFilter>JetBrains.ReSharper.TaskRunner*</AssemblyFilter>
+							<AssemblyVersionFilter>104.0.0.0</AssemblyVersionFilter>
+							<Type>Deny</Type>
+						</Item>
+						<Item>
+							<AssemblyFilter>JetBrains.ReSharper.UnitTestRunner*</AssemblyFilter>
+							<AssemblyVersionFilter>104.0.0.0</AssemblyVersionFilter>
+							<Type>Deny</Type>
+						</Item>
+						<Item>
+							<AssemblyFilter>JetBrains.dotCover.UnitTesting.ClientController</AssemblyFilter>
+							<AssemblyVersionFilter>104.0.0.0</AssemblyVersionFilter>
+							<Type>Deny</Type>
+						</Item>
+						<Item>
+							<AssemblyFilter>JetBrains.Common.UnitTesting.ClientController</AssemblyFilter>
+							<AssemblyVersionFilter>104.0.0.0</AssemblyVersionFilter>
+							<Type>Deny</Type>
+						</Item>
+					</PatternFilters>
+					<DenyAttributeFilters>
+						<Item>
+							<Mask>All</Mask>
+							<TypeFilter>*.ExcludeFromCodeCoverageAttribute</TypeFilter>
+						</Item>
+					</DenyAttributeFilters>
+				</Scope>
+			</InjectInfo>
+		</Info>
+		<CoreOptions type="CoreOptions">
+			<CoreLogMask>Api</CoreLogMask>
+			<CoreTempPath IsNull="False">
+			</CoreTempPath>
+		</CoreOptions>
+		<HostOptions type="HostOptions">
+			<HostTempPath IsNull="False">
+			</HostTempPath>
+		</HostOptions>
+	</Configuration>
+13:52:50.406 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.SysTools methods=(7pcs)[SelfCheckCall, SelfCheckLongCall, AdjustPrivilege, GetOSVersion, GetElevationMode, GetHasAdministrativeRights, GetIsUserInteractive]
+13:52:50.408 |T| BaseServiceRemotable          | AssertFields type=JetBrains.Profiler.Windows.SysTools.SysTools fields=(27pcs)[AttachEnvironmentTools, AttachTools, BrowserTools, CleanupTools, DevelopmentServerTools, DirectoryTools, EnvironmentTools, EtwTools, EventTools, EverythingTools, FileCacheTools, FileTools, FrameworkTools, IISExpressTools, IISTools, InstructionSetTools, MetroTools, NetworkTools, ProcessTools, RegistryHiveTools, RunTools, SemaphoreTools, SilverlightTools, TestTools, TransparentIntegrationTools, WcfHostTools, WindowsServiceTools]
+13:52:50.411 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.AttachEnvironmentTools methods=(3pcs)[CleanAllPidEnvironment, CleanPidEnvironment, UpdatePidEnvironment]
+13:52:50.415 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.AttachTools methods=(4pcs)[HasExecutable, SetExecutable, AttachProfiling, GetProcessesToAttach]
+13:52:50.415 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.Tools.BrowserTools methods=(3pcs)[GetInternetBrowserInfos, GetDefaultInternetBrowserInfo, GetBrowserInfos]
+13:52:50.415 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.Tools.CleanupTools methods=(3pcs)[BeginCleanup, PullCleanupEvent, EndCleanup]
+13:52:50.416 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.DevelopmentServerTools methods=(1pc)[GetDevelopmentServers]
+13:52:50.416 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.DirectoryTools methods=(10pcs)[GetGlobalTemp, GetTemp, CreateGlobalTempDirectory, CreateUserTempDirectory, GetInfo, ExistsDirectory, CreateDirectory, DeleteDirectory, GetChildDirectories, GetChildFiles]
+13:52:50.417 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.Tools.EnvironmentTools methods=(5pcs)[CheckComRegistration, GetUserTempDirs, CleanAllGlobalEnvironment, CleanGlobalEnvironment, UpdateGlobalEnvironment]
+13:52:50.421 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.Tools.EtwTools methods=(6pcs)[IsEtwHostRunned, RunEtwHost, RunEtwHostWithShutdown, ShutdownEtwHost, Init, Term]
+13:52:50.423 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.EventTools methods=(10pcs)[Event_Create, Event_Open, Event_Has, Event_WaitOne, Event_WaitOne, Event_WaitOne, Event_Set, Event_Reset, Event_Touch, Event_Close]
+13:52:50.426 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.FileCacheTools methods=(7pcs)[CheckCachedFiles, CreateCacheFile, GrantFile_BuiltinUsers_ReadAndExecute, GrantFile_AllAppPackages_ReadAndExecute, GrantDirectory_BuiltinUsers_ReadAndExecute, GrantDirectory_AllAppPackages_ReadAndExecute, GrantDirectory_BuiltinUsers_Modify]
+13:52:50.426 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.FileTools methods=(7pcs)[CreateGlobalTempFile, CreateUserTempFile, GetFileInfo, ExistsFile, DeleteFile, CopyFile, MoveFile]
+13:52:50.427 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.FrameworkTools methods=(3pcs)[GetClrDirectory, GetInstalledClrVersions, GetInstalledFrameworkVersions]
+13:52:50.427 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.IISExpressTools methods=(2pcs)[GetIISExpressSites, GetIISExpresses]
+13:52:50.427 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.IISTools methods=(1pc)[GetIISServiceName]
+13:52:50.427 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.Tools.InstructionSetTools methods=(3pcs)[GetFolderPath, ExpandForCurrentUser, GetInstructionSets]
+13:52:50.428 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.MetroTools methods=(13pcs)[HasExecutable, SetExecutable, IsSupported, GetPackageFullName, PrepareAttachProfiling, CleanAttachProfiling, PrepareStartProfiling, CleanStartProfiling, RunProfiling, GetMetroPackagesForCurrentUser, PrepareEverythingProfiling, CleanEverythingProfiling, GetMetroPackages]
+13:52:50.429 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.NetworkTools methods=(16pcs)[GetFreeTcpListenPort, CheckForTcpListenPort, GetProcessForTcpListenPort, Listener_Create, Listener_GetEndPoint, Listener_GetNewStreamIds, Listener_GetNewStreamIds, Listener_Touch, Listener_Close, Stream_WaitForDataToRead, Stream_WaitForDataToRead, Stream_Read, Stream_ReadByte, Stream_Write, Stream_Touch, Stream_Close]
+13:52:50.431 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.ProcessTools methods=(17pcs)[ExecuteBrowser, HasByProcessName, HasByProcessName, KillByProcessName, KillByProcessName, Process_GetById, Process_Start, Process_WaitForExit, Process_WaitForExit, Process_WaitForExit, Process_Kill, Process_KillTree, Process_CloseMainWindow, Process_HasExited, Process_ExitCode, Process_Touch, Process_Close]
+13:52:50.432 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.RunTools methods=(1pc)[RunConsoleExecutable]
+13:52:50.432 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.SemaphoreTools methods=(10pcs)[Semaphore_Create, Semaphore_Open, Semaphore_Has, Semaphore_WaitOne, Semaphore_WaitOne, Semaphore_WaitOne, Semaphore_Release, Semaphore_Release, Semaphore_Touch, Semaphore_Close]
+13:52:50.433 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.SilverlightTools methods=(1pc)[IsSupported]
+13:52:50.433 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.TestTools methods=(3pcs)[SelfCheckCall, SelfCheckLongCall, RootSelfCheck]
+13:52:50.433 |T| BaseServiceRemotable          | AssertFields type=JetBrains.Profiler.Windows.SysTools.TestTools fields=(1pc)[LeafTestTools]
+13:52:50.433 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.LeafTestTools methods=(3pcs)[SelfCheckCall, SelfCheckLongCall, RootSelfCheck]
+13:52:50.434 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.Tools.TransparentIntegrationTools methods=(5pcs)[MakeIntegrationCoreInfo, CleanUserIntegration, CleanGlobalIntegration, SetUserIntegration, SetGlobalIntegration]
+13:52:50.434 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.WcfHostTools methods=(1pc)[GetWcfHosts]
+13:52:50.437 |T| BaseServiceRemotable          | AssertMethods type=JetBrains.Profiler.Windows.SysTools.WindowsServiceTools methods=(22pcs)[GetServices, Service_Open, Service_Has, Service_GetStatus, Service_GetServiceType, Service_GetServiceName, Service_GetDisplayName, Service_CanStop, Service_CanPauseAndContinue, Service_CanShutdown, Service_GetServicesDependentOn, Service_GetDependentServices, Service_GetSameProcessServices, Service_GetGroupNames, Service_GetGroupServices, Service_GetProcessInfo, Service_Start, Service_Stop, Service_Pause, Service_Continue, Service_Touch, Service_Close]
+13:52:50.438 |V| SysTools                      | SysTools location=Local res=created
+13:52:50.464 |V| TransparentIntegrationTools   | MakeIntegrationCoreInfo name='CoverageProfiler' res=no
+13:52:50.491 |T| BaseHostProfile               | New property Boolean::BaseHostProfile.CloseAllRequest initialized with value False.
+13:52:50.496 |V| IPropertyEx                   | [BaseHostProfile.CloseAllRequest] Boolean::BaseHostProfile.CloseAllRequest: <N/A> -> False.
+13:52:50.498 |T| Connections::IsEmpty          | New property Boolean::BaseBridge.Connections::IsEmpty initialized with value True.
+13:52:50.498 |V| IPropertyEx                   | [BaseHostProfile.NoConnections] Boolean::BaseBridge.Connections::IsEmpty: <N/A> -> True.
+13:52:50.506 |T| Scopes::IsEmpty               | New property Boolean::BaseHostProfile.Scopes::IsEmpty initialized with value True.
+13:52:50.507 |V| IPropertyEx                   | [BaseHostProfile.NoScopes] Boolean::BaseHostProfile.Scopes::IsEmpty: <N/A> -> True.
+13:52:50.507 |T| CoreOperations::IsEmpty       | New property Boolean::BaseHostProfile.CoreOperations::IsEmpty initialized with value True.
+13:52:50.507 |V| IPropertyEx                   | [BaseHostProfile.NoCoreOperations] Boolean::BaseHostProfile.CoreOperations::IsEmpty: <N/A> -> True.
+13:52:50.507 |T| And                           | New property Boolean::(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And initialized with value False.
+13:52:50.508 |T| False                         | New property Boolean::False initialized with value False.
+13:52:50.508 |T| True                          | New property Boolean::True initialized with value True.
+13:52:50.511 |T| Zero                          | New property Int32::Zero initialized with value 0.
+13:52:50.516 |T| Scopes::IsEmpty)              | New property Boolean::(BaseHostProfile.CoreOperations::IsEmpty+BaseHostProfile.Scopes::IsEmpty) initialized with value False.
+13:52:50.520 |T| Scopes::IsEmpty)              | Boolean::(BaseHostProfile.CoreOperations::IsEmpty+BaseHostProfile.Scopes::IsEmpty): False -> True
+13:52:50.525 |T| FlowDirection                 | New property DataFlowDirection::PropertyBinding.FlowDirection initialized with value None.
+13:52:50.526 |T| Source                        | New property IProperty`1::PropertyBinding.Source initialized with value <NULL>.
+13:52:50.526 |T| Target                        | New property IProperty`1::PropertyBinding.Target initialized with value <NULL>.
+13:52:50.527 |T| Source                        | IProperty`1::PropertyBinding.Source: <NULL> -> (BaseHostProfile.CoreOperations::IsEmpty+BaseHostProfile.Scopes::IsEmpty)=True
+13:52:50.527 |T| Target                        | IProperty`1::PropertyBinding.Target: <NULL> -> (BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And=False
+13:52:50.529 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+13:52:50.537 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: FromSource -> None
+13:52:50.538 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+13:52:50.539 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: FromSource -> None
+13:52:50.539 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+13:52:50.541 |T| And                           | Boolean::(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And: False -> True
+13:52:50.542 |V| IPropertyEx                   | [BaseHostProfile.NoOperations] Boolean::(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And: <N/A> -> True.
+13:52:50.542 |T| And                           | New property Boolean::(BaseBridge.Connections::IsEmpty,(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And).And initialized with value False.
+13:52:50.542 |T| And)                          | New property Boolean::(BaseBridge.Connections::IsEmpty+(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And) initialized with value False.
+13:52:50.542 |T| And)                          | Boolean::(BaseBridge.Connections::IsEmpty+(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And): False -> True
+13:52:50.542 |T| FlowDirection                 | New property DataFlowDirection::PropertyBinding.FlowDirection initialized with value None.
+13:52:50.542 |T| Source                        | New property IProperty`1::PropertyBinding.Source initialized with value <NULL>.
+13:52:50.542 |T| Target                        | New property IProperty`1::PropertyBinding.Target initialized with value <NULL>.
+13:52:50.542 |T| Source                        | IProperty`1::PropertyBinding.Source: <NULL> -> (BaseBridge.Connections::IsEmpty+(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And)=True
+13:52:50.542 |T| Target                        | IProperty`1::PropertyBinding.Target: <NULL> -> (BaseBridge.Connections::IsEmpty,(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And).And=False
+13:52:50.542 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+13:52:50.542 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: FromSource -> None
+13:52:50.542 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+13:52:50.542 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: FromSource -> None
+13:52:50.542 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+13:52:50.542 |T| And                           | Boolean::(BaseBridge.Connections::IsEmpty,(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And).And: False -> True
+13:52:50.542 |V| IPropertyEx                   | [BaseHostProfile.NoConnectionsAndOperations] Boolean::(BaseBridge.Connections::IsEmpty,(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And).And: <N/A> -> True.
+13:52:50.542 |T| And                           | New property Boolean::(BaseHostProfile.CloseAllRequest,(BaseBridge.Connections::IsEmpty,(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And).And).And initialized with value False.
+13:52:50.542 |T| And)                          | New property Boolean::(BaseHostProfile.CloseAllRequest+(BaseBridge.Connections::IsEmpty,(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And).And) initialized with value False.
+13:52:50.542 |T| FlowDirection                 | New property DataFlowDirection::PropertyBinding.FlowDirection initialized with value None.
+13:52:50.542 |T| Source                        | New property IProperty`1::PropertyBinding.Source initialized with value <NULL>.
+13:52:50.542 |T| Target                        | New property IProperty`1::PropertyBinding.Target initialized with value <NULL>.
+13:52:50.542 |T| Source                        | IProperty`1::PropertyBinding.Source: <NULL> -> (BaseHostProfile.CloseAllRequest+(BaseBridge.Connections::IsEmpty,(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And).And)=False
+13:52:50.542 |T| Target                        | IProperty`1::PropertyBinding.Target: <NULL> -> (BaseHostProfile.CloseAllRequest,(BaseBridge.Connections::IsEmpty,(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And).And).And=False
+13:52:50.542 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+13:52:50.542 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: FromSource -> None
+13:52:50.542 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+13:52:50.542 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: FromSource -> None
+13:52:50.542 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+13:52:50.542 |V| IPropertyEx                   | [BaseHostProfile.InternalFinishRequest] Boolean::(BaseHostProfile.CloseAllRequest,(BaseBridge.Connections::IsEmpty,(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And).And).And: <N/A> -> False.
+13:52:50.543 |V| BaseHostProfile               | FinishProfilingAutomaticallyTimeout value=1000mS
+13:52:50.543 |T| BaseHostProfile               | New property Boolean::BaseHostProfile.WasConnection initialized with value False.
+13:52:50.543 |V| IPropertyEx                   | [BaseHostProfile.WasConnection] Boolean::BaseHostProfile.WasConnection: <N/A> -> False.
+13:52:50.545 |T| DelayedNoConnectionsAndOperations| New property Boolean::BaseHostProfile.DelayedNoConnectionsAndOperations initialized with value False.
+13:52:50.545 |V| IPropertyEx                   | [BaseHostProfile.DelayedNoConnectionsAndOperations] Boolean::BaseHostProfile.DelayedNoConnectionsAndOperations: <N/A> -> False.
+13:52:50.551 |T| JetDispatcher                 | Queueing “GroupingEventHost.ClockTimer.IsEnabled”.
+13:52:50.551 |T| JetDispatcher                 | BeginInvokeCore: calling Marshaller.BeginInvoke after enqueueing “GroupingEventHost.ClockTimer.IsEnabled” to schedulle processing of 1 items in queue (1 queued since last execution). Conditions: (True)(False).
+13:52:50.551 |T| And                           | New property Boolean::(BaseHostProfile.WasConnection,BaseHostProfile.DelayedNoConnectionsAndOperations).And initialized with value False.
+13:52:50.551 |T| DelayedNoConnectionsAndOperations)| New property Boolean::(BaseHostProfile.WasConnection+BaseHostProfile.DelayedNoConnectionsAndOperations) initialized with value False.
+13:52:50.551 |T| JetDispatcher                 | ProcessQueue: extracted action to be executed now.
+13:52:50.551 |T| FlowDirection                 | New property DataFlowDirection::PropertyBinding.FlowDirection initialized with value None.
+13:52:50.551 |T|                               | +[JetDispatcher] Executing “GroupingEventHost.ClockTimer.IsEnabled”.
+  13:52:50.551 |T| Source                        | New property IProperty`1::PropertyBinding.Source initialized with value <NULL>.
+  13:52:50.551 |T| Target                        | New property IProperty`1::PropertyBinding.Target initialized with value <NULL>.
+  13:52:50.551 |T| Source                        | IProperty`1::PropertyBinding.Source: <NULL> -> (BaseHostProfile.WasConnection+BaseHostProfile.DelayedNoConnectionsAndOperations)=False
+  13:52:50.551 |T| Target                        | IProperty`1::PropertyBinding.Target: <NULL> -> (BaseHostProfile.WasConnection,BaseHostProfile.DelayedNoConnectionsAndOperations).And=False
+  13:52:50.551 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+  13:52:50.551 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: FromSource -> None
+  13:52:50.551 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+  13:52:50.551 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: FromSource -> None
+  13:52:50.551 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+  13:52:50.551 |V| IPropertyEx                   | [BaseHostProfile.WasConnectionAndDelayedNoConnectionsAndOperations] Boolean::(BaseHostProfile.WasConnection,BaseHostProfile.DelayedNoConnectionsAndOperations).And: <N/A> -> False.
+  13:52:50.552 |T| Or                            | New property Boolean::((BaseHostProfile.CloseAllRequest,(BaseBridge.Connections::IsEmpty,(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And).And).And,(BaseHostProfile.WasConnection,BaseHostProfile.DelayedNoConnectionsAndOperations).And).Or initialized with value False.
+13:52:50.552 |T|                               | -[JetDispatcher] Executing “GroupingEventHost.ClockTimer.IsEnabled”.
+13:52:50.552 |T| JetDispatcher                 | ProcessQueue: Queue now empty.
+13:52:50.553 |T| And)                          | New property Boolean::((BaseHostProfile.CloseAllRequest,(BaseBridge.Connections::IsEmpty,(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And).And).And+(BaseHostProfile.WasConnection,BaseHostProfile.DelayedNoConnectionsAndOperations).And) initialized with value False.
+13:52:50.553 |T| FlowDirection                 | New property DataFlowDirection::PropertyBinding.FlowDirection initialized with value None.
+13:52:50.553 |T| Source                        | New property IProperty`1::PropertyBinding.Source initialized with value <NULL>.
+13:52:50.553 |T| Target                        | New property IProperty`1::PropertyBinding.Target initialized with value <NULL>.
+13:52:50.553 |T| Source                        | IProperty`1::PropertyBinding.Source: <NULL> -> ((BaseHostProfile.CloseAllRequest,(BaseBridge.Connections::IsEmpty,(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And).And).And+(BaseHostProfile.WasConnection,BaseHostProfile.DelayedNoConnectionsAndOperations).And)=False
+13:52:50.553 |T| Target                        | IProperty`1::PropertyBinding.Target: <NULL> -> ((BaseHostProfile.CloseAllRequest,(BaseBridge.Connections::IsEmpty,(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And).And).And,(BaseHostProfile.WasConnection,BaseHostProfile.DelayedNoConnectionsAndOperations).And).Or=False
+13:52:50.553 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+13:52:50.553 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: FromSource -> None
+13:52:50.553 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+13:52:50.553 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: FromSource -> None
+13:52:50.553 |T| FlowDirection                 | DataFlowDirection::PropertyBinding.FlowDirection: None -> FromSource
+13:52:50.553 |V| IPropertyEx                   | [BaseHostProfile.FinishedRequest] Boolean::((BaseHostProfile.CloseAllRequest,(BaseBridge.Connections::IsEmpty,(BaseHostProfile.CoreOperations::IsEmpty,BaseHostProfile.Scopes::IsEmpty).And).And).And,(BaseHostProfile.WasConnection,BaseHostProfile.DelayedNoConnectionsAndOperations).And).Or: <N/A> -> False.
+13:52:50.553 |T| BaseHostProfile               | New property Boolean::BaseHostProfile.ShutdownStarted initialized with value False.
+13:52:50.553 |T| BaseHostProfile               | New property Boolean::BaseHostProfile.ShutdownFinished initialized with value False.
+13:52:50.553 |V| IPropertyEx                   | [BaseHostProfile.ShutdownStarted] Boolean::BaseHostProfile.ShutdownStarted: <N/A> -> False.
+13:52:50.553 |V| IPropertyEx                   | [BaseHostProfile.ShutdownFinished] Boolean::BaseHostProfile.ShutdownFinished: <N/A> -> False.
+13:52:50.565 |V| BaseHostProfile               | Start
+13:52:50.566 |V| StandaloneHostProfile         | OnStart
+13:52:50.569 |V| BaseHost                      | Deploy grantedClr4AndGreater=False deployAttach=False deployMetro=False checkMetroAccessRights=False checkBuiltinUsersAccessRights=False instructionSets=(2pcs)[x64, x86]
+13:52:50.570 |V| BaseHost                      | Deploy registryFreeRegistration=False instructionSets=(2pcs)[x64, x86]
+13:52:50.585 |V| FileCacheTools                | CacheFiles localDir=C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools relativeFiles=(1pc)[x64\JetBrains.Profiler.Windows.PdbServer.exe]
+13:52:50.586 |V| FileCacheTools                | CacheFiles localDir=C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools relativeFiles=(1pc)[x64\SymSrv.dll]
+13:52:50.586 |V| FileCacheTools                | CacheFiles localDir=C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools relativeFiles=(1pc)[x64\SymSrv.yes]
+13:52:50.588 |V| EventTools                    | Event_Create name=a01064eb-90d0-48d1-b0fb-d2b05e164b13
+13:52:50.590 |V| Event                         | Add id=69b64dc6-fe60-4c0b-a0ee-728d2a9a56ed
+13:52:50.591 |V| EventTools                    | Event_Create name=a01064eb-90d0-48d1-b0fb-d2b05e164b13 res=ok id=69b64dc6-fe60-4c0b-a0ee-728d2a9a56ed
+13:52:50.597 |V| ProcessTools                  | Process_Start filename=C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools\x64\JetBrains.Profiler.Windows.PdbServer.exe arguments=“/ssp=C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools\x64 /e=a01064eb-90d0-48d1-b0fb-d2b05e164b13 618f0a49-6c88-4626-add3-5b116810b5a1”
+13:52:50.612 |V| Process                       | Add id=2940084b-df89-40fd-8e90-be18a5251bd6
+13:52:50.617 |V| BaseHost                      | PdbServer state=started pid=17932 id='618f0a49-6c88-4626-add3-5b116810b5a1'
+13:52:50.618 |T| WaitUtil                      | Wait
+13:52:50.619 |V| Process                       | Get id=2940084b-df89-40fd-8e90-be18a5251bd6
+13:52:50.620 |V| Process                       | Touch id=2940084b-df89-40fd-8e90-be18a5251bd6
+13:52:50.621 |V| Event                         | Get id=69b64dc6-fe60-4c0b-a0ee-728d2a9a56ed
+13:52:50.621 |V| Event                         | Touch id=69b64dc6-fe60-4c0b-a0ee-728d2a9a56ed
+13:52:50.721 |V| Process                       | Get id=2940084b-df89-40fd-8e90-be18a5251bd6
+13:52:50.721 |V| Process                       | Touch id=2940084b-df89-40fd-8e90-be18a5251bd6
+13:52:50.721 |V| Event                         | Get id=69b64dc6-fe60-4c0b-a0ee-728d2a9a56ed
+13:52:50.721 |V| Event                         | Touch id=69b64dc6-fe60-4c0b-a0ee-728d2a9a56ed
+13:52:50.721 |T| WaitUtil                      | Wait res=ok
+13:52:50.721 |V| BaseHost                      | PdbServer state=listen pid=17932
+13:52:50.728 |V| FileCacheTools                | CacheFiles localDir=C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools relativeFiles=(1pc)[x64\JetBrains.Profiler.Windows.Core.dll]
+13:52:50.728 |V| FileCacheTools                | CacheFiles localDir=C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools relativeFiles=(1pc)[x64\JetBrains.Profiler.Windows.CoreApi.dll]
+13:52:50.731 |V| BaseHost                      | RegisterCore op=Install instructionSet=x64 path='C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools\x64\JetBrains.Profiler.Windows.Core.dll'
+13:52:50.746 |V| RunTools                      | RunConsoleExecutable executable=C:\Windows\system32\RegSvr32.exe arguments=(2pcs)[/s, C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools\x64\JetBrains.Profiler.Windows.Core.dll]
+13:52:50.748 |V| RunTools                      | RunConsoleExecutable res=set key=JETBRAINS_PROFILER_CORE_TYPE_ReleaseCoverage value={f5f7f9d7-f906-49d1-9e84-ad1c7de5dbbd}
+13:52:50.751 |V| RunTools                      | RunConsoleExecutable executable=C:\Windows\system32\RegSvr32.exe arguments=(2pcs)[/s, C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools\x64\JetBrains.Profiler.Windows.Core.dll] res=run pid=28804
+13:52:50.777 |V| RunTools                      | RunConsoleExecutable pid=28804 res=ok exitCode=00000000
+13:52:50.782 |V| FileCacheTools                | CacheFiles localDir=C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools relativeFiles=(1pc)[x86\JetBrains.Profiler.Windows.Core.dll]
+13:52:50.782 |V| FileCacheTools                | CacheFiles localDir=C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools relativeFiles=(1pc)[x86\JetBrains.Profiler.Windows.CoreApi.dll]
+13:52:50.783 |V| BaseHost                      | RegisterCore op=Install instructionSet=x86 path='C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools\x86\JetBrains.Profiler.Windows.Core.dll'
+13:52:50.783 |V| RunTools                      | RunConsoleExecutable executable=C:\Windows\SysWOW64\RegSvr32.exe arguments=(2pcs)[/s, C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools\x86\JetBrains.Profiler.Windows.Core.dll]
+13:52:50.783 |V| RunTools                      | RunConsoleExecutable res=set key=JETBRAINS_PROFILER_CORE_TYPE_ReleaseCoverage value={f5f7f9d7-f906-49d1-9e84-ad1c7de5dbbd}
+13:52:50.785 |V| RunTools                      | RunConsoleExecutable executable=C:\Windows\SysWOW64\RegSvr32.exe arguments=(2pcs)[/s, C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools\x86\JetBrains.Profiler.Windows.Core.dll] res=run pid=30748
+13:52:50.817 |V| RunTools                      | RunConsoleExecutable pid=30748 res=ok exitCode=00000000
+13:52:50.819 |T| WaitUtil                      | Wait
+13:52:50.822 |V| Bridge                        | BridgeListen res=started
+13:52:50.824 |V| NetworkTools                  | Listener_Create endPoint=127.0.0.1:0
+13:52:50.824 |V| Listener                      | Add id=d8e74a2c-3312-47c6-86a4-6ce1be857982
+13:52:50.824 |V| NetworkTools                  | Listener_Create endPoint=127.0.0.1:0 res=ok bindedEndPoint=127.0.0.1:51971 listenerId=d8e74a2c-3312-47c6-86a4-6ce1be857982
+13:52:50.825 |V| Listener                      | Get id=d8e74a2c-3312-47c6-86a4-6ce1be857982
+13:52:50.825 |V| Bridge                        | BridgeListen res=listen ipEndPoint=127.0.0.1:51971
+13:52:50.919 |T| WaitUtil                      | Wait res=ok
+13:52:50.926 |V| BaseProcessHostProfile        | OnStart
+13:52:50.926 |V| BaseHostProfile               | OnStart
+13:52:50.926 |V| BaseBridge                    | BlockSubscribtion
+13:52:50.927 |V| BaseBridge                    | Activate
+13:52:50.927 |V| ProcessTools                  | Process_Start filename=D:\hg\librolib\LibroLib.Tests\bin\Release-4.0\LibroLib.Tests.dll arguments=“nunit-console.exe /framework:4.0 /labels /nodots”
+13:52:50.927 |V| ProcessTools                  | Process_Start res=set key=COR_ENABLE_PROFILING value=7
+13:52:50.927 |V| ProcessTools                  | Process_Start res=set key=COR_PROFILER value={f5f7f9d7-f906-49d1-9e84-ad1c7de5dbbd}
+13:52:50.927 |V| ProcessTools                  | Process_Start res=delete key=COR_PROFILER_PATH
+13:52:50.927 |V| ProcessTools                  | Process_Start res=set key=CORECLR_ENABLE_PROFILING value=7
+13:52:50.927 |V| ProcessTools                  | Process_Start res=set key=CORECLR_PROFILER value={f5f7f9d7-f906-49d1-9e84-ad1c7de5dbbd}
+13:52:50.927 |V| ProcessTools                  | Process_Start res=delete key=CORECLR_PROFILER_PATH
+13:52:50.927 |V| ProcessTools                  | Process_Start res=delete key=JETBRAINS_PROFILER_CORE_GUID
+13:52:50.927 |V| ProcessTools                  | Process_Start res=set key=JETBRAINS_PROFILER_CORE_TYPE_ReleaseCoverage value={f5f7f9d7-f906-49d1-9e84-ad1c7de5dbbd}
+13:52:50.927 |V| ProcessTools                  | Process_Start res=set key=JETBRAINS_PROFILER_CORE_LOGMASK value=2
+13:52:50.927 |V| ProcessTools                  | Process_Start res=delete key=JETBRAINS_PROFILER_CORE_TEMP
+13:52:50.927 |V| ProcessTools                  | Process_Start res=delete key=JETBRAINS_PROFILER_CORE_DEBUG
+13:52:50.927 |V| ProcessTools                  | Process_Start res=set key=JETBRAINS_PROFILER_CORE_FIRST value=1
+13:52:50.927 |V| ProcessTools                  | Process_Start res=set key=JETBRAINS_PROFILER_CORE_BRIDGE_FAMILY value=2
+13:52:50.927 |V| ProcessTools                  | Process_Start res=set key=JETBRAINS_PROFILER_CORE_BRIDGE_ADDRESS value=127.0.0.1:51971
+13:52:50.928 |V| BaseHostProfile               | Start res=fail
+13:52:50.928 |V| BaseHostProfile               | Can't create process
+
+--- EXCEPTION #1/2 [Win32Exception]
+Message = “Can't create process”
+ExceptionPath = Root.InnerException
+NativeErrorCode = 193
+ClassName = System.ComponentModel.Win32Exception
+HResult = E_FAIL=EFail=80004005
+Source = JetBrains.Platform.Util
+StackTraceString = “
+  at JetBrains.Util.ProcessUtil.Start_NoHandleInheritance[TValue](ProcessStartInfo startInfo, Func`2 beforeResume)
+     at JetBrains.Util.ProcessUtil.UnderDisableFsRedirection[TValue](Boolean disableIfNeed, Func`1 func)
+     at JetBrains.Profiler.Windows.SysTools.Impl.ProcessProxy.Start()
+     at JetBrains.Profiler.Windows.Impl.HostProfile.BaseProcessHostProfile.OnStart(InternalHostProfileParam param)
+     at JetBrains.Profiler.Windows.Impl.HostProfile.BaseHostProfile.JetBrains.Profiler.Profile.IHostProfileSubscription.Start(IProgressIndicator progressIndicator, IHostUI ui)
+”
+
+--- Outer ---
+
+--- EXCEPTION #2/2 [LoggerException]
+Message = “Can't create process”
+ExceptionPath = Root
+ClassName = JetBrains.Util.LoggerException
+InnerException = “Exception #1 at Root.InnerException”
+HResult = COR_E_APPLICATION=80131600
+StackTraceString = “
+  at JetBrains.Util.ILoggerEx.LogExceptionSilently(ILogger thіs, Exception ex)
+     at JetBrains.Profiler.Windows.Impl.HostProfile.BaseHostProfile.JetBrains.Profiler.Profile.IHostProfileSubscription.Start(IProgressIndicator progressIndicator, IHostUI ui)
+     at JetBrains.Profiler.Launcher.LauncherController.<>c__DisplayClassc.<RunProfiler>b__7()
+     at JetBrains.Profiler.Launcher.LauncherController.Rethrow[TResult](Func`1 failMessage, Func`1 func)
+     at JetBrains.Profiler.Launcher.LauncherController.RunProfiler(ProfileConfiguration configuration, Lifetime lifetime, IHostManager hostManager, IProgressIndicator connectingProgress, Func`2 eventSubscriptionCallback, ICollection`1 excludeExecutables)
+     at JetBrains.dotCover.Core.ProfilerLauncher.Model.CoverageConfigurationRunner.Start()
+     at JetBrains.dotCover.Core.ProfilerLauncher.Model.CoverageSession.ExecuteConfiguration(ICoverageConfiguration configuration, String configurationId, Action handleStarted, Action handleFinished)
+     at JetBrains.dotCover.Core.ProfilerLauncher.Model.CoverageSession.<>c__DisplayClass15.<PerformAddConfiguration>b__12()
+     at JetBrains.Util.Logging.Logger.Catch(Action action)
+     at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+     at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+     at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+     at System.Threading.ThreadPoolWorkQueue.Dispatch()
+”
+
+13:52:51.010 |V| BaseBridge                    | Deactivate
+13:52:51.026 |V| Listener                      | Remove id=d8e74a2c-3312-47c6-86a4-6ce1be857982
+13:52:51.027 |V| Bridge                        | BridgeListen res=exited
+13:52:51.030 |V| BaseHost                      | RegisterCore op=Uninstall instructionSet=x86 path='C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools\x86\JetBrains.Profiler.Windows.Core.dll'
+13:52:51.030 |V| RunTools                      | RunConsoleExecutable executable=C:\Windows\SysWOW64\RegSvr32.exe arguments=(3pcs)[/s, /u, C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools\x86\JetBrains.Profiler.Windows.Core.dll]
+13:52:51.030 |V| RunTools                      | RunConsoleExecutable res=set key=JETBRAINS_PROFILER_CORE_TYPE_ReleaseCoverage value={f5f7f9d7-f906-49d1-9e84-ad1c7de5dbbd}
+13:52:51.032 |V| RunTools                      | RunConsoleExecutable executable=C:\Windows\SysWOW64\RegSvr32.exe arguments=(3pcs)[/s, /u, C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools\x86\JetBrains.Profiler.Windows.Core.dll] res=run pid=30376
+13:52:51.058 |V| RunTools                      | RunConsoleExecutable pid=30376 res=ok exitCode=00000000
+13:52:51.058 |V| BaseHost                      | RegisterCore op=Uninstall instructionSet=x64 path='C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools\x64\JetBrains.Profiler.Windows.Core.dll'
+13:52:51.058 |V| RunTools                      | RunConsoleExecutable executable=C:\Windows\system32\RegSvr32.exe arguments=(3pcs)[/s, /u, C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools\x64\JetBrains.Profiler.Windows.Core.dll]
+13:52:51.058 |V| RunTools                      | RunConsoleExecutable res=set key=JETBRAINS_PROFILER_CORE_TYPE_ReleaseCoverage value={f5f7f9d7-f906-49d1-9e84-ad1c7de5dbbd}
+13:52:51.060 |V| RunTools                      | RunConsoleExecutable executable=C:\Windows\system32\RegSvr32.exe arguments=(3pcs)[/s, /u, C:\Users\brejc\AppData\Local\Flubu\NuGet\JetBrains.dotCover.CommandLineTools.10.0.20151218.134438\tools\x64\JetBrains.Profiler.Windows.Core.dll] res=run pid=32332
+13:52:51.079 |V| RunTools                      | RunConsoleExecutable pid=32332 res=ok exitCode=00000000
+13:52:51.080 |V| Event                         | Remove id=69b64dc6-fe60-4c0b-a0ee-728d2a9a56ed
+13:52:51.080 |V| EventTools                    | Event_Has name=a01064eb-90d0-48d1-b0fb-d2b05e164b13
+13:52:51.081 |V| EventTools                    | Event_Has name=a01064eb-90d0-48d1-b0fb-d2b05e164b13 res=failed
+13:52:51.081 |V| Process                       | Get id=2940084b-df89-40fd-8e90-be18a5251bd6
+13:52:51.173 |V| Process                       | Touch id=2940084b-df89-40fd-8e90-be18a5251bd6
+13:52:51.174 |V| Process                       | Get id=2940084b-df89-40fd-8e90-be18a5251bd6
+13:52:51.174 |V| BaseHost                      | PdbServer state=exited pid=17932 exitCode=0
+13:52:51.174 |V| Process                       | Remove id=2940084b-df89-40fd-8e90-be18a5251bd6
+13:52:51.174 |V| BaseHostProfile               | Shutdown res=terminated
+13:52:51.174 |V| BaseHostProfile               | Shutdown res=downloaded
+13:52:51.175 |V| CoverageSession#0             | Can't start profiling. See below for more details: Can't create process.
+
+--- EXCEPTION #1/3 [Win32Exception]
+Message = “Can't create process”
+ExceptionPath = Root.InnerException.InnerException
+NativeErrorCode = 193
+ClassName = System.ComponentModel.Win32Exception
+HResult = E_FAIL=EFail=80004005
+Source = JetBrains.Platform.Util
+StackTraceString = “
+  at JetBrains.Util.ProcessUtil.Start_NoHandleInheritance[TValue](ProcessStartInfo startInfo, Func`2 beforeResume)
+     at JetBrains.Util.ProcessUtil.UnderDisableFsRedirection[TValue](Boolean disableIfNeed, Func`1 func)
+     at JetBrains.Profiler.Windows.SysTools.Impl.ProcessProxy.Start()
+     at JetBrains.Profiler.Windows.Impl.HostProfile.BaseProcessHostProfile.OnStart(InternalHostProfileParam param)
+     at JetBrains.Profiler.Windows.Impl.HostProfile.BaseHostProfile.JetBrains.Profiler.Profile.IHostProfileSubscription.Start(IProgressIndicator progressIndicator, IHostUI ui)
+     at JetBrains.Profiler.Launcher.LauncherController.<>c__DisplayClassc.<RunProfiler>b__7()
+     at JetBrains.Profiler.Launcher.LauncherController.Rethrow[TResult](Func`1 failMessage, Func`1 func)
+”
+
+--- Outer ---
+
+--- EXCEPTION #2/3 [LauncherException]
+Message = “
+  Can't start profiling. See below for more details:
+  
+  Can't create process.
+”
+ExceptionPath = Root.InnerException
+ClassName = JetBrains.Profiler.Launcher.LauncherException
+InnerException = “Exception #1 at Root.InnerException.InnerException”
+HResult = COR_E_EXCEPTION=80131500
+Source = JetBrains.Profiler
+StackTraceString = “
+  at JetBrains.Profiler.Launcher.LauncherController.Rethrow[TResult](Func`1 failMessage, Func`1 func)
+     at JetBrains.Profiler.Launcher.LauncherController.RunProfiler(ProfileConfiguration configuration, Lifetime lifetime, IHostManager hostManager, IProgressIndicator connectingProgress, Func`2 eventSubscriptionCallback, ICollection`1 excludeExecutables)
+     at JetBrains.dotCover.Core.ProfilerLauncher.Model.CoverageConfigurationRunner.Start()
+     at JetBrains.dotCover.Core.ProfilerLauncher.Model.CoverageSession.ExecuteConfiguration(ICoverageConfiguration configuration, String configurationId, Action handleStarted, Action handleFinished)
+”
+
+--- Outer ---
+
+--- EXCEPTION #3/3 [LoggerException]
+Message = “
+  Can't start profiling. See below for more details:
+  
+  Can't create process.
+”
+ExceptionPath = Root
+ClassName = JetBrains.Util.LoggerException
+InnerException = “Exception #2 at Root.InnerException”
+HResult = COR_E_APPLICATION=80131600
+StackTraceString = “
+  at JetBrains.Util.ILoggerEx.LogExceptionSilently(ILogger thіs, Exception ex)
+     at JetBrains.dotCover.Core.ProfilerLauncher.Model.CoverageSession.ExecuteConfiguration(ICoverageConfiguration configuration, String configurationId, Action handleStarted, Action handleFinished)
+     at JetBrains.dotCover.Core.ProfilerLauncher.Model.CoverageSession.<>c__DisplayClass15.<PerformAddConfiguration>b__12()
+     at JetBrains.Util.Logging.Logger.Catch(Action action)
+     at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+     at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+     at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+     at System.Threading.ThreadPoolWorkQueue.Dispatch()
+”
+
+13:52:51.176 |I| CoverageSession#0             | Exception recieved. Cancelling session with error. Can't start profiling. See below for more details:
+
+Can't create process. (configuration id: '')
+13:52:51.177 |I| CoverageSession#0             | Handling session finish
+13:52:51.177 |I| CoverageSession#0             | Error received: Can't start profiling. See below for more details:
+
+Can't create process.
+13:52:51.183 |T| JetDispatcher                 | Queueing “ReentrancyGuard.ExecutePendingActions”.
+13:52:51.183 |T| JetDispatcher                 | BeginInvokeCore: calling Marshaller.BeginInvoke after enqueueing “ReentrancyGuard.ExecutePendingActions” to schedulle processing of 1 items in queue (1 queued since last execution). Conditions: (True)(False).
+13:52:51.183 |I| CoverageSession#0             | Setting SessionFinishedEvent
+13:52:51.183 |T| JetDispatcher                 | ProcessQueue: extracted action to be executed now.
+13:52:51.183 |T|                               | +[JetDispatcher] Executing “ReentrancyGuard.ExecutePendingActions”.
+  13:52:51.183 |I| CoverageSession#0             | SessionFinishedEvent was received
+  13:52:51.188 |I| CoverageSession#0             | Executing 'finish' callback after session lifetime termination (configuration id: '')
+13:52:51.190 |T|                               | -[JetDispatcher] Executing “ReentrancyGuard.ExecutePendingActions”.
+13:52:51.190 |T| JetDispatcher                 | ProcessQueue: Queue now empty.
+13:52:51.198 |W|                               | Coverage session finished with errors: Can't start profiling. See below for more details: Can't create process.
+
+--- EXCEPTION #1/2 [CommandExecutionException]
+Message = “
+  Coverage session finished with errors: Can't start profiling. See below for more details:
+  
+  Can't create process.
+”
+ExceptionPath = Root.InnerException
+ClassName = JetBrains.dotCover.Core.ConsoleRunner.CommandExecutionException
+HResult = COR_E_APPLICATION=80131600
+Source = JetBrains.dotCover.Core
+StackTraceString = “
+  at JetBrains.dotCover.Core.ConsoleRunner.Commands.Cover.CoverCommand.Execute(CommandExecutionContext context)
+     at JetBrains.dotCover.Core.ConsoleRunner.ConsoleRunnerBackend.Execute(ICommandLine commandLine, Func`1 componentContainerGetter)
+”
+
+--- Outer ---
+
+--- EXCEPTION #2/2 [LoggerException]
+Message = “
+  Coverage session finished with errors: Can't start profiling. See below for more details:
+  
+  Can't create process.
+”
+ExceptionPath = Root
+ClassName = JetBrains.Util.LoggerException
+InnerException = “Exception #1 at Root.InnerException”
+HResult = COR_E_APPLICATION=80131600
+StackTraceString = “at JetBrains.dotCover.ConsoleRunner.Startup.ConsoleRunnerProgram.Main(String[] args)”
+
+13:52:51.199 |I|                               | Coverage session finished with errors: Can't start profiling. See below for more details:
+
+Can't create process.. 
+13:52:51.199 |I|                               | Console Runner execution finished
+13:52:51.199 |I| Main                          | Console Runner exit code: -2
+13:52:51.204 |V| JetScheduler                  | Thread 'JetPool Manager' finished
