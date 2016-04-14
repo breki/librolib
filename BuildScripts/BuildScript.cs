@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using Flubu;
 using Flubu.Builds;
@@ -16,15 +18,27 @@ using Flubu.Targeting;
 
 namespace BuildScripts
 {
-    public class BuildScript
+    public class BuildScript : DefaultBuildScript
     {
         public static int Main(string[] args)
         {
-            DefaultBuildScriptRunner runner = new DefaultBuildScriptRunner(ConstructTargets, ConfigureBuildProperties);
-            return runner.Run(args);
+            BuildScript script = new BuildScript();
+            return script.Run(args);
         }
 
-        private static void ConstructTargets (TargetTree targetTree)
+        protected override void ConfigureBuildProperties (TaskSession session)
+        {
+            session.Properties.Set (BuildProps.CompanyName, "Igor Brejc");
+            session.Properties.Set (BuildProps.CompanyCopyright, "Copyright (C) 2010-2016 Igor Brejc");
+            session.Properties.Set (BuildProps.ProductId, "LibroLib");
+            session.Properties.Set (BuildProps.ProductName, "LibroLib");
+            session.Properties.Set (BuildProps.SolutionFileName, "LibroLib.sln");
+            session.Properties.Set (BuildProps.MSBuildToolsVersion, "14.0");
+            session.Properties.Set (BuildProps.VersionControlSystem, VersionControlSystem.Mercurial);
+            session.Properties.Set (BuildProps.BuildConfiguration, "Release-4.0");
+        }
+
+        protected override void ConfigureTargets(TargetTree targetTree, ICollection<string> args)
         {
             targetTree.AddTarget ("rebuild")
                 .SetAsDefault ()
@@ -61,18 +75,6 @@ namespace BuildScripts
                     TargetNuGet(c, "LibroLib.Common");
                     TargetNuGet(c, "LibroLib.WebUtils");
                 }).DependsOn ("fetch.build.version");
-        }
-
-        private static void ConfigureBuildProperties (TaskSession session)
-        {
-            session.Properties.Set (BuildProps.CompanyName, "Igor Brejc");
-            session.Properties.Set (BuildProps.CompanyCopyright, "Copyright (C) 2010-2016 Igor Brejc");
-            session.Properties.Set (BuildProps.ProductId, "LibroLib");
-            session.Properties.Set (BuildProps.ProductName, "LibroLib");
-            session.Properties.Set (BuildProps.SolutionFileName, "LibroLib.sln");
-            session.Properties.Set (BuildProps.MSBuildToolsVersion, "14.0");
-            session.Properties.Set (BuildProps.VersionControlSystem, VersionControlSystem.Mercurial);
-            session.Properties.Set (BuildProps.BuildConfiguration, "Release-4.0");
         }
 
         private static void TargetFetchBuildVersion (ITaskContext context)
