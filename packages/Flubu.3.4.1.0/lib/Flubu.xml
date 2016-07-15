@@ -595,6 +595,16 @@
             </summary>
             <param name="messageBeepType">Type of the message beep.</param>
         </member>
+        <member name="T:BuildScripts.BuildScript">
+            <summary>
+            Build script template.
+            </summary>
+        </member>
+        <member name="T:Flubu.Builds.BuildProps">
+            <summary>
+            Various build properties stored in session that are needed for building.
+            </summary>
+        </member>
         <member name="F:Flubu.Builds.BuildProps.MSBuildToolsVersion">
             <summary>
             Version of the MSBuild tools to use for compilation.
@@ -606,12 +616,24 @@
         </member>
         <member name="F:Flubu.Builds.BuildProps.ProjectVersionFileName">
             <summary>
-            File name of where project version is read from. Property is optional. If not set ProductId is used for part of project file name.
+            File name of where project version is read from. Property is optional.
+            If not set ProductId is used for part of project file name.
+            It can also contain relative path to the file name.
             </summary>
         </member>
         <member name="F:Flubu.Builds.BuildProps.SpeechDisabled">
             <summary>
             Boolean property which, if set to <c>true</c>, disables the "build successful/build failed" speech at the end of the build.
+            </summary>
+        </member>
+        <member name="F:Flubu.Builds.BuildProps.SolutionFileName">
+            <summary>
+            The solution file name. It can also contain relative path to the file name.
+            </summary>
+        </member>
+        <member name="T:Flubu.Builds.BuildTargets">
+            <summary>
+            Built in build targets.
             </summary>
         </member>
         <member name="T:Flubu.TaskBase">
@@ -691,6 +713,14 @@
             to find the available tools versions.</remarks>
             <returns>A sorted dictionary whose keys are tools versions (2.0, 3.5, 4.0, 12.0 etc.) and values are paths to the
             tools directories (and NOT the <c>MSBuild.exe</c> itself!). The entries are sorted ascendingly by version numbers.</returns>
+        </member>
+        <member name="P:Flubu.Builds.Tasks.NuGetTasks.PublishNuGetPackageTask.NuGetServerUrl">
+            <summary>
+            Gets or sets the server URL.
+            </summary>
+            <remarks>Starting with NuGet 3.4.2, this is a mandatory parameter unless 
+            <c>DefaultPushSource</c> config value is set in the NuGet config file.
+            The default <see cref="P:Flubu.Builds.Tasks.NuGetTasks.PublishNuGetPackageTask.NuGetServerUrl"/> value is <c>https://www.nuget.org/api/v2/package</c>.</remarks>
         </member>
         <member name="T:Flubu.Builds.Tasks.TestingTasks.NUnitTask">
             <summary>
