@@ -12,20 +12,11 @@ using Flubu.Builds.VSSolutionBrowsing;
 using Flubu.Targeting;
 
 //css_inc StringEx;
-//css_ref System.Xml;
-//css_ref Flubu.dll;
-//css_ref Flubu.Contrib.dll;
 
 namespace BuildScripts
 {
     public class BuildScript : DefaultBuildScript
     {
-        public static int Main(string[] args)
-        {
-            BuildScript script = new BuildScript();
-            return script.Run(args);
-        }
-
         protected override void ConfigureBuildProperties (TaskSession session)
         {
             session.Properties.Set (BuildProps.CompanyName, "Igor Brejc");
