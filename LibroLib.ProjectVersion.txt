@@ -1,3 +1,6 @@
+1.5.2.0
+- updated Json.NET to latest version (9.0.1)
+
 1.5.1.0
 - switching back to using dotCover, it was a bug in the build script
 
