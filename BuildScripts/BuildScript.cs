@@ -121,6 +121,7 @@ namespace BuildScripts
                 projectName, nuspecFileName);
             publishTask.BasePath = Path.GetFullPath(projectName);
             publishTask.ForApiKeyUseEnvironmentVariable ();
+            publishTask.NuGetServerUrl ="https://www.nuget.org/api/v2/package";
             publishTask.Execute (context);
         }
     }
