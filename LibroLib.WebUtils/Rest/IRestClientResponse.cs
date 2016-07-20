@@ -1,6 +1,8 @@
 using System;
 using System.Diagnostics.Contracts;
+using System.IO;
 using System.Net;
+using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 
 namespace LibroLib.WebUtils.Rest
@@ -8,11 +10,18 @@ namespace LibroLib.WebUtils.Rest
     [ContractClass(typeof(IRestClientResponseContract))]
     public interface IRestClientResponse : IDisposable
     {
+        [NotNull]
         WebHeaderCollection Headers { get; }
 
+        [NotNull]
         byte[] AsBytes();
+        [NotNull]
         JObject AsJson();
+        [NotNull]
         JArray AsJsonArray();
+        [NotNull]
+        Stream AsStream();
+        [NotNull]
         string AsString();
     }
 
@@ -48,6 +57,12 @@ namespace LibroLib.WebUtils.Rest
         JArray IRestClientResponse.AsJsonArray()
         {
             Contract.Ensures(Contract.Result<JArray>() != null);
+            throw new NotImplementedException();
+        }
+
+        Stream IRestClientResponse.AsStream()
+        {
+            Contract.Ensures(Contract.Result<Stream>() != null);
             throw new NotImplementedException();
         }
 

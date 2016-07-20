@@ -95,6 +95,11 @@ namespace LibroLib.WebUtils.Rest
             }
         }
 
+        public Stream AsStream()
+        {
+            return responseStream;
+        }
+
         public string AsString()
         {
             using (StreamReader reader = new StreamReader(responseStream))

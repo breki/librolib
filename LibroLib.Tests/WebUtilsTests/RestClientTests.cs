@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Text;
 using LibroLib.WebUtils;
@@ -94,6 +95,24 @@ namespace LibroLib.Tests.WebUtilsTests
                     .Do ();
                 Assert.AreEqual((int)HttpStatusCode.OK, client.StatusCode);
                 StringAssert.StartsWith ("Successfully dumped 0 post variables", client.Response.AsString ());
+            }
+        }
+
+        [Test]
+        public void SendPostRequestAndUseResponseStream()
+        {
+            using (IRestClient client = restClientFactory.CreateRestClient ())
+            {
+                client.Post ("http://posttestserver.com/post.php")
+                    .Request("something")
+                    .Do ();
+                Assert.AreEqual((int)HttpStatusCode.OK, client.StatusCode);
+
+                string responseText;
+                using (StreamReader reader = new StreamReader(client.Response.AsStream()))
+                    responseText = reader.ReadToEnd();
+
+                StringAssert.StartsWith ("Successfully dumped 0 post variables", responseText);
             }
         }
 
