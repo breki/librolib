@@ -1,10 +1,13 @@
 ﻿using System.Diagnostics.Contracts;
+using JetBrains.Annotations;
+using LibroLib.Misc;
 
 namespace LibroLib.WebUtils.Rest
 {
     [ContractClass(typeof(IRestClientFactoryContract))]
-    public interface IRestClientFactory
+    public interface IRestClientFactory : IFactory
     {
+        [NotNull] 
         IRestClient CreateRestClient();
     }
 
@@ -15,6 +18,11 @@ namespace LibroLib.WebUtils.Rest
         IRestClient IRestClientFactory.CreateRestClient()
         {
             Contract.Ensures(Contract.Result<IRestClient>() != null);
+            throw new System.NotImplementedException();
+        }
+
+        void IFactory.Destroy(object component)
+        {
             throw new System.NotImplementedException();
         }
     }

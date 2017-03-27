@@ -4,7 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.IO;
-using LibroLib;
 using LibroLib.FileSystem;
 using LibroLib.Misc;
 
@@ -30,6 +29,7 @@ namespace LibroLib.WebUtils.Ftp
             get { return currentDirectory; }
         }
 
+        // ReSharper disable once ParameterHidesMember
         public void BeginSession(FtpConnectionData connectionData)
         {
             this.connectionData = connectionData;
@@ -167,7 +167,11 @@ namespace LibroLib.WebUtils.Ftp
                 else
                     debasedLocalFileName = Path.GetFileName(localFileName);
 
-                PathBuilder remoteFileNameBuilder = new PathBuilder (Path.Combine (rootRemoteDirectory, debasedLocalFileName));
+                if (debasedLocalFileName == null)
+                    throw new InvalidOperationException("debasedLocalFileName == null");
+
+                PathBuilder remoteFileNameBuilder =
+                    new PathBuilder(Path.Combine(rootRemoteDirectory, debasedLocalFileName));
                 string remoteFileName = remoteFileNameBuilder.ToUnixPath();
                 EnsurePathExists(remoteFileName, createdDirectories, beforeDirectoryCreatedCallback);
 
@@ -224,20 +228,20 @@ namespace LibroLib.WebUtils.Ftp
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        protected void Dispose(bool disposing)
         {
-            if (false == disposed)
+            if (disposed)
+                return;
+
+            // clean native resources         
+
+            if (disposing)
             {
-                // clean native resources         
-
-                if (disposing)
-                {
-                    // clean managed resources  
-                    EndSession();
-                }
-
-                disposed = true;
+                // clean managed resources  
+                EndSession();
             }
+
+            disposed = true;
         }
 
         private static FtpException FtpException(string errorMessage, FtpServerResponse response)
