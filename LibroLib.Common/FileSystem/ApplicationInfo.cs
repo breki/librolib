@@ -34,7 +34,10 @@ namespace LibroLib.FileSystem
         {
             get
             {
-                FileVersionInfo version = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
+                string executingAssemblyLocation = Assembly.GetExecutingAssembly().Location;
+                if (executingAssemblyLocation == null)
+                    throw new InvalidOperationException("Executing assembly location is null, cannot determine the AppVersion.");
+                FileVersionInfo version = FileVersionInfo.GetVersionInfo(executingAssemblyLocation);
                 string fileVersion = version.FileVersion;
                 return new Version(fileVersion);
             }

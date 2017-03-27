@@ -15,6 +15,11 @@
 #pragma warning restore CC0022 // Should dispose object
         }
 
+        public void Destroy(object component)
+        {
+            ((IRestClient)component).Dispose();
+        }
+
         private readonly IWebConfiguration webConfiguration;
     }
 }

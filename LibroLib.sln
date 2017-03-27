@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibroLib.Common", "LibroLib.Common\LibroLib.Common.csproj", "{B7942B2D-878D-4275-B547-671E60C06D3B}"
 EndProject
@@ -11,7 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Build.bat = Build.bat
 		CodeAnalysisRules.ruleset = CodeAnalysisRules.ruleset
-		CustomDictionary.xml = CustomDictionary.xml
 		EditStyleCopRules.bat = EditStyleCopRules.bat
 		LibroLib-MIT-license.txt = LibroLib-MIT-license.txt
 		LibroLib.ProjectVersion.txt = LibroLib.ProjectVersion.txt
