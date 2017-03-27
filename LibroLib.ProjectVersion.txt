@@ -1,5 +1,7 @@
 1.5.4.0
+- IRestClient now has AddCookie() method
 - IRestClientFactory now implements IFactory interface to make it usable for FactoryLease<>
+- Added R# annotations for IRestClient interface and related
 
 1.5.3.0
 - IRestClientReponse has a new method AsStream() to access the response stream directly

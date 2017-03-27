@@ -28,6 +28,12 @@ namespace LibroLib.WebUtils.Rest
             get { return webRequest; }
         }
 
+        public IRestClient AddCookie(Cookie cookie)
+        {
+            requestCookies.Add(cookie);
+            return this;
+        }
+
         public IRestClient AddHeader(HttpRequestHeader header, string value)
         {
             requestHeaders.Add (header, value);
@@ -125,6 +131,7 @@ namespace LibroLib.WebUtils.Rest
             webRequest.PreAuthenticate = preAuthenticate;
             webRequest.UseDefaultCredentials = useDefaultCredentials;
             webRequest.Headers = requestHeaders;
+            webRequest.CookieContainer = requestCookies;
             webRequest.Credentials = credentials;
 
             if (timeout != null)
@@ -149,23 +156,23 @@ namespace LibroLib.WebUtils.Rest
             GC.SuppressFinalize (this);
         }
 
-        protected virtual void Dispose (bool disposing)
+        private void Dispose (bool disposing)
         {
-            if (false == disposed)
+            if (disposed)
+                return;
+
+            // clean native resources         
+
+            if (disposing)
             {
-                // clean native resources         
-
-                if (disposing)
+                if (response != null)
                 {
-                    if (response != null)
-                    {
-                        response.Dispose();
-                        response = null;
-                    }
+                    response.Dispose();
+                    response = null;
                 }
-
-                disposed = true;
             }
+
+            disposed = true;
         }
 
         private void PrepareWebRequest ()
@@ -186,6 +193,7 @@ namespace LibroLib.WebUtils.Rest
         private string method;
         private bool preAuthenticate;
         private readonly NameValueCollection queryParameters = new NameValueCollection ();
+        private readonly CookieContainer requestCookies = new CookieContainer();
         private readonly WebHeaderCollection requestHeaders = new WebHeaderCollection();
         private bool requestBodySet;
         private string requestString;

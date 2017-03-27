@@ -4,6 +4,7 @@ using System.Net;
 using System.Text;
 using LibroLib.WebUtils;
 using LibroLib.WebUtils.Rest;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 
 namespace LibroLib.Tests.WebUtilsTests
@@ -195,6 +196,25 @@ namespace LibroLib.Tests.WebUtilsTests
                 RestException ex = Assert.Throws<RestException>(
                     () => client.Get("http://httpbin.org/basic-auth/{0}/{1}".Fmt(Username, "hamster")).Do());
                 Assert.AreEqual((int)HttpStatusCode.Unauthorized, ex.StatusCode);
+            }
+        }
+
+        [Test]
+        public void SendingCookies()
+        {
+            using (IRestClient client = restClientFactory.CreateRestClient())
+            {
+                Uri url = new Uri("http://httpbin.org/cookies");
+                client.Get(url.ToString())
+                    .AddCookie(new Cookie("green", "cookie", "/", url.Host))
+                    .AddCookie(new Cookie("blue", "cookie2", "/", url.Host))
+                    .Do();
+                Assert.AreEqual((int)HttpStatusCode.OK, client.StatusCode);
+                JObject responseJson = client.Response.AsJson();
+                JObject cookiesJson = (JObject)responseJson["cookies"];
+                Assert.AreEqual(2, cookiesJson.Count);
+                Assert.AreEqual("cookie", cookiesJson["green"].Value<string>());
+                Assert.AreEqual("cookie2", cookiesJson["blue"].Value<string>());
             }
         }
 
