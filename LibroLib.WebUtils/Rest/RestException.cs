@@ -6,6 +6,7 @@ namespace LibroLib.WebUtils.Rest
     [System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Usage", "CA2240:ImplementISerializableCorrectly"), Serializable]
     public class RestException : Exception
     {
+        // ReSharper disable once SuggestBaseTypeForParameter
         public RestException(string message, WebException innerException) : base(message, innerException)
         {
             WebException webException = (WebException)InnerException;

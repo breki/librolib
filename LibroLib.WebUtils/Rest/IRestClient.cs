@@ -1,32 +1,63 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Net;
+using JetBrains.Annotations;
 
 namespace LibroLib.WebUtils.Rest
 {
     [ContractClass(typeof(IRestClientContract))]
     public interface IRestClient : IDisposable
     {
+        [NotNull] 
         WebHeaderCollection RequestHeaders { get; }
         IRestClientResponse Response { get; }
         int StatusCode { get; }
 
-        IRestClient AddHeader(string name, string value);
-        IRestClient AddHeader (HttpRequestHeader header, string value);
-        IRestClient AddQuery (string name, object value);
-        IRestClient Credentials (ICredentials credentials);
-        IRestClient Delete (string url);
-        [System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = nameof(Do))]
+        /// <summary>
+        /// Adds the specified cookie to the request.
+        /// </summary>
+        /// <param name="cookie">The cookie to add.</param>
+        /// <returns>This same instance of <see cref="IRestClient"/>.</returns>
+        [NotNull]
+        IRestClient AddCookie([NotNull] Cookie cookie);
+        [NotNull] 
+        IRestClient AddHeader([NotNull] string name, [CanBeNull] string value);
+        [NotNull]
+        IRestClient AddHeader (HttpRequestHeader header, [CanBeNull] string value);
+        [NotNull]
+        IRestClient AddQuery ([NotNull] string name, [CanBeNull] object value);
+        [NotNull]
+        IRestClient Credentials ([CanBeNull] ICredentials credentials);
+        [NotNull]
+        IRestClient Delete ([NotNull] string url);
+        [SuppressMessage ("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = nameof(Do))]
+        [NotNull]
         IRestClient Do();
-        [System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = nameof(Get))]
-        IRestClient Get (string url);
-        IRestClient Head (string url);
-        IRestClient Post (string url);
+        [SuppressMessage ("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = nameof(Get))]
+        [NotNull]
+        IRestClient Get ([NotNull] string url);
+        [NotNull]
+        IRestClient Head ([NotNull] string url);
+        [NotNull]
+        IRestClient Post ([NotNull] string url);
+        [NotNull]
         IRestClient PreAuthenticate ();
-        IRestClient Put (string url);
-        IRestClient Request (string text);
+        [NotNull]
+        IRestClient Put ([NotNull] string url);
+
+        /// <summary>
+        /// Specifies the request body as a string text.
+        /// </summary>
+        /// <param name="text">The text of the request.</param>
+        /// <returns>This same instance of <see cref="IRestClient"/>.</returns>
+        [NotNull]
+        IRestClient Request ([NotNull] string text);
+        [NotNull]
         IRestClient UseDefaultCredentials ();
-        IRestClient WithConfiguration(IWebConfiguration webConfiguration);
+        [NotNull]
+        IRestClient WithConfiguration([NotNull] IWebConfiguration webConfiguration);
+        [NotNull]
         IRestClient WithTimeout(TimeSpan timeout);
     }
 
@@ -59,6 +90,13 @@ namespace LibroLib.WebUtils.Rest
 
         void IDisposable.Dispose()
         {
+        }
+
+        public IRestClient AddCookie(Cookie cookie)
+        {
+            Contract.Requires(cookie != null);
+            Contract.Ensures(ReferenceEquals(this, Contract.Result<IRestClient>()));
+            throw new NotImplementedException();
         }
 
         IRestClient IRestClient.AddHeader(string name, string value)

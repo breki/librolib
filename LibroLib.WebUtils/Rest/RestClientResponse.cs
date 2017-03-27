@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Net;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -9,7 +10,7 @@ namespace LibroLib.WebUtils.Rest
 {
     public class RestClientResponse : IRestClientResponse
     {
-        public RestClientResponse(WebRequest webRequest, bool requestBodySet)
+        public RestClientResponse([NotNull] WebRequest webRequest, bool requestBodySet)
         {
             Contract.Requires(webRequest != null);
 
@@ -112,24 +113,23 @@ namespace LibroLib.WebUtils.Rest
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
-            if (false == disposed)
+            if (disposed)
+                return;
+            // clean native resources         
+
+            if (disposing)
             {
-                // clean native resources         
-
-                if (disposing)
+                // clean managed resources  
+                if (webResponse != null)
                 {
-                    // clean managed resources  
-                    if (webResponse != null)
-                    {
-                        webResponse.Close();
-                        webResponse = null;
-                    }
+                    webResponse.Close();
+                    webResponse = null;
                 }
-
-                disposed = true;
             }
+
+            disposed = true;
         }
 
         private HttpWebResponse webResponse;
