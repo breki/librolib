@@ -94,7 +94,7 @@ namespace LibroLib.FileSystem
 
         public void EnsureDirectoryExists(string directory)
         {
-            if (false == string.IsNullOrEmpty(directory))
+            if (!string.IsNullOrEmpty(directory))
                 Directory.CreateDirectory(directory);
         }
 

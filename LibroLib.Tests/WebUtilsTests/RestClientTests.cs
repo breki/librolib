@@ -54,14 +54,14 @@ namespace LibroLib.Tests.WebUtilsTests
             }
         }
 
-        [Test, ExpectedException(typeof(RestException))]
+        [Test]
         public void RequestThatTimeouts()
         {
             using (IRestClient client = restClientFactory.CreateRestClient ())
             {
-                client
+                Assert.Throws<RestException>(() => client
                     .Get ("http://posttestserver.com/post.php?sleep=5")
-                    .WithTimeout(TimeSpan.FromMilliseconds(100)).Do ();
+                    .WithTimeout(TimeSpan.FromMilliseconds(100)).Do ());
             }
         }
 

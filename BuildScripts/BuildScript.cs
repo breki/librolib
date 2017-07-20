@@ -24,7 +24,7 @@ namespace BuildScripts
             session.Properties.Set (BuildProps.ProductId, "LibroLib");
             session.Properties.Set (BuildProps.ProductName, "LibroLib");
             session.Properties.Set (BuildProps.SolutionFileName, "LibroLib.sln");
-            session.Properties.Set (BuildProps.MSBuildToolsVersion, "14.0");
+            session.Properties.Set (BuildProps.MSBuildToolsVersion, "15.0");
             session.Properties.Set (BuildProps.VersionControlSystem, VersionControlSystem.Mercurial);
             session.Properties.Set (BuildProps.BuildConfiguration, "Release-4.0");
         }

@@ -22,11 +22,7 @@ namespace LibroLib.WebUtils.WebClients
             this.fileSystem = fileSystem;
         }
 
-        public Action<bool, string> LogAction
-        {
-            get { return logAction; }
-            set { logAction = value; }
-        }
+        public Action<bool, string> LogAction { get; set; }
 
         public void DownloadFile(Uri url, TimeSpan timeout, string localPath)
         {
@@ -206,19 +202,19 @@ namespace LibroLib.WebUtils.WebClients
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
-            if (false == disposed)
+            if (disposed)
+                return;
+
+            // clean native resources         
+
+            if (disposing)
             {
-                // clean native resources         
-
-                if (disposing)
-                {
-                    // clean managed resources            
-                }
-
-                disposed = true;
+                // clean managed resources            
             }
+
+            disposed = true;
         }
 
         [SuppressMessage ("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
@@ -277,16 +273,15 @@ namespace LibroLib.WebUtils.WebClients
         [StringFormatMethod ("format")]
         private void Log (bool isError, string format, params object[] args)
         {
-            if (logAction == null)
+            if (LogAction == null)
                 return;
 
-            logAction(isError, format.Fmt(args));
+            LogAction(isError, format.Fmt(args));
         }
 
         private readonly IWebConfiguration configuration;
         private readonly IFileSystem fileSystem;
         private bool disposed;
         private readonly IWebClientFactory webClientFactory;
-        private Action<bool, string> logAction;
     }
 }

@@ -1,10 +1,12 @@
 using System;
+using JetBrains.Annotations;
 
 namespace LibroLib.Misc
 {
     public class FactoryLease<T> : IDisposable
         where T : class 
     {
+        [UsedImplicitly]
         public FactoryLease(T obj, Action<T> releaseMethod)
         {
             this.obj = obj;
@@ -17,10 +19,7 @@ namespace LibroLib.Misc
             this.factory = factory;
         }
 
-        public T Obj
-        {
-            get { return obj; }
-        }
+        public T Obj => obj;
 
         public void Dispose()
         {
@@ -28,28 +27,28 @@ namespace LibroLib.Misc
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
-            if (false == disposed)
+            if (disposed)
+                return;
+
+            // clean native resources         
+
+            if (disposing)
             {
-                // clean native resources         
-
-                if (disposing)
+                // clean managed resources
+                if (obj != null)
                 {
-                    // clean managed resources
-                    if (obj != null)
-                    {
-                        if (releaseMethod != null)
-                            releaseMethod(obj);
-                        else if (factory != null)
-                            factory.Destroy(obj);
+                    if (releaseMethod != null)
+                        releaseMethod(obj);
+                    else if (factory != null)
+                        factory.Destroy(obj);
 
-                        obj = null;
-                    }
+                    obj = null;
                 }
-
-                disposed = true;
             }
+
+            disposed = true;
         }
 
         private T obj;

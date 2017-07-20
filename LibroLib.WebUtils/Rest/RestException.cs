@@ -1,5 +1,6 @@
 using System;
 using System.Net;
+using JetBrains.Annotations;
 
 namespace LibroLib.WebUtils.Rest
 {
@@ -7,9 +8,12 @@ namespace LibroLib.WebUtils.Rest
     public class RestException : Exception
     {
         // ReSharper disable once SuggestBaseTypeForParameter
-        public RestException(string message, WebException innerException) : base(message, innerException)
+        public RestException(string message, [NotNull] WebException innerException) : base(message, innerException)
         {
             WebException webException = (WebException)InnerException;
+
+            if (webException == null)
+                throw new InvalidOperationException("Something is wrong, InnerException should not be null.");
 
             if (webException.Response != null)
                 statusCode = (int)((HttpWebResponse)webException.Response).StatusCode;
