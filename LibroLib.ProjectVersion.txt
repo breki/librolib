@@ -1,5 +1,5 @@
 1.6.0.0
-- migrated to VS 2015
+- migrated to VS 2017
 - updated Json.NET to latest version (10.0.3)
 - fixed some R# and StyleCop issues
 - CodeContract assemblies are no longer being shipped since VS 2017 does not support them

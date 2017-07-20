@@ -6,7 +6,7 @@
     <members>
         <member name="M:Flubu.Log4NetLogger.Dispose">
             <summary>
-                                Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
             </summary>
             <filterpriority>2</filterpriority>
         </member>
@@ -208,26 +208,6 @@
             Gets or sets the Name of the website that the web application is added too. By default it is "Default Web Site"
             </summary>
         </member>
-        <member name="F:Flubu.Tasks.Iis.Iis7.Iis7CreateWebsiteTask.webSiteName">
-            <summary>
-            Name of the website
-            </summary>
-        </member>
-        <member name="F:Flubu.Tasks.Iis.Iis7.Iis7CreateWebsiteTask.bindingProtocol">
-            <summary>
-            The binding protocol. Http or https.
-            </summary>
-        </member>
-        <member name="F:Flubu.Tasks.Iis.Iis7.Iis7CreateWebsiteTask.port">
-            <summary>
-            Port of the web application
-            </summary>
-        </member>
-        <member name="F:Flubu.Tasks.Iis.Iis7.Iis7CreateWebsiteTask.physicalPath">
-            <summary>
-            Physical path to application.
-            </summary>
-        </member>
         <member name="M:Flubu.Tasks.Iis.Iis7.Iis7CreateWebsiteTask.DoExecute(Flubu.ITaskContext)">
             <summary>
             Creates or updated the web site.
@@ -259,6 +239,26 @@
             </summary>
             <param name="value">The physical path.</param>
             <returns>The iI7CreateWebSiteTask.</returns>
+        </member>
+        <member name="F:Flubu.Tasks.Iis.Iis7.Iis7CreateWebsiteTask.webSiteName">
+            <summary>
+            Name of the website
+            </summary>
+        </member>
+        <member name="F:Flubu.Tasks.Iis.Iis7.Iis7CreateWebsiteTask.bindingProtocol">
+            <summary>
+            The binding protocol. Http or https.
+            </summary>
+        </member>
+        <member name="F:Flubu.Tasks.Iis.Iis7.Iis7CreateWebsiteTask.port">
+            <summary>
+            Port of the web application
+            </summary>
+        </member>
+        <member name="F:Flubu.Tasks.Iis.Iis7.Iis7CreateWebsiteTask.physicalPath">
+            <summary>
+            Physical path to application.
+            </summary>
         </member>
         <member name="P:Flubu.Tasks.Iis.MimeType.FileExtension">
             <summary>
