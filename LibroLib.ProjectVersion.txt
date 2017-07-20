@@ -2,6 +2,7 @@
 - migrated to VS 2015
 - updated Json.NET to latest version (10.0.3)
 - fixed some R# and StyleCop issues
+- CodeContract assemblies are no longer being shipped since VS 2017 does not support them
 
 1.5.4.0
 - IRestClient now has AddCookie() method
