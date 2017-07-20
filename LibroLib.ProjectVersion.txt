@@ -1,3 +1,8 @@
+1.6.0.0
+- migrated to VS 2015
+- updated Json.NET to latest version (10.0.3)
+- fixed some R# and StyleCop issues
+
 1.5.4.0
 - IRestClient now has AddCookie() method
 - IRestClientFactory now implements IFactory interface to make it usable for FactoryLease<>

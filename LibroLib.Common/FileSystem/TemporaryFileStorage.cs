@@ -46,7 +46,7 @@ namespace LibroLib.FileSystem
                     random.Next(1000, 9000));
 
                 fullPath = Path.Combine(TempDirPath, name);
-                if (false == fileSystem.DoesDirectoryExist(fullPath))
+                if (!fileSystem.DoesDirectoryExist(fullPath))
                     break;
             }
 
@@ -87,7 +87,7 @@ namespace LibroLib.FileSystem
         {
             Contract.Requires(directoryName != null);
 
-            if (false == fileSystem.DoesDirectoryExist(directoryName))
+            if (!fileSystem.DoesDirectoryExist(directoryName))
                 return true;
 
             bool someFilesRemained = false;

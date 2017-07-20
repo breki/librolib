@@ -67,24 +67,24 @@ namespace LibroLib.Threading
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
-            if (false == disposed)
+            if (disposed)
+                return;
+
+            // clean native resources         
+
+            if (disposing)
             {
-                // clean native resources         
-
-                if (disposing)
+                // clean managed resources    
+                lock (threads)
                 {
-                    // clean managed resources    
-                    lock (threads)
-                    {
-                        foreach (IThread thread in threads)
-                            thread.Dispose();
-                    }
+                    foreach (IThread thread in threads)
+                        thread.Dispose();
                 }
-
-                disposed = true;
             }
+
+            disposed = true;
         }
         
         private readonly ISyncObjectsFactory syncObjectsFactory;

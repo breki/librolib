@@ -67,17 +67,17 @@ namespace LibroLib.WebUtils.Ftp
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
-            if (false == disposed)
-            {
-                if (disposing)
-                {
-                    Disconnect();
-                }
+            if (disposed)
+                return;
 
-                disposed = true;
+            if (disposing)
+            {
+                Disconnect();
             }
+
+            disposed = true;
         }
 
         private Socket clientSocket;

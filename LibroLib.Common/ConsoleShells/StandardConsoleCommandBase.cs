@@ -19,7 +19,7 @@ namespace LibroLib.ConsoleShells
             foreach (string arg in args)
             {
                 int? exitCode;
-                if (arg.StartsWith("-"))
+                if (arg.StartsWith("-", StringComparison.OrdinalIgnoreCase))
                 {
                     exitCode = ParseNonPositionalArg(consoleEnvironment, arg);
                     if (exitCode.HasValue)
@@ -145,7 +145,7 @@ namespace LibroLib.ConsoleShells
         {
             Contract.Requires (consoleEnvironment != null);
             Contract.Requires (arg != null);
-            Contract.Requires (1 <= arg.Length);
+            Contract.Requires (arg.Length >= 1);
 
             int valueIndex = arg.IndexOf ('=');
 
@@ -177,7 +177,7 @@ namespace LibroLib.ConsoleShells
             Contract.Requires (consoleEnvironment != null);
             Contract.Requires (arg != null);
             Contract.Requires (settingArg != null);
-            Contract.Requires (valueIndex == -1 || 0 <= (valueIndex + 1));
+            Contract.Requires (valueIndex == -1 || (valueIndex + 1) >= 0);
             Contract.Requires (valueIndex == -1 || (valueIndex + 1) <= arg.Length);
 
             if (valueIndex == -1)

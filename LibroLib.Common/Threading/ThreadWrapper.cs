@@ -26,29 +26,17 @@ namespace LibroLib.Threading
 
         public string Name
         {
-            get { return thread.Name; }
-            set { thread.Name = value; }
+            get => thread.Name;
+            set => thread.Name = value;
         }
 
-        public int ManagedThreadId
-        {
-            get { return thread.ManagedThreadId; }
-        }
+        public int ManagedThreadId => thread.ManagedThreadId;
 
-        public ISignal ThreadStopSignal
-        {
-            get { return threadStopSignal; }
-        }
+        public ISignal ThreadStopSignal => threadStopSignal;
 
-        public bool IsAlive
-        {
-            get { return thread.IsAlive; }
-        }
+        public bool IsAlive => thread.IsAlive;
 
-        public bool IsStopping
-        {
-            get { return isStopping; }
-        }
+        public bool IsStopping => isStopping;
 
         public void Start()
         {
@@ -77,24 +65,24 @@ namespace LibroLib.Threading
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
-            if (false == disposed)
+            if (disposed)
+                return;
+
+            // clean native resources         
+
+            if (disposing)
             {
-                // clean native resources         
+                // clean managed resources    
+                if (thread != null)
+                    thread.Abort();
 
-                if (disposing)
-                {
-                    // clean managed resources    
-                    if (thread != null)
-                        thread.Abort();
-
-                    if (threadStopSignal != null)
-                        threadStopSignal.Dispose();
-                }
-
-                disposed = true;
+                if (threadStopSignal != null)
+                    threadStopSignal.Dispose();
             }
+
+            disposed = true;
         }
 
         private bool disposed;

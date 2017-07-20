@@ -10,10 +10,7 @@ namespace LibroLib.Threading
             wrappedSemaphore = new Semaphore(initialCount, maximumCount);
         }
 
-        public override WaitHandle WrappedWaitHandle
-        {
-            get { return wrappedSemaphore; }
-        }
+        public override WaitHandle WrappedWaitHandle => wrappedSemaphore;
 
         public override bool Wait()
         {
@@ -41,21 +38,21 @@ namespace LibroLib.Threading
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
-            if (false == disposed)
+            if (disposed)
+                return;
+
+            // clean native resources         
+
+            if (disposing)
             {
-                // clean native resources         
-
-                if (disposing)
-                {
-                    // clean managed resources            
-                    if (wrappedSemaphore != null)
-                        wrappedSemaphore.Close();
-                }
-
-                disposed = true;
+                // clean managed resources            
+                if (wrappedSemaphore != null)
+                    wrappedSemaphore.Close();
             }
+
+            disposed = true;
         }
 
         private bool disposed;

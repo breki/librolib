@@ -163,7 +163,7 @@ namespace LibroLib.FileSystem
 
                 path = Path.GetDirectoryName (path);
 
-                if (path.Equals(pathRoot))
+                if (path == null || path.Equals(pathRoot))
                     break;
             }
         }

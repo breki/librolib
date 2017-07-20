@@ -228,7 +228,7 @@ namespace LibroLib
                     break;
                 }
 
-                if (value[i] == ' ' && false == isInQuotes)
+                if (value[i] == ' ' && !isInQuotes)
                 {
                     if (wordStart != null)
                     {
@@ -239,7 +239,7 @@ namespace LibroLib
                 }
                 else if (value[i] == '\"')
                 {
-                    if (false == isInQuotes)
+                    if (!isInQuotes)
                     {
                         if (wordStart != null)
                         {

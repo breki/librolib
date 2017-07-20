@@ -13,6 +13,7 @@ namespace LibroLib.WebUtils.WebClients
             this.webConfiguration = webConfiguration;
         }
 
+        // ReSharper disable once ParameterHidesMember
         public void SetTimeout(TimeSpan timeout)
         {
             this.timeout = timeout;
@@ -24,6 +25,10 @@ namespace LibroLib.WebUtils.WebClients
             Credentials = webConfiguration.Credentials;
 
             WebRequest webRequest = base.GetWebRequest (address);
+
+            if (webRequest == null)
+                throw new InvalidOperationException("Something is wrong, the base WebRequest should not be null.");
+
             if (timeout != TimeSpan.Zero)
                 webRequest.Timeout = (int)timeout.TotalMilliseconds;
             return webRequest;

@@ -10,10 +10,7 @@ namespace LibroLib.Threading
             wrappedEvent = new ManualResetEvent(initialState);
         }
 
-        public override WaitHandle WrappedWaitHandle
-        {
-            get { return wrappedEvent; }
-        }
+        public override WaitHandle WrappedWaitHandle => wrappedEvent;
 
         public override bool Wait()
         {
@@ -41,27 +38,27 @@ namespace LibroLib.Threading
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
-            if (false == disposed)
-            {
-                // clean native resources         
+            if (disposed)
+                return;
 
-                if (disposing)
+            // clean native resources         
+
+            if (disposing)
+            {
+                if (wrappedEvent != null)
                 {
-                    if (wrappedEvent != null)
-                    {
 #if NET35
                         wrappedEvent.Close ();
 #else
-                        wrappedEvent.Dispose ();
+                    wrappedEvent.Dispose ();
 #endif
-                        wrappedEvent = null;
-                    }
+                    wrappedEvent = null;
                 }
-
-                disposed = true;
             }
+
+            disposed = true;
         }
 
         private bool disposed;
