@@ -7,7 +7,7 @@
     <projectUrl>https://bitbucket.org/breki-os/librolib</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>LibroLib library containing basic common functionality.</description>
-    <copyright>Copyright 2010-2016 Igor Brejc</copyright>
+    <copyright>Copyright 2010-2017 Igor Brejc</copyright>
     <tags>common</tags>
     <frameworkAssemblies>
     </frameworkAssemblies>
@@ -22,7 +22,5 @@
     <file src="bin\Release-4.0\LibroLib.Common.dll" target="lib\net40" />
     <file src="bin\Release-4.0\LibroLib.Common.pdb" target="lib\net40" />
     <file src="bin\Release-4.0\LibroLib.Common.xml" target="lib\net40" />
-    <file src="bin\Release-4.0\CodeContracts\LibroLib.Common.Contracts.dll" target="lib\net40" />
-    <file src="bin\Release-4.0\CodeContracts\LibroLib.Common.Contracts.pdb" target="lib\net40" />
   </files>
 </package>
