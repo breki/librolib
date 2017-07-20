@@ -10,6 +10,7 @@ using NUnit.Framework;
 namespace LibroLib.Tests.WebUtilsTests
 {
     [Category("integration")]
+    [Explicit("Marked these tests as explicit since posttestserver.com behavior has been flaky recently (returning 403 errors).")]
     public class RestClientTests
     {
         [Test]
