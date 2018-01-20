@@ -27,11 +27,7 @@ namespace LibroLib.DataStructures
             values.Add(value);
         }
 
-#if NET35
-        public HashSet<TValue> this[TKey key]
-#else
         public ISet<TValue> this[TKey key]
-#endif
         {
             get
             {
@@ -41,6 +37,7 @@ namespace LibroLib.DataStructures
             }
         }
 
-        private readonly Dictionary<TKey, HashSet<TValue>> keysValues = new Dictionary<TKey, HashSet<TValue>>();
+        private readonly Dictionary<TKey, HashSet<TValue>> keysValues =
+            new Dictionary<TKey, HashSet<TValue>>();
     }
 }
