@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace LibroLib.Tests.WebUtilsTests.FtpTests
 {
-    //[Explicit("You need a FTP server to run these tests")]
+    [Explicit("You need a FTP server to run these tests")]
     public class RealFtpTests
     {
         [Test]
