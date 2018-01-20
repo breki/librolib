@@ -1,4 +1,3 @@
-- update MultiSet
 - fix IFtpSession to work with the test FTP server
 
 - add support for cookies in IRestClient

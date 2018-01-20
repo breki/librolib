@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.IO;
@@ -24,16 +23,11 @@ namespace LibroLib.WebUtils.Ftp
             this.fileSystem = fileSystem;
         }
 
-        public string CurrentDirectory
-        {
-            get { return currentDirectory; }
-        }
+        public string CurrentDirectory { get; private set; }
 
         // ReSharper disable once ParameterHidesMember
         public void BeginSession(FtpConnectionData connectionData)
         {
-            this.connectionData = connectionData;
-
             ftpChannel = ftpChannelFactory.CreateChannel();
 
             ftpChannel.Connect(connectionData.Host, connectionData.Port);
@@ -63,7 +57,7 @@ namespace LibroLib.WebUtils.Ftp
             if (response.ReturnCode != (int)FtpReturnCode.RequestedFileActionOkayCompleted)
                 throw FtpException("Could not change the current directory", response);
 
-            currentDirectory = directory;
+            CurrentDirectory = directory;
         }
 
         public void CreateDirectory(string directory, bool failIfExists)
@@ -108,13 +102,11 @@ namespace LibroLib.WebUtils.Ftp
 
             EnsurePathExists(parentPath, createdDirectories, beforeDirectoryCreatedCallback);
 
-            if (beforeDirectoryCreatedCallback != null)
-                beforeDirectoryCreatedCallback(parentPath);
+            beforeDirectoryCreatedCallback?.Invoke(parentPath);
 
             CreateDirectory(parentPath, false);
 
-            if (createdDirectories != null)
-                createdDirectories.Add(parentPath);
+            createdDirectories?.Add(parentPath);
         }
 
         public IList<string> ListFiles(string directory)
@@ -122,13 +114,15 @@ namespace LibroLib.WebUtils.Ftp
             OpenDataChannel();
 
             FtpServerResponse response = SendCommand("NLST {0}", directory);
-            if (response.ReturnCode != (int)FtpReturnCode.DataConnectionAlreadyOpen
+            if (response.ReturnCode
+                != (int)FtpReturnCode.DataConnectionAlreadyOpen
                 && response.ReturnCode != (int)FtpReturnCode.FileStatusOk)
             {
                 throw FtpException("Could not list files", response);
             }
 
             throw new NotImplementedException();
+
             //using (MemoryStream stream = new MemoryStream())
             //{
             //    dataChannel.Receive(stream);
@@ -175,8 +169,7 @@ namespace LibroLib.WebUtils.Ftp
                 string remoteFileName = remoteFileNameBuilder.ToUnixPath();
                 EnsurePathExists(remoteFileName, createdDirectories, beforeDirectoryCreatedCallback);
 
-                if (beforeFileUploadedCallback != null)
-                    beforeFileUploadedCallback(localFileName, remoteFileName);
+                beforeFileUploadedCallback?.Invoke(localFileName, remoteFileName);
 
                 UploadFileWithoutChecks(localFileName, remoteFileName);
             }
@@ -310,10 +303,7 @@ namespace LibroLib.WebUtils.Ftp
             return dataChannel;
         }
 
-        [SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        private FtpConnectionData connectionData;
         private bool disposed;
-        private string currentDirectory;
         private IFtpChannel ftpChannel;
         private readonly IFileSystem fileSystem;
         private readonly IFtpChannelFactory ftpChannelFactory;

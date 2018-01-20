@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace LibroLib.Tests.WebUtilsTests.FtpTests
 {
-    [Explicit("You need a FTP server to run these tests")]
+    //[Explicit("You need a FTP server to run these tests")]
     public class RealFtpTests
     {
         [Test]
@@ -83,15 +83,6 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
 
             FtpAction(c => c.UploadFiles(null, fileSet, "tiles2", null, null));
         }
-
-        //[Test]
-        //public void ListFiles()
-        //{
-        //    FtpAction(c =>
-        //    {
-        //        c.ListFiles("test");
-        //    });
-        //}
 
         private static void FtpAction(Action<IFtpSession> action)
         {
