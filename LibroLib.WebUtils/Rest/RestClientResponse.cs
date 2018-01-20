@@ -43,35 +43,11 @@ namespace LibroLib.WebUtils.Rest
 
         public byte[] AsBytes()
         {
-#if NET35
-            const int BufferSize = 1024 * 1024;
-            byte[] buffer = new byte[BufferSize];
-
-            using (MemoryStream memStream = new MemoryStream())
-            using (BinaryReader reader = new BinaryReader(responseStream))
-            {
-                int index = 0;
-                
-                while (true)
-                {
-                    int actuallyRead = reader.Read(buffer, index, BufferSize);
-                    memStream.Write(buffer, index, actuallyRead);
-                    index += actuallyRead;
-
-                    if (actuallyRead < BufferSize)
-                    {
-                        memStream.Flush();
-                        return memStream.ToArray();
-                    }
-                }
-            }
-#else
             using (MemoryStream memoryStream = new MemoryStream ())
             {
                 responseStream.CopyTo (memoryStream);
                 return memoryStream.ToArray ();
             }
-#endif
         }
 
         public JObject AsJson()

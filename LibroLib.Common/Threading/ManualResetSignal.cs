@@ -49,11 +49,7 @@ namespace LibroLib.Threading
             {
                 if (wrappedEvent != null)
                 {
-#if NET35
-                        wrappedEvent.Close ();
-#else
                     wrappedEvent.Dispose ();
-#endif
                     wrappedEvent = null;
                 }
             }

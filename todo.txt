@@ -1,7 +1,7 @@
+- update MultiSet
+- fix IFtpSession to work with the test FTP server
+
 - add support for cookies in IRestClient
-
-- remove all 3.5 leftovers from the solution
-
 - add support for AutomaticDecompression for IRestClient
 
 - what to do with logging?
