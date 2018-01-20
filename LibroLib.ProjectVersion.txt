@@ -1,5 +1,9 @@
 1.7.0.0
 - MultiSet has a new TryGetValue method
+- FtpChannelUsingSocket.Connect() method now uses Dns.GetHostAddresses() method
+	instead of Dns.GetHostEntry() to avoid problems with reverse lookups
+	(see https://msdn.microsoft.com/en-us/library/ms143998(v=vs.110).aspx for
+	more info)
 - removed all the conditional .NET 3.5 compilation code
 - update all 3rd party libraries and tools to latest editions
 

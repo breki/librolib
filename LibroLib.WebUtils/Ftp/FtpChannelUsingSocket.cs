@@ -11,21 +11,32 @@ namespace LibroLib.WebUtils.Ftp
     {
         public void Connect(byte[] hostAddress, int? port)
         {
-            clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            clientSocket = new Socket(
+                AddressFamily.InterNetwork,
+                SocketType.Stream,
+                ProtocolType.Tcp);
             
             int portToUse = port ?? 21;
             Contract.Assume(portToUse >= 0 && portToUse <= 0xffff);
-            IPEndPoint endPoint = new IPEndPoint(new IPAddress(hostAddress), portToUse);
+            IPEndPoint endPoint = new IPEndPoint(
+                new IPAddress(hostAddress),
+                portToUse);
             
             clientSocket.Connect(endPoint);
         }
 
-        [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1305:FieldNamesMustNotUseHungarianNotation", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage(
+            "StyleCop.CSharp.NamingRules",
+            "SA1305:FieldNamesMustNotUseHungarianNotation",
+            Justification = "Reviewed. Suppression is OK here.")]
         public void Connect(string host, int? port)
         {
-            IPHostEntry ipHostEntry = Dns.GetHostEntry(host);
-            Contract.Assume (ipHostEntry.AddressList.Length > 0);
-            IPAddress ipAddress = ipHostEntry.AddressList[0];
+            IPAddress[] hostAddresses = Dns.GetHostAddresses(host);
+            if (hostAddresses.Length == 0)
+                throw new InvalidOperationException(
+                    "No host addresses found for '{0}'.".Fmt(host));
+
+            IPAddress ipAddress = hostAddresses[0];
             Contract.Assume (ipAddress != null);
             
             Connect(ipAddress.GetAddressBytes(), port);

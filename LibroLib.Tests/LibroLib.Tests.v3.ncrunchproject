@@ -10,6 +10,9 @@
       <FixtureTestSelector>
         <FixtureName>LibroLib.Tests.WebUtilsTests.FtpTests.RealFtpTests</FixtureName>
       </FixtureTestSelector>
+      <FixtureTestSelector>
+        <FixtureName>LibroLib.Tests.WebUtilsTests.RestClientTests</FixtureName>
+      </FixtureTestSelector>
     </IgnoredTests>
   </Settings>
 </ProjectConfiguration>
