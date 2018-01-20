@@ -1,6 +1,7 @@
 1.7.0.0
 - MultiSet has a new TryGetValue method
 - removed all the conditional .NET 3.5 compilation code
+- update all 3rd party libraries and tools to latest editions
 
 1.6.0.0
 - migrated to VS 2017
