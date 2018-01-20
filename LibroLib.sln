@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibroLib.Common", "LibroLib.Common\LibroLib.Common.csproj", "{B7942B2D-878D-4275-B547-671E60C06D3B}"
 EndProject
@@ -35,12 +35,12 @@ Global
 		Release-4.0|Any CPU = Release-4.0|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B7942B2D-878D-4275-B547-671E60C06D3B}.Debug-3.5|Any CPU.ActiveCfg = Debug-3.5|Any CPU
-		{B7942B2D-878D-4275-B547-671E60C06D3B}.Debug-3.5|Any CPU.Build.0 = Debug-3.5|Any CPU
+		{B7942B2D-878D-4275-B547-671E60C06D3B}.Debug-3.5|Any CPU.ActiveCfg = Debug-4.0|Any CPU
+		{B7942B2D-878D-4275-B547-671E60C06D3B}.Debug-3.5|Any CPU.Build.0 = Debug-4.0|Any CPU
 		{B7942B2D-878D-4275-B547-671E60C06D3B}.Debug-4.0|Any CPU.ActiveCfg = Debug-4.0|Any CPU
 		{B7942B2D-878D-4275-B547-671E60C06D3B}.Debug-4.0|Any CPU.Build.0 = Debug-4.0|Any CPU
-		{B7942B2D-878D-4275-B547-671E60C06D3B}.Release-3.5|Any CPU.ActiveCfg = Release-3.5|Any CPU
-		{B7942B2D-878D-4275-B547-671E60C06D3B}.Release-3.5|Any CPU.Build.0 = Release-3.5|Any CPU
+		{B7942B2D-878D-4275-B547-671E60C06D3B}.Release-3.5|Any CPU.ActiveCfg = Release-4.0|Any CPU
+		{B7942B2D-878D-4275-B547-671E60C06D3B}.Release-3.5|Any CPU.Build.0 = Release-4.0|Any CPU
 		{B7942B2D-878D-4275-B547-671E60C06D3B}.Release-4.0|Any CPU.ActiveCfg = Release-4.0|Any CPU
 		{B7942B2D-878D-4275-B547-671E60C06D3B}.Release-4.0|Any CPU.Build.0 = Release-4.0|Any CPU
 		{CA74AA28-0F42-43B0-97C5-9C28148ADEEB}.Debug-3.5|Any CPU.ActiveCfg = Debug-3.5|Any CPU
@@ -70,5 +70,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A98FEAD-CE56-4FA4-9CFA-EB83FC5DADBB}
 	EndGlobalSection
 EndGlobal
