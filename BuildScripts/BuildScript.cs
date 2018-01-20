@@ -96,10 +96,10 @@ namespace BuildScripts
         private static void TargetRun40TestsWithCoverage (ITaskContext context, string projectName)
         {
             NUnitWithDotCoverTask task = new NUnitWithDotCoverTask(
-                @"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe",
+                @"packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe",
                 Path.Combine(projectName, "bin", context.Properties[BuildProps.BuildConfiguration], projectName) + ".dll");
             task.DotCoverFilters = "-:module=*.Tests;-:class=*Contract;-:class=*Contract`*;-:class=JetBrains.Annotations.*";
-            task.NUnitCmdLineOptions = "/framework:4.0 /labels /nodots";
+            task.NUnitCmdLineOptions = "--labels=All --trace=Verbose";
             task.FailBuildOnViolations = false;
             task.Execute(context);
         }
