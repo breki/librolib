@@ -58,6 +58,7 @@ namespace LibroLib.WebUtils.Rest
             return this;
         }
 
+#pragma warning disable CA1054 // Uri parameters should not be strings
         public IRestClient Delete(string url)
         {
             this.url = url;
@@ -98,6 +99,7 @@ namespace LibroLib.WebUtils.Rest
             method = "PUT";
             return this;
         }
+#pragma warning restore CA1054 // Uri parameters should not be strings
 
         public IRestClient Request(string text)
         {
@@ -156,7 +158,7 @@ namespace LibroLib.WebUtils.Rest
             GC.SuppressFinalize(this);
         }
 
-        private void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (disposed)
                 return;

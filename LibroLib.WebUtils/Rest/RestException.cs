@@ -1,11 +1,18 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using JetBrains.Annotations;
 
 namespace LibroLib.WebUtils.Rest
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2240:ImplementISerializableCorrectly"), Serializable]
+    [SuppressMessage("Microsoft.Usage", "CA2240:ImplementISerializableCorrectly"), Serializable]
+#pragma warning disable CA2229 // Implement serialization constructors
+#pragma warning disable CA1032 // Implement standard exception constructors
+#pragma warning disable RCS1194 // Implement exception constructors.
     public class RestException : Exception
+#pragma warning restore RCS1194 // Implement exception constructors.
+#pragma warning restore CA1032 // Implement standard exception constructors
+#pragma warning restore CA2229 // Implement serialization constructors
     {
         // ReSharper disable once SuggestBaseTypeForParameter
         public RestException(
@@ -42,7 +49,9 @@ namespace LibroLib.WebUtils.Rest
             get { return webExceptionStatus; }
         }
 
+#pragma warning disable CA2235 // Mark all non-serializable fields
         private readonly int? statusCode;
+#pragma warning restore CA2235 // Mark all non-serializable fields
         private readonly WebExceptionStatus webExceptionStatus;
     }
 }

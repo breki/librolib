@@ -30,6 +30,7 @@ namespace LibroLib.WebUtils.Rest
         [NotNull]
         IRestClient Credentials([CanBeNull] ICredentials credentials);
         [NotNull]
+#pragma warning disable CA1054 // Uri parameters should not be strings
         IRestClient Delete([NotNull] string url);
         [SuppressMessage("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = nameof(Do))]
         [NotNull]
@@ -45,6 +46,7 @@ namespace LibroLib.WebUtils.Rest
         IRestClient PreAuthenticate();
         [NotNull]
         IRestClient Put([NotNull] string url);
+#pragma warning restore CA1054 // Uri parameters should not be strings
 
         /// <summary>
         /// Specifies the request body as a string text.
