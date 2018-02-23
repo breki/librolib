@@ -8,9 +8,9 @@ namespace LibroLib.Tests.CommonTests.ConsoleShellsTests
         public TestStandardConsoleCommand()
         {
             AddArg("arg1", "a string argument").Value((x, env) => arg1 = x);
-            AddArg ("Arg2", "an int argument").IntValue ((x, env) => arg2 = x).IsOptional ();
-            AddSetting ("setting1", "an int setting").Alias("s1").IntValue((x, env) => intSetting = x);
-            AddSetting ("Setting2", "a string setting").Value((x, env) => stringSetting = x);
+            AddArg("Arg2", "an int argument").IntValue((x, env) => arg2 = x).IsOptional();
+            AddSetting("setting1", "an int setting").Alias("s1").IntValue((x, env) => intSetting = x);
+            AddSetting("Setting2", "a string setting").Value((x, env) => stringSetting = x);
             AddSwitch("switch1", "a switch", (x, env) => Switch1 = x).Alias("sw1");
         }
 

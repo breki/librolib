@@ -24,13 +24,13 @@ namespace LibroLib.WebUtils.Ftp
         void IFtpChannel.Connect(byte[] hostAddress, int? port)
         {
             Contract.Requires(hostAddress != null);
-            Contract.Requires (port == null || port.Value <= 0xffff);
+            Contract.Requires(port == null || port.Value <= 0xffff);
         }
 
         void IFtpChannel.Connect(string host, int? port)
         {
             Contract.Requires(host != null);
-            Contract.Requires (port == null || port.Value <= 0xffff);
+            Contract.Requires(port == null || port.Value <= 0xffff);
         }
 
         void IFtpChannel.Disconnect()

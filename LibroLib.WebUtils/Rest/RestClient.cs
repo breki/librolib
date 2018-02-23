@@ -36,7 +36,7 @@ namespace LibroLib.WebUtils.Rest
 
         public IRestClient AddHeader(HttpRequestHeader header, string value)
         {
-            requestHeaders.Add (header, value);
+            requestHeaders.Add(header, value);
             return this;
         }
 
@@ -126,7 +126,7 @@ namespace LibroLib.WebUtils.Rest
 
         public IRestClient Do()
         {
-            PrepareWebRequest ();
+            PrepareWebRequest();
 
             webRequest.PreAuthenticate = preAuthenticate;
             webRequest.UseDefaultCredentials = useDefaultCredentials;
@@ -141,27 +141,27 @@ namespace LibroLib.WebUtils.Rest
 
             if (requestBodySet)
             {
-                using (Stream requestStream = webRequest.GetRequestStream ())
-                using (StreamWriter writer = new StreamWriter (requestStream))
-                    writer.Write (requestString);
+                using (Stream requestStream = webRequest.GetRequestStream())
+                using (StreamWriter writer = new StreamWriter(requestStream))
+                    writer.Write(requestString);
             }
 
             response = new RestClientResponse(webRequest, requestBodySet);
             return this;
         }
 
-        public void Dispose ()
+        public void Dispose()
         {
-            Dispose (true);
-            GC.SuppressFinalize (this);
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
-        private void Dispose (bool disposing)
+        private void Dispose(bool disposing)
         {
             if (disposed)
                 return;
 
-            // clean native resources         
+            // clean native resources
 
             if (disposing)
             {
@@ -175,7 +175,7 @@ namespace LibroLib.WebUtils.Rest
             disposed = true;
         }
 
-        private void PrepareWebRequest ()
+        private void PrepareWebRequest()
         {
             if (url == null)
                 throw new InvalidOperationException("You need to call one of the methods that set the request URL first");
@@ -192,7 +192,7 @@ namespace LibroLib.WebUtils.Rest
         private string url;
         private string method;
         private bool preAuthenticate;
-        private readonly NameValueCollection queryParameters = new NameValueCollection ();
+        private readonly NameValueCollection queryParameters = new NameValueCollection();
         private readonly CookieContainer requestCookies = new CookieContainer();
         private readonly WebHeaderCollection requestHeaders = new WebHeaderCollection();
         private bool requestBodySet;

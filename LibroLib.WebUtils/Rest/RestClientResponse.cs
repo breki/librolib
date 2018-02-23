@@ -43,32 +43,32 @@ namespace LibroLib.WebUtils.Rest
 
         public byte[] AsBytes()
         {
-            using (MemoryStream memoryStream = new MemoryStream ())
+            using (MemoryStream memoryStream = new MemoryStream())
             {
-                responseStream.CopyTo (memoryStream);
-                return memoryStream.ToArray ();
+                responseStream.CopyTo(memoryStream);
+                return memoryStream.ToArray();
             }
         }
 
         public JObject AsJson()
         {
-            JsonSerializer serializer = new JsonSerializer ();
+            JsonSerializer serializer = new JsonSerializer();
 
-            using (var sr = new StreamReader (responseStream))
-            using (var jsonTextReader = new JsonTextReader (sr))
+            using (var sr = new StreamReader(responseStream))
+            using (var jsonTextReader = new JsonTextReader(sr))
             {
-                return JObject.FromObject(serializer.Deserialize (jsonTextReader), serializer);
+                return JObject.FromObject(serializer.Deserialize(jsonTextReader), serializer);
             }
         }
 
         public JArray AsJsonArray()
         {
-            JsonSerializer serializer = new JsonSerializer ();
+            JsonSerializer serializer = new JsonSerializer();
 
-            using (var sr = new StreamReader (responseStream))
-            using (var jsonTextReader = new JsonTextReader (sr))
+            using (var sr = new StreamReader(responseStream))
+            using (var jsonTextReader = new JsonTextReader(sr))
             {
-                return JArray.FromObject(serializer.Deserialize (jsonTextReader), serializer);
+                return JArray.FromObject(serializer.Deserialize(jsonTextReader), serializer);
             }
         }
 
@@ -93,11 +93,11 @@ namespace LibroLib.WebUtils.Rest
         {
             if (disposed)
                 return;
-            // clean native resources         
+            // clean native resources
 
             if (disposing)
             {
-                // clean managed resources  
+                // clean managed resources
                 if (webResponse != null)
                 {
                     webResponse.Close();

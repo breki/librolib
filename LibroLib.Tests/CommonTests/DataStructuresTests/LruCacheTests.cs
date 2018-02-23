@@ -20,15 +20,15 @@ namespace LibroLib.Tests.CommonTests.DataStructuresTests
         public void ItemAddedTwiceShouldBeUpdated()
         {
             const int Key = 1;
-            cache.Add (Key, 3);
-            cache.Add (Key, 4);
-            Assert.AreEqual (4, cache.Get (Key));
+            cache.Add(Key, 3);
+            cache.Add(Key, 4);
+            Assert.AreEqual(4, cache.Get(Key));
         }
 
         [Test]
         public void ItemAddedShouldBeCached()
         {
-            cache.Add (1, 2);
+            cache.Add(1, 2);
             Assert.IsTrue(cache.IsCached(1));
         }
 
@@ -43,26 +43,26 @@ namespace LibroLib.Tests.CommonTests.DataStructuresTests
         [Test]
         public void ItemAddedLaterShouldBeCached()
         {
-            cache.Add (1, 2);
+            cache.Add(1, 2);
             Assert.IsTrue(cache.IsCached(1));
         }
 
         [Test]
         public void FetchingItemNotInCache()
         {
-            cache.Add (1, 2);
-            cache.Add (2, 3);
-            Assert.AreEqual (2, cache.Get(1));
+            cache.Add(1, 2);
+            cache.Add(2, 3);
+            Assert.AreEqual(2, cache.Get(1));
         }
 
-        [Test, Category ("integration")]
+        [Test, Category("integration")]
         public void RandomScenario()
         {
             Stopwatch s = new Stopwatch();
             s.Start();
 
             cache = new LruCache<int, int>(100, ReadItemFunc, WriteItemAction);
-            Random rnd = new Random (1);
+            Random rnd = new Random(1);
 
             const int TotalItemsCount = 10000;
             for (int i = 0; i < TotalItemsCount; i++)

@@ -65,10 +65,10 @@ namespace LibroLib.Tests.CommonTests
                 .Returns(ResourceFullPath);
         }
 
+        private const string ResourcePathInCache = @"Images\image.jpg";
+        private const string ResourceFullPath = @"d:\app\Cache\Images\image.jpg";
         private IDiskCache cache;
         private Mock<IFileSystem> fileSystem;
         private Mock<IApplicationInfo> applicationInfo;
-        private const string ResourcePathInCache = @"Images\image.jpg";
-        private const string ResourceFullPath = @"d:\app\Cache\Images\image.jpg";
     }
 }

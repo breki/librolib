@@ -15,13 +15,13 @@ namespace LibroLib.WebUtils.Ftp
                 AddressFamily.InterNetwork,
                 SocketType.Stream,
                 ProtocolType.Tcp);
-            
+
             int portToUse = port ?? 21;
             Contract.Assume(portToUse >= 0 && portToUse <= 0xffff);
             IPEndPoint endPoint = new IPEndPoint(
                 new IPAddress(hostAddress),
                 portToUse);
-            
+
             clientSocket.Connect(endPoint);
         }
 
@@ -37,8 +37,8 @@ namespace LibroLib.WebUtils.Ftp
                     "No host addresses found for '{0}'.".Fmt(host));
 
             IPAddress ipAddress = hostAddresses[0];
-            Contract.Assume (ipAddress != null);
-            
+            Contract.Assume(ipAddress != null);
+
             Connect(ipAddress.GetAddressBytes(), port);
         }
 

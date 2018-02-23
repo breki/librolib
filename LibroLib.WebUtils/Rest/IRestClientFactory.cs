@@ -7,7 +7,7 @@ namespace LibroLib.WebUtils.Rest
     [ContractClass(typeof(IRestClientFactoryContract))]
     public interface IRestClientFactory : IFactory
     {
-        [NotNull] 
+        [NotNull]
         IRestClient CreateRestClient();
     }
 

@@ -7,7 +7,7 @@
             this.webConfiguration = webConfiguration;
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")]
         public IRestClient CreateRestClient()
         {
 #pragma warning disable CC0022 // Should dispose object

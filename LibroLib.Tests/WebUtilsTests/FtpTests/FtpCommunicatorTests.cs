@@ -61,7 +61,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             StubChannelResponse(" 300 test\r\n");
 
             comm.AttachToChannel(channel.Object);
-            Assert.Throws<FtpException>(delegate { comm.ReadResponse (); });
+            Assert.Throws<FtpException>(delegate { comm.ReadResponse(); });
         }
 
         [SetUp]
@@ -71,7 +71,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             comm = new FtpCommunicator();
         }
 
-        private void StubChannelResponse (string text)
+        private void StubChannelResponse(string text)
         {
             channel.Setup(x => x.Receive(It.IsAny<Stream>()))
                 .Callback(new Action<Stream>(s => WriteToStream(s, text)));

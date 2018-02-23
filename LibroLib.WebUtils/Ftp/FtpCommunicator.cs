@@ -24,7 +24,7 @@ namespace LibroLib.WebUtils.Ftp
             string responseText = ReadResponseLine();
 
             if (responseText == null)
-                throw new FtpException ("responseText == null");
+                throw new FtpException("responseText == null");
 
             if (singlelineResponseRegex.IsMatch(responseText))
                 return new FtpServerResponse(responseText);
@@ -46,9 +46,9 @@ namespace LibroLib.WebUtils.Ftp
                 if (!singlelineResponseRegex.IsMatch(responseText))
                     continue;
 
-                Contract.Assume (responseText.Length >= 4);
+                Contract.Assume(responseText.Length >= 4);
 
-                FtpServerResponse response = new FtpServerResponse (responseText);
+                FtpServerResponse response = new FtpServerResponse(responseText);
                 if (response.ReturnCode == firstResponseLine.ReturnCode)
                     return firstResponseLine;
             }

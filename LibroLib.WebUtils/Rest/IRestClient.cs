@@ -9,7 +9,7 @@ namespace LibroLib.WebUtils.Rest
     [ContractClass(typeof(IRestClientContract))]
     public interface IRestClient : IDisposable
     {
-        [NotNull] 
+        [NotNull]
         WebHeaderCollection RequestHeaders { get; }
         IRestClientResponse Response { get; }
         int StatusCode { get; }
@@ -21,30 +21,30 @@ namespace LibroLib.WebUtils.Rest
         /// <returns>This same instance of <see cref="IRestClient"/>.</returns>
         [NotNull]
         IRestClient AddCookie([NotNull] Cookie cookie);
-        [NotNull] 
+        [NotNull]
         IRestClient AddHeader([NotNull] string name, [CanBeNull] string value);
         [NotNull]
-        IRestClient AddHeader (HttpRequestHeader header, [CanBeNull] string value);
+        IRestClient AddHeader(HttpRequestHeader header, [CanBeNull] string value);
         [NotNull]
-        IRestClient AddQuery ([NotNull] string name, [CanBeNull] object value);
+        IRestClient AddQuery([NotNull] string name, [CanBeNull] object value);
         [NotNull]
-        IRestClient Credentials ([CanBeNull] ICredentials credentials);
+        IRestClient Credentials([CanBeNull] ICredentials credentials);
         [NotNull]
-        IRestClient Delete ([NotNull] string url);
-        [SuppressMessage ("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = nameof(Do))]
+        IRestClient Delete([NotNull] string url);
+        [SuppressMessage("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = nameof(Do))]
         [NotNull]
         IRestClient Do();
-        [SuppressMessage ("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = nameof(Get))]
+        [SuppressMessage("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = nameof(Get))]
         [NotNull]
-        IRestClient Get ([NotNull] string url);
+        IRestClient Get([NotNull] string url);
         [NotNull]
-        IRestClient Head ([NotNull] string url);
+        IRestClient Head([NotNull] string url);
         [NotNull]
-        IRestClient Post ([NotNull] string url);
+        IRestClient Post([NotNull] string url);
         [NotNull]
-        IRestClient PreAuthenticate ();
+        IRestClient PreAuthenticate();
         [NotNull]
-        IRestClient Put ([NotNull] string url);
+        IRestClient Put([NotNull] string url);
 
         /// <summary>
         /// Specifies the request body as a string text.
@@ -52,9 +52,9 @@ namespace LibroLib.WebUtils.Rest
         /// <param name="text">The text of the request.</param>
         /// <returns>This same instance of <see cref="IRestClient"/>.</returns>
         [NotNull]
-        IRestClient Request ([NotNull] string text);
+        IRestClient Request([NotNull] string text);
         [NotNull]
-        IRestClient UseDefaultCredentials ();
+        IRestClient UseDefaultCredentials();
         [NotNull]
         IRestClient WithConfiguration([NotNull] IWebConfiguration webConfiguration);
         [NotNull]
@@ -101,9 +101,9 @@ namespace LibroLib.WebUtils.Rest
 
         IRestClient IRestClient.AddHeader(string name, string value)
         {
-            Contract.Requires (name != null);
-            Contract.Ensures (ReferenceEquals(this, Contract.Result<IRestClient>()));
-            throw new NotImplementedException ();
+            Contract.Requires(name != null);
+            Contract.Ensures(ReferenceEquals(this, Contract.Result<IRestClient>()));
+            throw new NotImplementedException();
         }
 
         IRestClient IRestClient.AddHeader(HttpRequestHeader header, string value)
@@ -119,11 +119,11 @@ namespace LibroLib.WebUtils.Rest
             throw new NotImplementedException();
         }
 
-        IRestClient IRestClient.Credentials (ICredentials credentials)
+        IRestClient IRestClient.Credentials(ICredentials credentials)
         {
             Contract.Requires(credentials != null);
-            Contract.Ensures (Contract.Result<IRestClient>() != null);
-            throw new NotImplementedException ();
+            Contract.Ensures(Contract.Result<IRestClient>() != null);
+            throw new NotImplementedException();
         }
 
         IRestClient IRestClient.Delete(string url)
@@ -160,20 +160,20 @@ namespace LibroLib.WebUtils.Rest
             throw new NotImplementedException();
         }
 
-        IRestClient IRestClient.PreAuthenticate ()
+        IRestClient IRestClient.PreAuthenticate()
         {
             Contract.Ensures(Contract.Result<IRestClient>() != null);
             throw new NotImplementedException();
         }
 
-        IRestClient IRestClient.Put (string url)
+        IRestClient IRestClient.Put(string url)
         {
             Contract.Requires(url != null);
             Contract.Ensures(Contract.Result<IRestClient>() != null);
             throw new NotImplementedException();
         }
 
-        IRestClient IRestClient.UseDefaultCredentials ()
+        IRestClient IRestClient.UseDefaultCredentials()
         {
             Contract.Ensures(Contract.Result<IRestClient>() != null);
             throw new NotImplementedException();

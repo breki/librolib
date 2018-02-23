@@ -17,8 +17,8 @@ namespace LibroLib.WebUtils.Ftp
         //IList<string> ListFiles(string directory);
 
         void EnsurePathExists(
-            string path, 
-            HashSet<string> createdDirectories, 
+            string path,
+            HashSet<string> createdDirectories,
             Action<string> beforeDirectoryCreatedCallback);
 
         void UploadFile(string localFileName, string remoteFileName);
@@ -64,10 +64,10 @@ namespace LibroLib.WebUtils.Ftp
         }
 
         void IFtpSession.UploadFiles(
-            IExecutionContext taskExecutionContext, 
-            FileSet localFiles, 
-            string rootRemoteDirectory, 
-            Action<string> beforeDirectoryCreatedCallback, 
+            IExecutionContext taskExecutionContext,
+            FileSet localFiles,
+            string rootRemoteDirectory,
+            Action<string> beforeDirectoryCreatedCallback,
             Action<string, string> beforeFileUploadedCallback)
         {
             Contract.Requires(localFiles != null);

@@ -13,7 +13,7 @@ namespace LibroLib.WebUtils.WebClients
     public class LibroLibWebClient : IWebClient
     {
         public LibroLibWebClient(
-            IWebClientFactory webClientFactory, 
+            IWebClientFactory webClientFactory,
             IWebConfiguration configuration,
             IFileSystem fileSystem)
         {
@@ -57,8 +57,8 @@ namespace LibroLib.WebUtils.WebClients
                 timeout,
                 s =>
                 {
-                    XmlSerializer serializer = new XmlSerializer (typeof(T));
-                    value = (T)serializer.Deserialize (s);
+                    XmlSerializer serializer = new XmlSerializer(typeof(T));
+                    value = (T)serializer.Deserialize(s);
                 });
 
             return value;
@@ -69,7 +69,7 @@ namespace LibroLib.WebUtils.WebClients
             using (FactoryLease<WebClientEx> webClient =
                 new FactoryLease<WebClientEx>(webClientFactory.CreateInnerWebClient(), webClientFactory))
             {
-                ConfigureWebClient (webClient.Obj, timeout);
+                ConfigureWebClient(webClient.Obj, timeout);
 
                 try
                 {
@@ -96,23 +96,23 @@ namespace LibroLib.WebUtils.WebClients
 
             Log(false, "Sending the request to URL '{0}'", url);
 
-            using (WebResponse response = request.GetResponse ())
+            using (WebResponse response = request.GetResponse())
             {
                 try
                 {
-                    using (Stream stream = response.GetResponseStream ())
+                    using (Stream stream = response.GetResponseStream())
                     {
-                        Log (false, "Received response stream from URL '{0}'", url);
+                        Log(false, "Received response stream from URL '{0}'", url);
 
                         streamAction(stream);
                     }
 
-                    Log (false, "Finishing downloading data from URL '{0}'", url);
+                    Log(false, "Finishing downloading data from URL '{0}'", url);
                 }
                 catch (WebException ex)
                 {
                     Log (
-                        true, 
+                        true,
                         "DownloadData (url='{0}') failed. Reason : {1}",
                         url,
                         ex);
@@ -126,16 +126,16 @@ namespace LibroLib.WebUtils.WebClients
             using (FactoryLease<WebClientEx> webClient =
                 new FactoryLease<WebClientEx>(webClientFactory.CreateInnerWebClient(), webClientFactory))
             {
-                ConfigureWebClient (webClient.Obj, timeout);
+                ConfigureWebClient(webClient.Obj, timeout);
 
                 try
                 {
-                    return webClient.Obj.DownloadData (url);
+                    return webClient.Obj.DownloadData(url);
                 }
                 catch (WebException ex)
                 {
                     Log (
-                        true, 
+                        true,
                         "DownloadData (url='{0}') failed. Reason : {1}",
                         url,
                         ex);
@@ -153,9 +153,9 @@ namespace LibroLib.WebUtils.WebClients
         public byte[] UploadData(Uri url, byte[] data, TimeSpan timeout)
         {
             using (FactoryLease<WebClientEx> webClient =
-                new FactoryLease<WebClientEx>(webClientFactory.CreateInnerWebClient (), webClientFactory))
+                new FactoryLease<WebClientEx>(webClientFactory.CreateInnerWebClient(), webClientFactory))
             {
-                ConfigureWebClient (webClient.Obj, timeout);
+                ConfigureWebClient(webClient.Obj, timeout);
 
                 try
                 {
@@ -164,7 +164,7 @@ namespace LibroLib.WebUtils.WebClients
                 catch (WebException ex)
                 {
                     Log (
-                        true, 
+                        true,
                         "UploadData (url='{0}') failed. Reason : {1}",
                         url,
                         ex);
@@ -176,18 +176,18 @@ namespace LibroLib.WebUtils.WebClients
         public byte[] UploadData(Uri url, string method, byte[] data, TimeSpan timeout)
         {
             using (FactoryLease<WebClientEx> webClient =
-                new FactoryLease<WebClientEx>(webClientFactory.CreateInnerWebClient (), webClientFactory))
+                new FactoryLease<WebClientEx>(webClientFactory.CreateInnerWebClient(), webClientFactory))
             {
-                ConfigureWebClient (webClient.Obj, timeout);
+                ConfigureWebClient(webClient.Obj, timeout);
 
                 try
                 {
-                    return webClient.Obj.UploadData (url, method, data);
+                    return webClient.Obj.UploadData(url, method, data);
                 }
                 catch (WebException ex)
                 {
                     Log (
-                        true, 
+                        true,
                         "UploadData (url='{0}') failed. Reason : {1}",
                         url,
                         ex);
@@ -207,20 +207,20 @@ namespace LibroLib.WebUtils.WebClients
             if (disposed)
                 return;
 
-            // clean native resources         
+            // clean native resources
 
             if (disposing)
             {
-                // clean managed resources            
+                // clean managed resources
             }
 
             disposed = true;
         }
 
-        [SuppressMessage ("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
-        private WebRequest PrepareRequest (Uri url, TimeSpan timeout)
+        [SuppressMessage("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
+        private WebRequest PrepareRequest(Uri url, TimeSpan timeout)
         {
-            Contract.Requires (url != null);
+            Contract.Requires(url != null);
 
             Log(false, "Preparing request for URL '{0}', timeout = {1}", url, timeout);
 
@@ -234,14 +234,14 @@ namespace LibroLib.WebUtils.WebClients
             }
 
             if (configuration.UseProxy)
-                request.Proxy = ConfigureWebProxySettings ();
+                request.Proxy = ConfigureWebProxySettings();
 
             return request;
         }
 
-        private void ConfigureWebClient (WebClientEx webClient, TimeSpan timeout)
+        private void ConfigureWebClient(WebClientEx webClient, TimeSpan timeout)
         {
-            Contract.Requires (webClient != null);
+            Contract.Requires(webClient != null);
 
             webClient.SetTimeout(timeout);
 
@@ -260,9 +260,9 @@ namespace LibroLib.WebUtils.WebClients
         private WebProxy ConfigureWebProxySettings()
         {
             Log (
-                false, 
+                false,
                 "Configuring HTTP proxy to '{0}:{1}'",
-                configuration.ProxyHost, 
+                configuration.ProxyHost,
                 configuration.ProxyPort);
 
             WebProxy webProxy = new WebProxy(configuration.ProxyHost, configuration.ProxyPort);
@@ -270,8 +270,8 @@ namespace LibroLib.WebUtils.WebClients
             return webProxy;
         }
 
-        [StringFormatMethod ("format")]
-        private void Log (bool isError, string format, params object[] args)
+        [StringFormatMethod("format")]
+        private void Log(bool isError, string format, params object[] args)
         {
             if (LogAction == null)
                 return;
