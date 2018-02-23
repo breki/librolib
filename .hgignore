@@ -27,3 +27,4 @@ TestResult.xml
 TestResult.xml
 *.patch
 .vs/
+_NCrunch_LibroLib/*

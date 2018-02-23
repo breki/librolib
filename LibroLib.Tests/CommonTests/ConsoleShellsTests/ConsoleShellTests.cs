@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Text;
 using LibroLib.ConsoleShells;
+using Moq;
 using NUnit.Framework;
-using Rhino.Mocks;
 
 namespace LibroLib.Tests.CommonTests.ConsoleShellsTests
 {
@@ -194,14 +194,14 @@ COMMANDS:
             shell.ErrWriter = new StreamWriter (errStream, new UTF8Encoding (false));
             shell.Banner = "Unit test console";
 
-            IConsoleCommand mockCommand = MockRepository.GenerateStub<IConsoleCommand>();
-            mockCommand.Stub(x => x.CommandId).Return("cmd1");
-            mockCommand.Stub(x => x.Description).Return("performs action 1");
-            mockCommand.Stub(x => x.ConstructUsageHelpText(null)).IgnoreArguments()
-                .Return(@"   something to be used
+            Mock<IConsoleCommand> mockCommand = new Mock<IConsoleCommand>();
+            mockCommand.Setup(x => x.CommandId).Returns("cmd1");
+            mockCommand.Setup(x => x.Description).Returns("performs action 1");
+            mockCommand.Setup(x => x.ConstructUsageHelpText(It.IsAny<string>()))
+                .Returns(@"   something to be used
    bla bla");
 
-            shell.RegisterCommand(mockCommand);
+            shell.RegisterCommand(mockCommand.Object);
 
             TestStandardConsoleCommand cmd2 = new TestStandardConsoleCommand();
             shell.RegisterCommand(cmd2);
