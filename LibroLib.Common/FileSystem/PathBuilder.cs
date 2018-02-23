@@ -154,7 +154,9 @@ namespace LibroLib.FileSystem
             pathRoot = Path.GetPathRoot(path);
 
             // NOTE: "!path.Equals (pathRoot)" this is special handling needed for UNC paths
-            while (!string.IsNullOrEmpty(path) && !path.Equals(pathRoot))
+            while (!string.IsNullOrEmpty(path) && !path.Equals(
+                       pathRoot,
+                       StringComparison.OrdinalIgnoreCase))
             {
                 string pathComponent = Path.GetFileName(path);
 
@@ -163,7 +165,9 @@ namespace LibroLib.FileSystem
 
                 path = Path.GetDirectoryName(path);
 
-                if (path == null || path.Equals(pathRoot))
+                if (path == null || path.Equals(
+                        pathRoot,
+                        StringComparison.OrdinalIgnoreCase))
                     break;
             }
         }

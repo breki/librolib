@@ -32,13 +32,7 @@ namespace LibroLib.Threading
             return wrappedSemaphore.Release(releaseCount);
         }
 
-        public override void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        private void Dispose(bool disposing)
+        protected override void Dispose(bool disposing)
         {
             if (disposed)
                 return;
