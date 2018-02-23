@@ -1,3 +1,8 @@
+- .NET Core migration
+	- fix projects
+	- add stylecop and fxcop
+	- fix packaging
+
 - fix IFtpSession to work with the test FTP server
 
 - add support for cookies in IRestClient
