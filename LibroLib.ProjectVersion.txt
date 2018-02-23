@@ -1,3 +1,9 @@
+2.0.0.0
+- migrated to .NET Standard
+- ThreadWrapper now sets the thread cultures before running the threadAction
+- ThreadWrapper no longer uses Thread.Abort() method since it is not supported
+	on .NET Core
+
 1.7.0.0
 - MultiSet has a new TryGetValue method
 - FtpChannelUsingSocket.Connect() method now uses Dns.GetHostAddresses() method

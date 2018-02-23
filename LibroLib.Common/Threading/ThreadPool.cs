@@ -51,11 +51,11 @@ namespace LibroLib.Threading
                     }
                 }
 
-                foreach (IThread thread in remainingThreads)
-                {
-                    //log.WarnFormat("Aborting thread {0} since it failed to stop normally", thread.ManagedThreadId);
-                    thread.Abort();
-                }
+                //foreach (IThread thread in remainingThreads)
+                //{
+                //    //log.WarnFormat("Aborting thread {0} since it failed to stop normally", thread.ManagedThreadId);
+                //    thread.Abort();
+                //}
 
                 threads.Clear();
             }

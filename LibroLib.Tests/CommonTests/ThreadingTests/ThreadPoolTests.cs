@@ -44,9 +44,11 @@ namespace LibroLib.Tests.CommonTests.ThreadingTests
         {
             using (var pool = new ThreadPool (syncObjectsFactory))
             {
-                IThread thread = pool.CreateThread(t => Thread.Sleep(TimeSpan.FromMinutes(1)));
+                IThread thread = pool.CreateThread(
+                    t => Thread.Sleep(TimeSpan.FromMinutes(1)));
                 thread.Start();
-                ThreadPoolStopSettings threadPoolStopSettings = new ThreadPoolStopSettings ();
+                ThreadPoolStopSettings threadPoolStopSettings =
+                    new ThreadPoolStopSettings();
                 threadPoolStopSettings.InitialStoppingTimeout = TimeSpan.Zero;
                 threadPoolStopSettings.MaxStoppingLoops = 1;
                 threadPoolStopSettings.SubsequentStoppingTimeout = TimeSpan.Zero;

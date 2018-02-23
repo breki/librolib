@@ -17,10 +17,13 @@ namespace LibroLib.Threading
             Contract.Requires(threadAction != null);
 
 #pragma warning disable CC0031 // Check for null before calling a delegate
-            thread = new Thread(() => threadAction(this));
+            thread = new Thread(() =>
+                {
+                    thread.CurrentCulture = CultureInfo.InvariantCulture;
+                    thread.CurrentUICulture = CultureInfo.InvariantCulture;
+                    threadAction(this);
+                });
 #pragma warning restore CC0031 // Check for null before calling a delegate
-            thread.CurrentCulture = CultureInfo.InvariantCulture;
-            thread.CurrentUICulture = CultureInfo.InvariantCulture;
             threadStopSignal = syncObjectsFactory.CreateManualResetSignal(false);
         }
 
@@ -56,7 +59,9 @@ namespace LibroLib.Threading
 
         public void Abort()
         {
-            thread.Abort();
+            throw new NotSupportedException("ThreadWrapper no longer supports Abort method since it is not supported on.NET Core");
+
+            //thread.Abort();
         }
 
         public void Dispose()
@@ -70,13 +75,13 @@ namespace LibroLib.Threading
             if (disposed)
                 return;
 
-            // clean native resources         
-
             if (disposing)
             {
-                // clean managed resources    
-                if (thread != null)
-                    thread.Abort();
+                // ThreadWrapper no longer uses Thread.Abort() method since it 
+                // is not supported on.NET Core
+
+                //if (thread != null)
+                //    thread.Abort();
 
                 if (threadStopSignal != null)
                     threadStopSignal.Dispose();
