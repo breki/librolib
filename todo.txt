@@ -1,7 +1,5 @@
 - .NET Core migration
-	- add stylecop and fxcop
-	- remove old packets folder
-		- or force new packets into it
+	- new Flubu for builds?
 	- fix packaging
 
 - fix IFtpSession to work with the test FTP server
