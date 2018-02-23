@@ -12,15 +12,16 @@ namespace LibroLib.FileSystem
 
         public FileSet(string baseDir, IEnumerable<string> files)
         {
-            Contract.Requires (files != null);
+            Contract.Requires(files != null);
 
             this.baseDir = baseDir;
             this.files.AddRange(files);
         }
 
-        public FileSet(IEnumerable<string> files) : this(null, files)
+        public FileSet(IEnumerable<string> files)
+            : this(null, files)
         {
-            Contract.Requires (files != null);
+            Contract.Requires(files != null);
         }
 
         public string BaseDir

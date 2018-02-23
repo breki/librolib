@@ -3,18 +3,18 @@ using System.Diagnostics.Contracts;
 
 namespace LibroLib.ConsoleShells
 {
-    [ContractClass (typeof(IConsoleCommandContract))]
+    [ContractClass(typeof(IConsoleCommandContract))]
     public interface IConsoleCommand
     {
         string CommandId { get; }
         object Description { get; }
 
         int? ParseArgs(IConsoleEnvironment consoleEnvironment, IList<string> args);
-        string ConstructUsageHelpText (string indentation);
+        string ConstructUsageHelpText(string indentation);
         int Execute(IConsoleEnvironment env);
     }
 
-    [ContractClassFor (typeof(IConsoleCommand))]
+    [ContractClassFor(typeof(IConsoleCommand))]
     // ReSharper disable once InconsistentNaming
     internal abstract class IConsoleCommandContract : IConsoleCommand
     {
@@ -22,7 +22,7 @@ namespace LibroLib.ConsoleShells
         {
             get
             {
-                Contract.Ensures (Contract.Result<string>() != null);
+                Contract.Ensures(Contract.Result<string>() != null);
                 return default(string);
             }
         }

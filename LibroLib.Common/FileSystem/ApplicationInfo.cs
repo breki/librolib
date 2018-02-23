@@ -12,7 +12,7 @@ namespace LibroLib.FileSystem
         {
             get
             {
-                Contract.Ensures (Contract.Result<string>() != null);
+                Contract.Ensures(Contract.Result<string>() != null);
 
                 if (appRootDirectory == null)
                 {
@@ -58,7 +58,7 @@ namespace LibroLib.FileSystem
 
         public bool IsMono
         {
-            get 
+            get
             {
                 return Type.GetType("Mono.Runtime") != null;
             }
@@ -66,7 +66,7 @@ namespace LibroLib.FileSystem
 
         public string MonoVersion
         {
-            get 
+            get
             {
                 return MonoVersionStatic;
             }
@@ -79,8 +79,8 @@ namespace LibroLib.FileSystem
 
         public long MemoryUsed
         {
-            get 
-            { 
+            get
+            {
                 if (IsMono)
                     return Process.GetCurrentProcess().PrivateMemorySize64;
 
@@ -97,12 +97,12 @@ namespace LibroLib.FileSystem
         {
             get
             {
-                Type type = Type.GetType ("Mono.Runtime");
+                Type type = Type.GetType("Mono.Runtime");
                 if (type != null)
                 {
-                    MethodInfo displayName = type.GetMethod ("GetDisplayName", BindingFlags.NonPublic | BindingFlags.Static);
+                    MethodInfo displayName = type.GetMethod("GetDisplayName", BindingFlags.NonPublic | BindingFlags.Static);
                     if (displayName != null)
-                        return (string)displayName.Invoke (null, null);
+                        return (string)displayName.Invoke(null, null);
                 }
 
                 return null;
@@ -111,7 +111,7 @@ namespace LibroLib.FileSystem
 
         public string GetAppDirectoryPath(string subpath)
         {
-            string path = Path.Combine (AppRootDirectory, subpath);
+            string path = Path.Combine(AppRootDirectory, subpath);
             return path;
         }
 

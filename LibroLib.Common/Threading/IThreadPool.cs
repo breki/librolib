@@ -24,9 +24,9 @@ namespace LibroLib.Threading
 
         void IThreadPool.StopAllThreads(ThreadPoolStopSettings settings)
         {
-            Contract.Requires (settings != null);
+            Contract.Requires(settings != null);
 
-            throw new NotImplementedException ();
+            throw new NotImplementedException();
         }
 
         void IDisposable.Dispose()

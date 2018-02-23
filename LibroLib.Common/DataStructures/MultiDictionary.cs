@@ -24,9 +24,9 @@ namespace LibroLib.DataStructures
             get { return keysValues.Keys; }
         }
 
-        public void Add (TKey key, TValue value)
+        public void Add(TKey key, TValue value)
         {
-            Contract.Requires (!ReferenceEquals (key, null));
+            Contract.Requires(!ReferenceEquals(key, null));
 
             List<TValue> values;
             if (!keysValues.TryGetValue(key, out values))
@@ -38,21 +38,21 @@ namespace LibroLib.DataStructures
             values.Add(value);
         }
 
-        public void Clear ()
+        public void Clear()
         {
             keysValues.Clear();
         }
 
         public void ClearValues(TKey key)
         {
-            Contract.Requires (!ReferenceEquals (key, null));
+            Contract.Requires(!ReferenceEquals(key, null));
 
             keysValues.Remove(key);
         }
 
         public bool ContainsKey(TKey key)
         {
-            Contract.Requires (!ReferenceEquals (key, null));
+            Contract.Requires(!ReferenceEquals(key, null));
             return keysValues.ContainsKey(key);
         }
 
@@ -60,15 +60,15 @@ namespace LibroLib.DataStructures
         {
             get
             {
-                Contract.Requires (!ReferenceEquals (key, null));
+                Contract.Requires(!ReferenceEquals(key, null));
 
                 return keysValues[key];
             }
         }
 
-        public bool TryGetValues (TKey key, out IList<TValue> values)
+        public bool TryGetValues(TKey key, out IList<TValue> values)
         {
-            Contract.Requires (!ReferenceEquals (key, null));
+            Contract.Requires(!ReferenceEquals(key, null));
 
             List<TValue> listValues;
             if (keysValues.TryGetValue(key, out listValues))
@@ -80,7 +80,7 @@ namespace LibroLib.DataStructures
             values = null;
             return false;
         }
-        
+
         public IEnumerator<KeyValuePair<TKey, List<TValue>>> GetEnumerator()
         {
             return keysValues.GetEnumerator();

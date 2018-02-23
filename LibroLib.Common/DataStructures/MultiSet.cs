@@ -5,17 +5,17 @@ using JetBrains.Annotations;
 namespace LibroLib.DataStructures
 {
     /// <summary>
-    /// Implementation of a dictionary that allows storing of multiple values 
-    /// for the same key. Adding duplicate values is allowed, but they are 
+    /// Implementation of a dictionary that allows storing of multiple values
+    /// for the same key. Adding duplicate values is allowed, but they are
     /// merged into a single value.
     /// </summary>
     /// <remarks>
-    /// If you need a multi-dictionary that retains duplicate values, 
+    /// If you need a multi-dictionary that retains duplicate values,
     /// use <see cref="MultiDictionary{TKey,TValue}"/> class.</remarks>
     /// <typeparam name="TKey">
-    /// Key type. Make sure it has properly implemented equality and hash 
+    /// Key type. Make sure it has properly implemented equality and hash
     /// methods.</typeparam>
-    /// <typeparam name="TValue">Value type. Make sure it has properly 
+    /// <typeparam name="TValue">Value type. Make sure it has properly
     /// implemented equality and hash methods.</typeparam>
     public class MultiSet<TKey, TValue>
     {

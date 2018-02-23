@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace LibroLib.Misc
 {
     public class FactoryLease<T> : IDisposable
-        where T : class 
+        where T : class
     {
         [UsedImplicitly]
         public FactoryLease(T obj, Action<T> releaseMethod)
@@ -13,7 +13,7 @@ namespace LibroLib.Misc
             this.releaseMethod = releaseMethod;
         }
 
-        public FactoryLease (T obj, IFactory factory)
+        public FactoryLease(T obj, IFactory factory)
         {
             this.obj = obj;
             this.factory = factory;
@@ -32,7 +32,7 @@ namespace LibroLib.Misc
             if (disposed)
                 return;
 
-            // clean native resources         
+            // clean native resources
 
             if (disposing)
             {

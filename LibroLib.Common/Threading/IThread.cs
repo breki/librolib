@@ -10,7 +10,7 @@ namespace LibroLib.Threading
         bool IsAlive { get; }
         bool IsStopping { get; }
 
-        void Start ();
+        void Start();
         void SignalToStop();
         bool Join(TimeSpan timeout);
         [Obsolete("This method is obsolete, since .NET Core does not support Thread.Abort()")]

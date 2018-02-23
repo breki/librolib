@@ -45,7 +45,7 @@ namespace LibroLib.ConsoleShells
             return cmds.Values;
         }
 
-        public ConsoleShellResult ParseCommandLine (string[] args)
+        public ConsoleShellResult ParseCommandLine(string[] args)
         {
             Contract.Requires(args != null);
             Contract.Requires(args.Length < 1 || !ReferenceEquals(args[0], null));
@@ -60,12 +60,12 @@ namespace LibroLib.ConsoleShells
             }
 
             string commandId = args[0];
-            Contract.Assume(!ReferenceEquals (commandId, null));
+            Contract.Assume(!ReferenceEquals(commandId, null));
 
             IConsoleCommand command;
             if (!cmds.TryGetValue(commandId, out command))
             {
-                ErrWriter.WriteLine ("Unknown command '{0}'. Type '{1} help' for the list of all commands.", commandId, commandExeName);
+                ErrWriter.WriteLine("Unknown command '{0}'. Type '{1} help' for the list of all commands.", commandId, commandExeName);
                 return new ConsoleShellResult(1);
             }
 

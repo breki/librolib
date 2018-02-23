@@ -20,7 +20,7 @@ namespace LibroLib.Threading
         void ISynchronizer.AssignWaitHandles(params IWaitHandle[] handles)
         {
             Contract.Requires(handles != null);
-            Contract.Requires(Contract.ForAll(handles, x => x  != null));
+            Contract.Requires(Contract.ForAll(handles, x => x != null));
 
             throw new NotImplementedException();
         }

@@ -43,11 +43,11 @@ namespace LibroLib.Threading
             if (disposed)
                 return;
 
-            // clean native resources         
+            // clean native resources
 
             if (disposing)
             {
-                // clean managed resources            
+                // clean managed resources
                 if (wrappedSemaphore != null)
                     wrappedSemaphore.Close();
             }

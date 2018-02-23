@@ -12,7 +12,7 @@ namespace LibroLib.Threading
             this.syncObjectsFactory = syncObjectsFactory;
         }
 
-        public IThread CreateThread (Action<IThread> threadAction)
+        public IThread CreateThread(Action<IThread> threadAction)
         {
             ThreadWrapper thread = new ThreadWrapper(this, syncObjectsFactory, threadAction);
 
@@ -22,7 +22,7 @@ namespace LibroLib.Threading
             return thread;
         }
 
-        public void StopAllThreads (ThreadPoolStopSettings settings)
+        public void StopAllThreads(ThreadPoolStopSettings settings)
         {
             //log.Info("Signaling all threads to stop");
 
@@ -72,11 +72,11 @@ namespace LibroLib.Threading
             if (disposed)
                 return;
 
-            // clean native resources         
+            // clean native resources
 
             if (disposing)
             {
-                // clean managed resources    
+                // clean managed resources
                 lock (threads)
                 {
                     foreach (IThread thread in threads)
@@ -86,7 +86,7 @@ namespace LibroLib.Threading
 
             disposed = true;
         }
-        
+
         private readonly ISyncObjectsFactory syncObjectsFactory;
         private bool disposed;
         private readonly List<IThread> threads = new List<IThread>();

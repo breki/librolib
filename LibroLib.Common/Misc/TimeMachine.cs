@@ -14,7 +14,7 @@ namespace LibroLib.Misc
             get { return DateTime.UtcNow + timeOffset; }
         }
 
-        public void OffsetTime (TimeSpan newOffset)
+        public void OffsetTime(TimeSpan newOffset)
         {
             timeOffset = newOffset;
         }

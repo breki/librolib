@@ -10,10 +10,10 @@ using JetBrains.Annotations;
 
 namespace LibroLib
 {
-    [SuppressMessage ("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")]
+    [SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")]
     public static class StringEx
     {
-        public static void AppendList (this StringBuilder s, IEnumerable<string> items, string itemDelimiter)
+        public static void AppendList(this StringBuilder s, IEnumerable<string> items, string itemDelimiter)
         {
             Contract.Requires(s != null);
             Contract.Requires(items != null);
@@ -49,17 +49,17 @@ namespace LibroLib
         }
 
         public static string Concat<TItem>(
-            this IEnumerable<TItem> items, 
-            Func<TItem, string> formatterFunc, 
-            string itemDelimiter, 
-            int startingIndex, 
+            this IEnumerable<TItem> items,
+            Func<TItem, string> formatterFunc,
+            string itemDelimiter,
+            int startingIndex,
             int length)
         {
             Contract.Requires(items != null);
             Contract.Requires(formatterFunc != null);
             Contract.Ensures(Contract.Result<string>() != null);
 
-            StringBuilder s = new StringBuilder ();
+            StringBuilder s = new StringBuilder();
             string actualDelimiter = null;
 
             int index = 0;
@@ -77,21 +77,21 @@ namespace LibroLib
                 index++;
             }
 
-            return s.ToString ();
+            return s.ToString();
         }
 
-        public static string CropEnd (this string value, int length)
+        public static string CropEnd(this string value, int length)
         {
             Contract.Requires(value != null);
             Contract.Requires(length >= 0);
             Contract.Requires(value.Length - length >= 0);
             Contract.Ensures(Contract.Result<string>() != null);
 
-            return value.Substring (0, value.Length - length);
+            return value.Substring(0, value.Length - length);
         }
 
-        [SuppressMessage ("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "char")]
-        public static string ExtractUpTo (this string value, char extractUpToChar)
+        [SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "char")]
+        public static string ExtractUpTo(this string value, char extractUpToChar)
         {
             Contract.Requires(value != null);
             Contract.Ensures(Contract.Result<string>() != null);
@@ -103,8 +103,8 @@ namespace LibroLib
             return value.Substring(0, i);
         }
 
-        [SuppressMessage ("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId = "2#")]
-        public static string ExtractUpTo (this string value, Predicate<char> charPredicate, out int index)
+        [SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId = "2#")]
+        public static string ExtractUpTo(this string value, Predicate<char> charPredicate, out int index)
         {
             Contract.Requires(value != null);
             Contract.Requires(charPredicate != null);
@@ -114,7 +114,7 @@ namespace LibroLib
             for (; index < value.Length; index++)
             {
 #pragma warning disable CC0031 // Check for null before calling a delegate
-                if (charPredicate (value[index]))
+                if (charPredicate(value[index]))
 #pragma warning restore CC0031 // Check for null before calling a delegate
                     break;
             }
@@ -122,9 +122,9 @@ namespace LibroLib
             return value.Substring(0, index);
         }
 
-        [SuppressMessage ("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = nameof(Fmt))]
-        [StringFormatMethod ("format")]
-        public static string Fmt ([NotNull]this string format, [NotNull]params object[] args)
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = nameof(Fmt))]
+        [StringFormatMethod("format")]
+        public static string Fmt([NotNull]this string format, [NotNull]params object[] args)
         {
             Contract.Requires(format != null);
             Contract.Requires(args != null);
@@ -151,10 +151,10 @@ namespace LibroLib
             int startingLineIndex,
             int howManyLines)
         {
-            Contract.Requires (lines != null); 
+            Contract.Requires(lines != null);
             Contract.Ensures(Contract.Result<string>() != null);
 
-            StringBuilder s = new StringBuilder ();
+            StringBuilder s = new StringBuilder();
 
             int i = 0;
             foreach (string line in lines)
@@ -162,18 +162,18 @@ namespace LibroLib
                 if (i >= startingLineIndex && i < startingLineIndex + howManyLines)
                 {
                     if (i < startingLineIndex + howManyLines - 1)
-                        s.AppendLine (line);
+                        s.AppendLine(line);
                     else
-                        s.Append (line);
+                        s.Append(line);
                 }
 
                 i++;
             }
 
-            return s.ToString ();
+            return s.ToString();
         }
 
-        public static string Reverse (this string s)
+        public static string Reverse(this string s)
         {
             if (s == null)
                 return null;
@@ -186,26 +186,26 @@ namespace LibroLib
             return new string(charArray);
         }
 
-        public static IList<string> SplitIntoLines (this string value)
+        public static IList<string> SplitIntoLines(this string value)
         {
             Contract.Requires(value != null);
             Contract.Ensures(Contract.Result<IList<string>>() != null);
 
             List<string> lines = new List<string>();
-            using (StringReader reader = new StringReader (value))
+            using (StringReader reader = new StringReader(value))
             {
                 string line;
-                while ((line = reader.ReadLine ()) != null)
-                    lines.Add (line);
+                while ((line = reader.ReadLine()) != null)
+                    lines.Add(line);
             }
 
             return lines;
         }
 
-        public static IList<string> SplitIntoWords (this string value)
+        public static IList<string> SplitIntoWords(this string value)
         {
-            Contract.Requires (value != null);
-            Contract.Ensures (Contract.Result<IList<string>>() != null);
+            Contract.Requires(value != null);
+            Contract.Ensures(Contract.Result<IList<string>>() != null);
 
             List<string> words = new List<string>();
 
@@ -217,12 +217,12 @@ namespace LibroLib
                 if (i == value.Length)
                 {
                     if (isInQuotes)
-                        throw new ArgumentException ("Missing end quotes");
+                        throw new ArgumentException("Missing end quotes");
 
                     if (wordStart != null)
                     {
-                        string word = value.Substring (wordStart.Value, i - wordStart.Value);
-                        words.Add (word);
+                        string word = value.Substring(wordStart.Value, i - wordStart.Value);
+                        words.Add(word);
                     }
 
                     break;
@@ -232,8 +232,8 @@ namespace LibroLib
                 {
                     if (wordStart != null)
                     {
-                        string word = value.Substring (wordStart.Value, i - wordStart.Value);
-                        words.Add (word);
+                        string word = value.Substring(wordStart.Value, i - wordStart.Value);
+                        words.Add(word);
                         wordStart = null;
                     }
                 }
@@ -243,8 +243,8 @@ namespace LibroLib
                     {
                         if (wordStart != null)
                         {
-                            string word = value.Substring (wordStart.Value, i - wordStart.Value);
-                            words.Add (word);
+                            string word = value.Substring(wordStart.Value, i - wordStart.Value);
+                            words.Add(word);
                             wordStart = null;
                         }
 
@@ -253,9 +253,9 @@ namespace LibroLib
                     }
                     else
                     {
-                        string word = value.Substring (wordStart.Value + 1, i - (wordStart.Value + 1));
+                        string word = value.Substring(wordStart.Value + 1, i - (wordStart.Value + 1));
                         if (word.Length > 0)
-                            words.Add (word);
+                            words.Add(word);
                         isInQuotes = false;
                         wordStart = null;
                     }
@@ -272,13 +272,13 @@ namespace LibroLib
             return words;
         }
 
-        public static string ToUnderscoreName (this string name, CultureInfo culture)
+        public static string ToUnderscoreName(this string name, CultureInfo culture)
         {
             Contract.Requires(name != null);
             Contract.Requires(culture != null);
             Contract.Ensures(Contract.Result<string>() != null);
 
-            StringBuilder s = new StringBuilder ();
+            StringBuilder s = new StringBuilder();
 
             bool? previousWasUpper = null;
             for (int i = 0; i < name.Length; i++)
@@ -289,9 +289,9 @@ namespace LibroLib
                 if (currentIsUpper)
                 {
                     if (previousWasUpper.HasValue && !previousWasUpper.Value)
-                        s.Append ("_");
+                        s.Append("_");
 
-                    s.Append (char.ToLower (c, culture));
+                    s.Append(char.ToLower(c, culture));
                 }
                 else
                     s.Append(c);
@@ -327,7 +327,7 @@ namespace LibroLib
             Contract.Requires(pattern != null);
             Contract.Ensures(Contract.Result<string>() != null);
 
-            return "^" + Regex.Escape (pattern).Replace (@"\*", ".*").Replace (@"\?", ".") + "$";
+            return "^" + Regex.Escape(pattern).Replace(@"\*", ".*").Replace(@"\?", ".") + "$";
         }
     }
 }

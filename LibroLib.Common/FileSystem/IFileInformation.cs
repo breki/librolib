@@ -9,7 +9,7 @@ namespace LibroLib.FileSystem
         bool Exists { get; }
         FileAttributes Attributes { get; set; }
 
-        void CopyTo (string destFileName, bool overwrite);
-        void WriteToStream (Stream stream, byte[] buffer);
+        void CopyTo(string destFileName, bool overwrite);
+        void WriteToStream(Stream stream, byte[] buffer);
     }
 }

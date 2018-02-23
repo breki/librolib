@@ -6,6 +6,8 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{CD614A6D-FC61-4F96-82FA-BD3437836F18}"
 	ProjectSection(SolutionItems) = preProject
 		Build.bat = Build.bat
+		ca-tests.ruleset = ca-tests.ruleset
+		ca.ruleset = ca.ruleset
 		CodeAnalysisRules.ruleset = CodeAnalysisRules.ruleset
 		EditStyleCopRules.bat = EditStyleCopRules.bat
 		LibroLib-MIT-license.txt = LibroLib-MIT-license.txt
@@ -21,11 +23,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C6B717
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibroLib.Common", "LibroLib.Common\LibroLib.Common.csproj", "{296046C7-C156-4593-9890-654BE97AD9CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibroLib.Common", "LibroLib.Common\LibroLib.Common.csproj", "{296046C7-C156-4593-9890-654BE97AD9CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibroLib.WebUtils", "LibroLib.WebUtils\LibroLib.WebUtils.csproj", "{39735582-6509-48A3-B03C-6A0444867518}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibroLib.WebUtils", "LibroLib.WebUtils\LibroLib.WebUtils.csproj", "{39735582-6509-48A3-B03C-6A0444867518}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibroLib.Tests", "LibroLib.Tests\LibroLib.Tests.csproj", "{03AAB4C8-9AC3-46AE-9706-41A061EFBF86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibroLib.Tests", "LibroLib.Tests\LibroLib.Tests.csproj", "{03AAB4C8-9AC3-46AE-9706-41A061EFBF86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

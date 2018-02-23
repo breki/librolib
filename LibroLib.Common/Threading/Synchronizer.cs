@@ -5,7 +5,7 @@ namespace LibroLib.Threading
 {
     public class Synchronizer : ISynchronizer
     {
-        public void AssignWaitHandles (params IWaitHandle[] handles)
+        public void AssignWaitHandles(params IWaitHandle[] handles)
         {
             rawHandles = new WaitHandle[handles.Length];
             for (int i = 0; i < handles.Length; i++)
@@ -33,7 +33,7 @@ namespace LibroLib.Threading
 
         public bool WaitAll(TimeSpan timeout)
         {
-            return WaitHandle.WaitAll (rawHandles, timeout);
+            return WaitHandle.WaitAll(rawHandles, timeout);
         }
 
         private WaitHandle[] rawHandles;
