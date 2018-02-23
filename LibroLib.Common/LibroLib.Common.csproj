@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>LibroLib</RootNamespace>
   </PropertyGroup>
 
 </Project>

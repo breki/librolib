@@ -1,7 +1,7 @@
 using LibroLib.Caching;
 using LibroLib.FileSystem;
+using Moq;
 using NUnit.Framework;
-using Rhino.Mocks;
 
 namespace LibroLib.Tests.CommonTests
 {
@@ -20,7 +20,8 @@ namespace LibroLib.Tests.CommonTests
         [TestCase(true)]
         public void IfFileIsOnDiskItCanBeRegardedAsCached(bool fileExists)
         {
-            fileSystem.Expect(x => x.DoesFileExist(ResourceFullPath)).Return(fileExists);
+            fileSystem.Setup(x => x.DoesFileExist(ResourceFullPath))
+                .Returns(fileExists);
             Assert.AreEqual(fileExists, cache.IsCached(ResourcePathInCache));
         }
 
@@ -29,42 +30,44 @@ namespace LibroLib.Tests.CommonTests
         {
             byte[] fileData = new byte[0];
 
-            fileSystem.Expect(x => x.ReadFileAsBytes(ResourceFullPath)).Return(fileData);
+            fileSystem.Setup(x => x.ReadFileAsBytes(ResourceFullPath))
+                .Returns(fileData);
             Assert.AreEqual(fileData, cache.Load(ResourcePathInCache));
         }
 
         [Test]
         public void EnsureCacheSubpathExists()
         {
-            fileSystem.Expect(x => x.EnsureDirectoryExists(@"d:\app\Cache\Images"));
+            fileSystem.Setup(x => x.EnsureDirectoryExists(@"d:\app\Cache\Images"));
             cache.EnsureDirectoryPathExists(ResourcePathInCache, true);
-            fileSystem.VerifyAllExpectations();
+            fileSystem.VerifyAll();
         }
 
         [Test]
         public void ClearCacheSubpath()
         {
-            applicationInfo.Expect(x => x.GetAppDirectoryPath(@"Cache\Images"))
-                .Return(@"d:\app\Cache\Images");
-            fileSystem.Expect(x => x.DeleteDirectory(@"d:\app\Cache\Images"));
+            applicationInfo.Setup(x => x.GetAppDirectoryPath(@"Cache\Images"))
+                .Returns(@"d:\app\Cache\Images");
+            fileSystem.Setup(x => x.DeleteDirectory(@"d:\app\Cache\Images"));
             cache.ClearCacheDirectory("Images");
-            fileSystem.VerifyAllExpectations();
+            fileSystem.VerifyAll();
         }
 
         [SetUp]
         public void Setup()
         {
-            fileSystem = MockRepository.GenerateMock<IFileSystem>();
-            applicationInfo = MockRepository.GenerateStub<IApplicationInfo>();
-            cache = new DefaultDiskCache(fileSystem, applicationInfo);
+            fileSystem = new Mock<IFileSystem>();
+            applicationInfo = new Mock<IApplicationInfo>();
+            cache = new DefaultDiskCache(fileSystem.Object, applicationInfo.Object);
 
-            applicationInfo.Expect(x => x.GetAppDirectoryPath(@"Cache\Images\image.jpg"))
-                .Return(ResourceFullPath);
+            applicationInfo
+                .Setup(x => x.GetAppDirectoryPath(@"Cache\Images\image.jpg"))
+                .Returns(ResourceFullPath);
         }
 
         private IDiskCache cache;
-        private IFileSystem fileSystem;
-        private IApplicationInfo applicationInfo;
+        private Mock<IFileSystem> fileSystem;
+        private Mock<IApplicationInfo> applicationInfo;
         private const string ResourcePathInCache = @"Images\image.jpg";
         private const string ResourceFullPath = @"d:\app\Cache\Images\image.jpg";
     }

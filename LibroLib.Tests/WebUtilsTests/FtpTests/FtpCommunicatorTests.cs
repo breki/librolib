@@ -2,8 +2,8 @@ using System;
 using System.IO;
 using System.Text;
 using LibroLib.WebUtils.Ftp;
+using Moq;
 using NUnit.Framework;
-using Rhino.Mocks;
 
 namespace LibroLib.Tests.WebUtilsTests.FtpTests
 {
@@ -14,7 +14,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
         {
             StubChannelResponse("200 bla\r\n");
 
-            comm.AttachToChannel(channel);
+            comm.AttachToChannel(channel.Object);
             FtpServerResponse response = comm.ReadResponse();
             Assert.AreEqual((int)FtpReturnCode.CommandOk, response.ReturnCode);
             Assert.AreEqual("bla", response.Message);
@@ -27,7 +27,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             StubChannelResponse(" 300 test\r\n");
             StubChannelResponse("200 OK\r\n");
 
-            comm.AttachToChannel(channel);
+            comm.AttachToChannel(channel.Object);
             FtpServerResponse response = comm.ReadResponse();
             Assert.AreEqual((int)FtpReturnCode.CommandOk, response.ReturnCode);
             Assert.AreEqual("bla", response.Message);
@@ -38,7 +38,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
         {
             StubChannelResponse("200-bla\r\n 300 test\r\n200 OK\r\n");
 
-            comm.AttachToChannel(channel);
+            comm.AttachToChannel(channel.Object);
             FtpServerResponse response = comm.ReadResponse();
             Assert.AreEqual((int)FtpReturnCode.CommandOk, response.ReturnCode);
             Assert.AreEqual("bla", response.Message);
@@ -49,7 +49,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
         {
             StubChannelResponse("bla\r\n");
 
-            comm.AttachToChannel(channel);
+            comm.AttachToChannel(channel.Object);
 
             Assert.Throws<FtpException>(delegate { comm.ReadResponse(); });
         }
@@ -60,23 +60,21 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             StubChannelResponse("200-bla\r\n");
             StubChannelResponse(" 300 test\r\n");
 
-            comm.AttachToChannel(channel);
+            comm.AttachToChannel(channel.Object);
             Assert.Throws<FtpException>(delegate { comm.ReadResponse (); });
         }
 
         [SetUp]
         public void Setup()
         {
-            channel = MockRepository.GenerateMock<IFtpChannel>();
+            channel = new Mock<IFtpChannel>();
             comm = new FtpCommunicator();
         }
 
         private void StubChannelResponse (string text)
         {
-            channel.Stub(x => x.Receive(null))
-                .IgnoreArguments()
-                .Do(new Action<Stream>(s => WriteToStream(s, text)))
-                .Repeat.Once();
+            channel.Setup(x => x.Receive(It.IsAny<Stream>()))
+                .Callback(new Action<Stream>(s => WriteToStream(s, text)));
         }
 
         private static void WriteToStream(Stream stream, string text)
@@ -85,7 +83,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             stream.Write(data, 0, data.Length);
         }
 
-        private IFtpChannel channel;
+        private Mock<IFtpChannel> channel;
         private IFtpCommunicator comm;
     }
 }

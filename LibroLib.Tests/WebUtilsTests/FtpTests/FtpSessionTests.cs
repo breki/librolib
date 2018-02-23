@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Net;
 using LibroLib.FileSystem;
 using LibroLib.WebUtils.Ftp;
+using Moq;
 using NUnit.Framework;
-using Rhino.Mocks;
 
 namespace LibroLib.Tests.WebUtilsTests.FtpTests
 {
@@ -23,7 +23,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             FtpConnectionData connectionData = ConstructConnectionData();
             session.BeginSession(connectionData);
 
-            communicator.VerifyAllExpectations();
+            communicator.VerifyAll();
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             FtpConnectionData connectionData = ConstructConnectionData();
             session.BeginSession(connectionData);
 
-            communicator.VerifyAllExpectations();
+            communicator.VerifyAll();
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             session.ChangeDirectory(RemoteDir);
             Assert.AreEqual(RemoteDir, session.CurrentDirectory);
 
-            communicator.VerifyAllExpectations();
+            communicator.VerifyAll();
         }
 
         [Test]
@@ -66,19 +66,21 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             SetResponse(FtpReturnCode.Created);
             ExpectCommand("PASV");
             SetResponse(FtpReturnCode.EnteringPassiveMode, "(10,20,30,40,1,2)");
-            dataChannel.Expect(x => x.Connect(new byte[] { 10, 20, 30, 40 }, 258));
+            dataChannel.Setup(x => x.Connect(new byte[] { 10, 20, 30, 40 }, 258));
             ExpectCommand("STOR /dest/dest2/file1.txt");
             SetResponse(FtpReturnCode.FileStatusOk);
-            fileSystem.Stub(x => x.ReadFileAsBytes(@"d:\files\file1.txt")).Return(new byte[10]);
-            dataChannel.Expect(x => x.Send(null)).IgnoreArguments().Return(10);
+            fileSystem.Setup(x => x.ReadFileAsBytes(@"d:\files\file1.txt"))
+                .Returns(new byte[10]);
+            dataChannel.Setup(x => x.Send(It.IsAny<byte[]>())).Returns(10);
             SetResponse(FtpReturnCode.ClosingDataConnection);
 
             //ExpectCommand("PASV");
             SetResponse(FtpReturnCode.EnteringPassiveMode, "(10,20,30,40,1,2)");
-            dataChannel.Expect(x => x.Connect(new byte[] { 10, 20, 30, 40 }, 258));
+            dataChannel.Setup(x => x.Connect(new byte[] { 10, 20, 30, 40 }, 258));
             ExpectCommand("STOR /dest/dest2/file2.txt");
             SetResponse(FtpReturnCode.FileStatusOk);
-            fileSystem.Stub(x => x.ReadFileAsBytes(@"d:\files\file2.txt")).Return(new byte[10]);
+            fileSystem.Setup(x => x.ReadFileAsBytes(@"d:\files\file2.txt"))
+                .Returns(new byte[10]);
             SetResponse(FtpReturnCode.ClosingDataConnection);
 
             FtpConnectionData connectionData = ConstructConnectionData();
@@ -97,22 +99,24 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             Assert.AreEqual(2, createdDirs.Count);
             Assert.AreEqual(2, uploadedFiles.Count);
 
-            communicator.VerifyAllExpectations();
+            communicator.VerifyAll();
         }
 
         [SetUp]
         public void Setup()
         {
             channelCounter = 0;
-            mainChannel = MockRepository.GenerateStub<IFtpChannel>();
-            dataChannel = MockRepository.GenerateMock<IFtpChannel>();
+            mainChannel = new Mock<IFtpChannel>();
+            dataChannel = new Mock<IFtpChannel>();
 
-            channelFactory = MockRepository.GenerateStub<IFtpChannelFactory>();
-            channelFactory.Stub(x => x.CreateChannel()).Do(new Func<IFtpChannel>(CreateChannel));
+            channelFactory = new Mock<IFtpChannelFactory>();
+            channelFactory.Setup(x => x.CreateChannel())
+                .Callback(new Func<IFtpChannel>(CreateChannel));
 
-            communicator = MockRepository.GenerateMock<IFtpCommunicator>();
-            fileSystem = MockRepository.GenerateMock<IFileSystem>();
-            session = new FtpSession(channelFactory, communicator, fileSystem);
+            communicator = new Mock<IFtpCommunicator>();
+            fileSystem = new Mock<IFileSystem>();
+            session = new FtpSession(
+                channelFactory.Object, communicator.Object, fileSystem.Object);
         }
 
         private static FtpConnectionData ConstructConnectionData()
@@ -137,19 +141,19 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
 
         private void SetResponse(FtpReturnCode returnCode)
         {
-            communicator.Stub(x => x.ReadResponse()).Return(new FtpServerResponse(returnCode, "x"))
-                .Repeat.Once();
+            communicator.Setup(x => x.ReadResponse())
+                .Returns(new FtpServerResponse(returnCode, "x"));
         }
 
         private void SetResponse(FtpReturnCode returnCode, string message)
         {
-            communicator.Stub(x => x.ReadResponse()).Return(new FtpServerResponse(returnCode, message))
-                .Repeat.Once();
+            communicator.Setup(x => x.ReadResponse())
+                .Returns(new FtpServerResponse(returnCode, message));
         }
 
         private void ExpectCommand (string command)
         {
-            communicator.Expect(x => x.SendCommand(command));
+            communicator.Setup(x => x.SendCommand(command));
         }
 
         private IFtpChannel CreateChannel()
@@ -157,18 +161,18 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             switch (channelCounter++)
             {
                 case 0:
-                    return mainChannel;
+                    return mainChannel.Object;
                 default:
-                    return dataChannel;
+                    return dataChannel.Object;
             }
         }
 
-        private IFtpChannelFactory channelFactory;
-        private IFtpChannel mainChannel;
-        private IFtpChannel dataChannel;
+        private Mock<IFtpChannelFactory> channelFactory;
+        private Mock<IFtpChannel> mainChannel;
+        private Mock<IFtpChannel> dataChannel;
         private int channelCounter;
-        private IFtpCommunicator communicator;
-        private IFileSystem fileSystem;
+        private Mock<IFtpCommunicator> communicator;
+        private Mock<IFileSystem> fileSystem;
         private FtpSession session;
 
         private const string Host = "somehost";
