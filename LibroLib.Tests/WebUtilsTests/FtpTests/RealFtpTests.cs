@@ -16,7 +16,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             connectionData.Credentials = new NetworkCredential(Username + "xxx", Password);
             connectionData.Host = Host;
 
-            using (IFtpSession session 
+            using (IFtpSession session
                 = new FtpSession(new FtpChannelFactoryUsingSockets(), new FtpCommunicator(), new WindowsFileSystem()))
             {
                 var ex = Assert.Throws<FtpException>(delegate { session.BeginSession(connectionData); });
@@ -31,7 +31,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             connectionData.Credentials = new NetworkCredential(Username, Password + "xxx");
             connectionData.Host = Host;
 
-            using (IFtpSession session 
+            using (IFtpSession session
                 = new FtpSession(new FtpChannelFactoryUsingSockets(), new FtpCommunicator(), new WindowsFileSystem()))
             {
                 var ex = Assert.Throws<FtpException>(delegate { session.BeginSession(connectionData); });

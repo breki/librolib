@@ -167,6 +167,11 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             }
         }
 
+        private const string Host = "somehost";
+        private const int Port = 21;
+        private const string Username = "banana";
+        private const string Password = "njam";
+
         private Mock<IFtpChannelFactory> channelFactory;
         private Mock<IFtpChannel> mainChannel;
         private Mock<IFtpChannel> dataChannel;
@@ -174,10 +179,5 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
         private Mock<IFtpCommunicator> communicator;
         private Mock<IFileSystem> fileSystem;
         private FtpSession session;
-
-        private const string Host = "somehost";
-        private const int Port = 21;
-        private const string Username = "banana";
-        private const string Password = "njam";
     }
 }
