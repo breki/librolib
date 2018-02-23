@@ -101,7 +101,6 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
 
         private const string Host = "127.0.0.1";
         private const int Port = 21;
-        private const string RemoteDir = "MaperitiveTests";
         private const string Username = @"blabla";
         private const string Password = "blabla2";
     }

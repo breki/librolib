@@ -1,6 +1,6 @@
 ﻿namespace LibroLib.Tests
 {
-    public class Constants
+    public static class Constants
     {
 #if NCRUNCH
         public const string DataPath = @"D:\hg\Maperitive\current\Data";
