@@ -3,7 +3,7 @@
 - ThreadWrapper now sets the thread cultures before running the threadAction
 - ThreadWrapper no longer uses Thread.Abort() method since it is not supported
 	on .NET Core
-- fixed various StyleCop issues detected by the newly used StyleCop.Analyzers
+- fixed various StyleCop and FxCop issues detected by the newly used analyzers
 
 1.7.0.0
 - MultiSet has a new TryGetValue method
