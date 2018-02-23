@@ -88,7 +88,7 @@ namespace LibroLib.WebUtils.Rest
 
         public IRestClient PreAuthenticate()
         {
-            this.preAuthenticate = preAuthenticate;
+            preAuthenticate = true;
             return this;
         }
 
@@ -108,7 +108,7 @@ namespace LibroLib.WebUtils.Rest
 
         public IRestClient UseDefaultCredentials()
         {
-            this.useDefaultCredentials = useDefaultCredentials;
+            useDefaultCredentials = true;
             return this;
         }
 
