@@ -11,7 +11,7 @@ namespace LibroLib.Tests.CommonTests
         public void CheckDiskCachePaths()
         {
             Assert.AreEqual(
-                ResourceFullPath, 
+                ResourceFullPath,
                 cache.GetFullFilePath(ResourcePathInCache));
         }
 

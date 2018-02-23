@@ -226,7 +226,7 @@ namespace LibroLib.Tests.WebUtilsTests
             restClientFactory = new RestClientFactory(webConfiguration);
         }
 
-        private IRestClientFactory restClientFactory;
         private const string UserAgent = "tests";
+        private IRestClientFactory restClientFactory;
     }
 }

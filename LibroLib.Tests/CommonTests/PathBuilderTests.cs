@@ -10,8 +10,7 @@ namespace LibroLib.Tests.CommonTests
         public void EmptyPath()
         {
             Assert.Throws<ArgumentException>(
-                // ReSharper disable once ObjectCreationAsStatement
-                delegate { new PathBuilder(string.Empty); });
+                () => new PathBuilder(string.Empty));
         }
 
         [Test]

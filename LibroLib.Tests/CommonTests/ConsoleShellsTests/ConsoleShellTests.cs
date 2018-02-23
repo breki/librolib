@@ -123,7 +123,7 @@ COMMANDS:
             Assert.IsTrue(parsedCmd.Switch1);
         }
 
-        [Test] 
+        [Test]
         public void PositionalArgumentValueIsInvalid()
         {
             string[] args = { "test", "value1", "xyz", "-setting1=true" };
@@ -143,7 +143,7 @@ COMMANDS:
 ");
         }
 
-        [Test] 
+        [Test]
         public void SettingArgumentValueIsInvalid()
         {
             string[] args = { "test", "value1", "-setting1=xyz" };
@@ -153,7 +153,7 @@ COMMANDS:
 ");
         }
 
-        [Test] 
+        [Test]
         public void SettingArgumentValueIsMissing()
         {
             string[] args = { "test", "value1", "-setting1" };
@@ -163,7 +163,7 @@ COMMANDS:
 ");
         }
 
-        [Test] 
+        [Test]
         public void SwitchArgumentValueIsInvalid()
         {
             string[] args = { "test", "value1", "-switch1=xyz" };
@@ -173,7 +173,7 @@ COMMANDS:
 ");
         }
 
-        [Test] 
+        [Test]
         public void RequiredArgIsMissing()
         {
             string[] args = { "test", "-setting1=123" };
