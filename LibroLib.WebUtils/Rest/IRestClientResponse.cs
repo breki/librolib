@@ -33,8 +33,8 @@ namespace LibroLib.WebUtils.Rest
         {
             get
             {
-                Contract.Ensures (Contract.Result<WebHeaderCollection>() != null);
-                throw new NotImplementedException ();
+                Contract.Ensures(Contract.Result<WebHeaderCollection>() != null);
+                throw new NotImplementedException();
             }
         }
 
@@ -44,8 +44,8 @@ namespace LibroLib.WebUtils.Rest
 
         byte[] IRestClientResponse.AsBytes()
         {
-            Contract.Ensures (Contract.Result<byte[]>() != null);
-            throw new NotImplementedException ();
+            Contract.Ensures(Contract.Result<byte[]>() != null);
+            throw new NotImplementedException();
         }
 
         JObject IRestClientResponse.AsJson()

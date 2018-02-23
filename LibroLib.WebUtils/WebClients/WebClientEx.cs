@@ -6,7 +6,7 @@ namespace LibroLib.WebUtils.WebClients
 {
     public class WebClientEx : WebClient
     {
-        public WebClientEx (IWebConfiguration webConfiguration)
+        public WebClientEx(IWebConfiguration webConfiguration)
         {
             Contract.Requires(webConfiguration != null);
 
@@ -19,12 +19,12 @@ namespace LibroLib.WebUtils.WebClients
             this.timeout = timeout;
         }
 
-        protected override WebRequest GetWebRequest (Uri address)
+        protected override WebRequest GetWebRequest(Uri address)
         {
             Headers["User-Agent"] = webConfiguration.UserAgent;
             Credentials = webConfiguration.Credentials;
 
-            WebRequest webRequest = base.GetWebRequest (address);
+            WebRequest webRequest = base.GetWebRequest(address);
 
             if (webRequest == null)
                 throw new InvalidOperationException("Something is wrong, the base WebRequest should not be null.");

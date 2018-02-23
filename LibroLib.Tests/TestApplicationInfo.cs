@@ -18,12 +18,12 @@ namespace LibroLib.Tests
 
             set
             {
-                if (Path.IsPathRooted (value))
+                if (Path.IsPathRooted(value))
                     appRootDirectoryOverride = value;
                 else
                 {
                     string currentAppRootDirectory = AppRootDirectory;
-                    appRootDirectoryOverride = Path.Combine (currentAppRootDirectory, value);
+                    appRootDirectoryOverride = Path.Combine(currentAppRootDirectory, value);
                 }
             }
         }
@@ -37,7 +37,7 @@ namespace LibroLib.Tests
                     throw new InvalidOperationException("Executing assembly location is null, cannot determine the AppVersion.");
                 FileVersionInfo version = FileVersionInfo.GetVersionInfo(executingAssemblyLocation);
                 string fileVersion = version.FileVersion;
-                return new Version (fileVersion);
+                return new Version(fileVersion);
             }
         }
 
@@ -48,40 +48,40 @@ namespace LibroLib.Tests
                 Version version = AppVersion;
 
                 if (version.Build == 0)
-                    return version.ToString (2);
+                    return version.ToString(2);
 
-                return version.ToString (3);
+                return version.ToString(3);
             }
         }
 
         public bool IsMono
         {
-            get { throw new System.NotImplementedException (); }
+            get { throw new System.NotImplementedException(); }
         }
 
         public string MonoVersion
         {
-            get { throw new System.NotImplementedException (); }
+            get { throw new System.NotImplementedException(); }
         }
 
         public bool Is64Bit
         {
-            get { throw new System.NotImplementedException (); }
+            get { throw new System.NotImplementedException(); }
         }
 
         public long MemoryUsed
         {
-            get { throw new System.NotImplementedException (); }
+            get { throw new System.NotImplementedException(); }
         }
 
         public long GCTotalMemory
         {
-            get { throw new System.NotImplementedException (); }
+            get { throw new System.NotImplementedException(); }
         }
 
-        public string GetAppDirectoryPath (string subpath)
+        public string GetAppDirectoryPath(string subpath)
         {
-            string path = Path.Combine (AppRootDirectory, subpath);
+            string path = Path.Combine(AppRootDirectory, subpath);
             return path;
         }
 

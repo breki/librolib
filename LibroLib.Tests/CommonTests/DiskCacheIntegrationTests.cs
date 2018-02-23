@@ -20,12 +20,12 @@ namespace LibroLib.Tests.CommonTests
         public void DeletingCacheFileShouldReallyDeleteIt()
         {
             const string CacheFileName = @"here\test.dat";
-            string fullCacheFileName = applicationInfo.GetAppDirectoryPath (Path.Combine (DefaultDiskCache.DefaultCacheRootDir, CacheFileName));
+            string fullCacheFileName = applicationInfo.GetAppDirectoryPath(Path.Combine(DefaultDiskCache.DefaultCacheRootDir, CacheFileName));
 
-            cache.Save (CacheFileName, new byte[100]);
+            cache.Save(CacheFileName, new byte[100]);
             Assert.IsTrue(fileSystem.DoesFileExist(fullCacheFileName));
-            cache.DeleteCacheFile (CacheFileName);
-            Assert.IsFalse (fileSystem.DoesFileExist(fullCacheFileName));
+            cache.DeleteCacheFile(CacheFileName);
+            Assert.IsFalse(fileSystem.DoesFileExist(fullCacheFileName));
         }
 
         [SetUp]

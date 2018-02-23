@@ -18,17 +18,18 @@ namespace LibroLib.WebUtils.Ftp
         {
         }
 
-        public FtpException(string message) : base(message)
+        public FtpException(string message)
+            : base(message)
         {
         }
 
-        public FtpException(string message, Exception inner) : base(message, inner)
+        public FtpException(string message, Exception inner)
+            : base(message, inner)
         {
         }
 
-        protected FtpException(
-            SerializationInfo info,
-            StreamingContext context) : base(info, context)
+        protected FtpException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
         {
         }
     }

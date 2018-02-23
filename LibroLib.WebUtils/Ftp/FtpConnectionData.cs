@@ -6,6 +6,6 @@ namespace LibroLib.WebUtils.Ftp
     {
         public NetworkCredential Credentials { get; set; }
         public string Host { get; set; }
-        public int? Port { get; set; }        
+        public int? Port { get; set; }
     }
 }

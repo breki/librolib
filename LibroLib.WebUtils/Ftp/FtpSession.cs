@@ -11,7 +11,7 @@ namespace LibroLib.WebUtils.Ftp
     public class FtpSession : IFtpSession
     {
         public FtpSession(
-            IFtpChannelFactory ftpChannelFactory, 
+            IFtpChannelFactory ftpChannelFactory,
             IFtpCommunicator ftpCommunicator,
             IFileSystem fileSystem)
         {
@@ -86,8 +86,8 @@ namespace LibroLib.WebUtils.Ftp
         }
 
         public void EnsurePathExists(
-            string path, 
-            HashSet<string> createdDirectories, 
+            string path,
+            HashSet<string> createdDirectories,
             Action<string> beforeDirectoryCreatedCallback)
         {
             string parentPath = Path.GetDirectoryName(path);
@@ -155,8 +155,8 @@ namespace LibroLib.WebUtils.Ftp
 
                 if (localFiles.BaseDir != null)
                 {
-                    PathBuilder debasedPathBuilder = new PathBuilder (localFiles.BaseDir);
-                    debasedLocalFileName = debasedPathBuilder.DebasePath (localFileName, true).ToString();
+                    PathBuilder debasedPathBuilder = new PathBuilder(localFiles.BaseDir);
+                    debasedLocalFileName = debasedPathBuilder.DebasePath(localFileName, true).ToString();
                 }
                 else
                     debasedLocalFileName = Path.GetFileName(localFileName);
@@ -226,11 +226,11 @@ namespace LibroLib.WebUtils.Ftp
             if (disposed)
                 return;
 
-            // clean native resources         
+            // clean native resources
 
             if (disposing)
             {
-                // clean managed resources  
+                // clean managed resources
                 EndSession();
             }
 
@@ -246,7 +246,7 @@ namespace LibroLib.WebUtils.Ftp
                 "{0}: {1}",
                 errorMessage,
                 response);
-            return new FtpException(message, response.ReturnCode);            
+            return new FtpException(message, response.ReturnCode);
         }
 
         private FtpServerResponse SendCommand(string commandFormat, params object[] args)
@@ -284,7 +284,7 @@ namespace LibroLib.WebUtils.Ftp
             int start = openBracketIndex + 1;
             int closeBracketIndex = responseMessage.IndexOf(')', start);
             if (closeBracketIndex < 0)
-                throw new FtpException ("Unexpected response message: '{0}'".Fmt (responseMessage));
+                throw new FtpException("Unexpected response message: '{0}'".Fmt(responseMessage));
 
             int length = closeBracketIndex - start;
             string[] splits = responseMessage.Substring(start, length).Split(',');
@@ -296,8 +296,9 @@ namespace LibroLib.WebUtils.Ftp
             for (int i = 0; i < 4; i++)
                 addressBytes[i] = byte.Parse(splits[i], CultureInfo.InvariantCulture);
 
-            int dataChannelPort = int.Parse(splits[4], CultureInfo.InvariantCulture) * 256
-                                  + int.Parse(splits[5], CultureInfo.InvariantCulture);
+            int dataChannelPort =
+                int.Parse(splits[4], CultureInfo.InvariantCulture) * 256
+                + int.Parse(splits[5], CultureInfo.InvariantCulture);
             IFtpChannel dataChannel = ftpChannelFactory.CreateChannel();
             dataChannel.Connect(addressBytes, dataChannelPort);
             return dataChannel;

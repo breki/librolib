@@ -11,7 +11,7 @@ namespace LibroLib.WebUtils.Ftp
 
         public void Destroy(object component)
         {
-            ((IFtpChannel)component).Dispose ();
+            ((IFtpChannel)component).Dispose();
         }
     }
 }

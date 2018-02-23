@@ -21,28 +21,28 @@ namespace LibroLib.Tests.CommonTests.ThreadingTests
         [Test]
         public void StopPoolWithThreadThatHasNotYetStarted()
         {
-            using (var pool = new ThreadPool (syncObjectsFactory))
+            using (var pool = new ThreadPool(syncObjectsFactory))
             {
                 pool.CreateThread(t => { });
-                pool.StopAllThreads (new ThreadPoolStopSettings ());
+                pool.StopAllThreads(new ThreadPoolStopSettings());
             }
         }
 
         [Test]
         public void StopPoolWithThreadThatHasStarted()
         {
-            using (var pool = new ThreadPool (syncObjectsFactory))
+            using (var pool = new ThreadPool(syncObjectsFactory))
             {
                 IThread thread = pool.CreateThread(t => { });
                 thread.Start();
-                pool.StopAllThreads (new ThreadPoolStopSettings ());
+                pool.StopAllThreads(new ThreadPoolStopSettings());
             }
         }
 
         [Test]
         public void StopPoolWithThreadThatDoesNotWantToStop()
         {
-            using (var pool = new ThreadPool (syncObjectsFactory))
+            using (var pool = new ThreadPool(syncObjectsFactory))
             {
                 IThread thread = pool.CreateThread(
                     t => Thread.Sleep(TimeSpan.FromMinutes(1)));
@@ -52,7 +52,7 @@ namespace LibroLib.Tests.CommonTests.ThreadingTests
                 threadPoolStopSettings.InitialStoppingTimeout = TimeSpan.Zero;
                 threadPoolStopSettings.MaxStoppingLoops = 1;
                 threadPoolStopSettings.SubsequentStoppingTimeout = TimeSpan.Zero;
-                pool.StopAllThreads (threadPoolStopSettings);
+                pool.StopAllThreads(threadPoolStopSettings);
             }
         }
 

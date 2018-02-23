@@ -20,7 +20,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
                 = new FtpSession(new FtpChannelFactoryUsingSockets(), new FtpCommunicator(), new WindowsFileSystem()))
             {
                 var ex = Assert.Throws<FtpException>(delegate { session.BeginSession(connectionData); });
-                Assert.AreEqual ("Could not log in to the FTP server: 530 User cannot log in.", ex.Message);
+                Assert.AreEqual("Could not log in to the FTP server: 530 User cannot log in.", ex.Message);
             }
         }
 
@@ -34,8 +34,8 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             using (IFtpSession session 
                 = new FtpSession(new FtpChannelFactoryUsingSockets(), new FtpCommunicator(), new WindowsFileSystem()))
             {
-                var ex = Assert.Throws<FtpException>(delegate { session.BeginSession (connectionData); });
-                Assert.AreEqual ("Could not log in to the FTP server: 530 User cannot log in.", ex.Message);
+                var ex = Assert.Throws<FtpException>(delegate { session.BeginSession(connectionData); });
+                Assert.AreEqual("Could not log in to the FTP server: 530 User cannot log in.", ex.Message);
             }
         }
 
@@ -49,14 +49,14 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
         public void TryToCreateDirectoryThatAlreadyExists()
         {
             var ex = Assert.Throws<FtpException>(delegate { FtpAction(c => c.CreateDirectory("test", true)); });
-            Assert.AreEqual ("Could not create the directory: 550 Cannot create a file when that file already exists.", ex.Message);
+            Assert.AreEqual("Could not create the directory: 550 Cannot create a file when that file already exists.", ex.Message);
         }
 
         [Test]
-        public void TryToCreateDirectorySubtree ()
+        public void TryToCreateDirectorySubtree()
         {
-            var ex = Assert.Throws<FtpException>(delegate { FtpAction (c => c.CreateDirectory ("test2/test3/test4", true)); });
-            Assert.AreEqual ("Could not create the directory: 550 The system cannot find the path specified.", ex.Message);
+            var ex = Assert.Throws<FtpException>(delegate { FtpAction(c => c.CreateDirectory("test2/test3/test4", true)); });
+            Assert.AreEqual("Could not create the directory: 550 The system cannot find the path specified.", ex.Message);
         }
 
         [Test]

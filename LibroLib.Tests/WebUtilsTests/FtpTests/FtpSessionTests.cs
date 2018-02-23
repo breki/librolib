@@ -151,7 +151,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
                 .Returns(new FtpServerResponse(returnCode, message));
         }
 
-        private void ExpectCommand (string command)
+        private void ExpectCommand(string command)
         {
             communicator.Setup(x => x.SendCommand(command));
         }

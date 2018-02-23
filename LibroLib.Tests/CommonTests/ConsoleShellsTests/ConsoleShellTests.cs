@@ -13,7 +13,7 @@ namespace LibroLib.Tests.CommonTests.ConsoleShellsTests
         public void ParseEmptyCommandLine()
         {
             string[] args = { };
-            ConsoleShellResult result = shell.ParseCommandLine (args);
+            ConsoleShellResult result = shell.ParseCommandLine(args);
             Assert.AreEqual(0, result.ExitCode);
             Assert.AreEqual(0, result.CommandsToExecute.Count);
 
@@ -45,11 +45,11 @@ COMMANDS:
         public void UnrecognizedCommand()
         {
             string[] args = { "cmd2" };
-            ConsoleShellResult result = shell.ParseCommandLine (args);
+            ConsoleShellResult result = shell.ParseCommandLine(args);
 
-            Assert.AreEqual (1, result.ExitCode);
+            Assert.AreEqual(1, result.ExitCode);
 
-            AssertOutputIs (@"Unit test console
+            AssertOutputIs(@"Unit test console
 ");
             AssertErrOutputIs(@"Unknown command 'cmd2'. Type 'unittest.exe help' for the list of all commands.
 ");
@@ -59,19 +59,19 @@ COMMANDS:
         public void ParseConsoleCommandSuccessfully()
         {
             string[] args = { "cmd1", "positional1", "-switch=true" };
-            ConsoleShellResult result = shell.ParseCommandLine (args);
+            ConsoleShellResult result = shell.ParseCommandLine(args);
 
             Assert.IsNull(result.ExitCode);
             Assert.AreEqual(1, result.CommandsToExecute.Count);
-            Assert.AreEqual ("cmd1", result.CommandsToExecute[0].CommandId);
+            Assert.AreEqual("cmd1", result.CommandsToExecute[0].CommandId);
         }
 
         [Test]
         public void ParseStandardCommandSuccessfully()
         {
             string[] args = { "test", "value1", "123", "-setting1=345", "-setting2=haha" };
-            ConsoleShellResult result = shell.ParseCommandLine (args);
-            Assert.IsNull (result.ExitCode);
+            ConsoleShellResult result = shell.ParseCommandLine(args);
+            Assert.IsNull(result.ExitCode);
             TestStandardConsoleCommand parsedCmd = (TestStandardConsoleCommand)result.CommandsToExecute[0];
             Assert.AreEqual("value1", parsedCmd.Arg1);
             Assert.AreEqual(123, parsedCmd.Arg2);
@@ -83,8 +83,8 @@ COMMANDS:
         public void OptionalPositionalArgumentNotSpecified()
         {
             string[] args = { "test", "xyz", "-setting1=123" };
-            ConsoleShellResult result = shell.ParseCommandLine (args);
-            Assert.IsNull (result.ExitCode);
+            ConsoleShellResult result = shell.ParseCommandLine(args);
+            Assert.IsNull(result.ExitCode);
             TestStandardConsoleCommand parsedCmd = (TestStandardConsoleCommand)result.CommandsToExecute[0];
             Assert.AreEqual("xyz", parsedCmd.Arg1);
             Assert.AreEqual(0, parsedCmd.Arg2);
@@ -95,41 +95,41 @@ COMMANDS:
         public void UseSettingAlias()
         {
             string[] args = { "test", "xyz", "-s1=123" };
-            ConsoleShellResult result = shell.ParseCommandLine (args);
-            Assert.IsNull (result.ExitCode);
+            ConsoleShellResult result = shell.ParseCommandLine(args);
+            Assert.IsNull(result.ExitCode);
             TestStandardConsoleCommand parsedCmd = (TestStandardConsoleCommand)result.CommandsToExecute[0];
-            Assert.AreEqual ("xyz", parsedCmd.Arg1);
-            Assert.AreEqual (0, parsedCmd.Arg2);
-            Assert.AreEqual (123, parsedCmd.IntSetting);
+            Assert.AreEqual("xyz", parsedCmd.Arg1);
+            Assert.AreEqual(0, parsedCmd.Arg2);
+            Assert.AreEqual(123, parsedCmd.IntSetting);
         }
 
         [Test]
         public void SwitchArgWithoutValue()
         {
             string[] args = { "test", "value1", "-switch1" };
-            ConsoleShellResult result = shell.ParseCommandLine (args);
-            Assert.IsNull (result.ExitCode);
+            ConsoleShellResult result = shell.ParseCommandLine(args);
+            Assert.IsNull(result.ExitCode);
             TestStandardConsoleCommand parsedCmd = (TestStandardConsoleCommand)result.CommandsToExecute[0];
-            Assert.IsTrue (parsedCmd.Switch1);
+            Assert.IsTrue(parsedCmd.Switch1);
         }
 
         [Test]
         public void SwitchArgWithValue()
         {
             string[] args = { "test", "value1", "-switch1=true" };
-            ConsoleShellResult result = shell.ParseCommandLine (args);
-            Assert.IsNull (result.ExitCode);
+            ConsoleShellResult result = shell.ParseCommandLine(args);
+            Assert.IsNull(result.ExitCode);
             TestStandardConsoleCommand parsedCmd = (TestStandardConsoleCommand)result.CommandsToExecute[0];
-            Assert.IsTrue (parsedCmd.Switch1);
+            Assert.IsTrue(parsedCmd.Switch1);
         }
 
         [Test] 
-        public void PositionalArgumentValueIsInvalid ()
+        public void PositionalArgumentValueIsInvalid()
         {
             string[] args = { "test", "value1", "xyz", "-setting1=true" };
-            ConsoleShellResult result = shell.ParseCommandLine (args);
+            ConsoleShellResult result = shell.ParseCommandLine(args);
             Assert.AreEqual(2, result.ExitCode);
-            AssertErrOutputIs (@"Argument 'Arg2' has an invalid value ('xyz') - it should be an integer
+            AssertErrOutputIs(@"Argument 'Arg2' has an invalid value ('xyz') - it should be an integer
 ");
         }
 
@@ -144,42 +144,42 @@ COMMANDS:
         }
 
         [Test] 
-        public void SettingArgumentValueIsInvalid ()
+        public void SettingArgumentValueIsInvalid()
         {
             string[] args = { "test", "value1", "-setting1=xyz" };
-            ConsoleShellResult result = shell.ParseCommandLine (args);
+            ConsoleShellResult result = shell.ParseCommandLine(args);
             Assert.AreEqual(2, result.ExitCode);
-            AssertErrOutputIs (@"Setting 'setting1' has an invalid value ('xyz') - it should be an integer
+            AssertErrOutputIs(@"Setting 'setting1' has an invalid value ('xyz') - it should be an integer
 ");
         }
 
         [Test] 
-        public void SettingArgumentValueIsMissing ()
+        public void SettingArgumentValueIsMissing()
         {
             string[] args = { "test", "value1", "-setting1" };
-            ConsoleShellResult result = shell.ParseCommandLine (args);
+            ConsoleShellResult result = shell.ParseCommandLine(args);
             Assert.AreEqual(2, result.ExitCode);
-            AssertErrOutputIs (@"Setting 'setting1' is missing the value
+            AssertErrOutputIs(@"Setting 'setting1' is missing the value
 ");
         }
 
         [Test] 
-        public void SwitchArgumentValueIsInvalid ()
+        public void SwitchArgumentValueIsInvalid()
         {
             string[] args = { "test", "value1", "-switch1=xyz" };
-            ConsoleShellResult result = shell.ParseCommandLine (args);
+            ConsoleShellResult result = shell.ParseCommandLine(args);
             Assert.AreEqual(2, result.ExitCode);
-            AssertErrOutputIs (@"Switch 'switch1' has an invalid value ('xyz') - it should either be empty, 'true' or 'false'
+            AssertErrOutputIs(@"Switch 'switch1' has an invalid value ('xyz') - it should either be empty, 'true' or 'false'
 ");
         }
 
         [Test] 
-        public void RequiredArgIsMissing ()
+        public void RequiredArgIsMissing()
         {
             string[] args = { "test", "-setting1=123" };
-            ConsoleShellResult result = shell.ParseCommandLine (args);
+            ConsoleShellResult result = shell.ParseCommandLine(args);
             Assert.AreEqual(2, result.ExitCode);
-            AssertErrOutputIs (@"Required argument arg1 is missing
+            AssertErrOutputIs(@"Required argument arg1 is missing
 ");
         }
 
@@ -190,8 +190,8 @@ COMMANDS:
             errStream = new MemoryStream();
 
             shell = new ConsoleShell("unittest.exe");
-            shell.OutWriter = new StreamWriter (outStream, new UTF8Encoding(false));
-            shell.ErrWriter = new StreamWriter (errStream, new UTF8Encoding (false));
+            shell.OutWriter = new StreamWriter(outStream, new UTF8Encoding(false));
+            shell.ErrWriter = new StreamWriter(errStream, new UTF8Encoding(false));
             shell.Banner = "Unit test console";
 
             Mock<IConsoleCommand> mockCommand = new Mock<IConsoleCommand>();
@@ -210,14 +210,14 @@ COMMANDS:
         private void AssertOutputIs(string expectedOutput)
         {
             shell.OutWriter.Flush();
-            string actualOutput = new UTF8Encoding (false).GetString (outStream.ToArray ());
-            Assert.AreEqual (expectedOutput, actualOutput);
+            string actualOutput = new UTF8Encoding(false).GetString(outStream.ToArray());
+            Assert.AreEqual(expectedOutput, actualOutput);
         }
 
         private void AssertErrOutputIs(string expectedErrOutput)
         {
-            shell.ErrWriter.Flush ();
-            string actualErrOutput = new UTF8Encoding (false).GetString (errStream.ToArray ());
+            shell.ErrWriter.Flush();
+            string actualErrOutput = new UTF8Encoding(false).GetString(errStream.ToArray());
             Assert.AreEqual(expectedErrOutput, actualErrOutput);
         }
 

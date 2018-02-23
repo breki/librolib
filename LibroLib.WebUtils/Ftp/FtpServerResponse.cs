@@ -8,7 +8,7 @@ namespace LibroLib.WebUtils.Ftp
         public FtpServerResponse(string fullMessage)
         {
             Contract.Requires(fullMessage != null);
-            Contract.Requires (fullMessage.Length >= 4);
+            Contract.Requires(fullMessage.Length >= 4);
 
             returnCode = ParseResponseCode(fullMessage);
             message = fullMessage.Substring(4).Trim();
@@ -40,10 +40,10 @@ namespace LibroLib.WebUtils.Ftp
             get { return message; }
         }
 
-        public static int ParseResponseCode (string fullMessage)
+        public static int ParseResponseCode(string fullMessage)
         {
             Contract.Requires(fullMessage != null);
-            Contract.Requires (fullMessage.Length >= 3);
+            Contract.Requires(fullMessage.Length >= 3);
 
             return int.Parse(fullMessage.Substring(0, 3), NumberStyles.Integer, CultureInfo.InvariantCulture);
         }

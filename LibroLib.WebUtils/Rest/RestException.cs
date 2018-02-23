@@ -4,11 +4,14 @@ using JetBrains.Annotations;
 
 namespace LibroLib.WebUtils.Rest
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Usage", "CA2240:ImplementISerializableCorrectly"), Serializable]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2240:ImplementISerializableCorrectly"), Serializable]
     public class RestException : Exception
     {
         // ReSharper disable once SuggestBaseTypeForParameter
-        public RestException(string message, [NotNull] WebException innerException) : base(message, innerException)
+        public RestException(
+            string message,
+            [NotNull] WebException innerException)
+            : base(message, innerException)
         {
             WebException webException = (WebException)InnerException;
 
@@ -21,7 +24,9 @@ namespace LibroLib.WebUtils.Rest
             webExceptionStatus = webException.Status;
         }
 
-        public RestException(WebExceptionStatus webExceptionStatus, int? statusCode)
+        public RestException(
+            WebExceptionStatus webExceptionStatus,
+            int? statusCode)
         {
             this.webExceptionStatus = webExceptionStatus;
             this.statusCode = statusCode;
