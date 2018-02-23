@@ -5,7 +5,7 @@ namespace LibroLib.FileSystem
 {
     public class WindowsDirectoryInformation : IDirectoryInformation
     {
-        public WindowsDirectoryInformation (DirectoryInfo dirInfo)
+        public WindowsDirectoryInformation(DirectoryInfo dirInfo)
         {
             this.dirInfo = dirInfo;
         }

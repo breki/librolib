@@ -1,6 +1,7 @@
 - .NET Core migration
-	- fix projects
 	- add stylecop and fxcop
+	- remove old packets folder
+		- or force new packets into it
 	- fix packaging
 
 - fix IFtpSession to work with the test FTP server

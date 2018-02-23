@@ -5,7 +5,7 @@ namespace LibroLib.DataStructures.LruCaching
     /// <summary>
     /// A least-recently-used cache.
     /// </summary>
-    /// <typeparam name="TKey">Type to be used as a cache key. Make sure the <see cref="TKey"/> 
+    /// <typeparam name="TKey">Type to be used as a cache key. Make sure the <see cref="TKey"/>
     /// has an optimal <see cref="object.GetHashCode"/> method implementation.</typeparam>
     /// <typeparam name="TValue">Type to be used as a value to be cached.</typeparam>
     [ContractClass(typeof(ILruCacheContract<,>))]
@@ -35,20 +35,20 @@ namespace LibroLib.DataStructures.LruCaching
 
         public void Add(TKey key, TValue value)
         {
-            Contract.Requires (!ReferenceEquals (key, null));
-            throw new System.NotImplementedException ();
+            Contract.Requires(!ReferenceEquals(key, null));
+            throw new System.NotImplementedException();
         }
 
         public TValue Get(TKey key)
         {
-            Contract.Requires (!ReferenceEquals (key, null));
-            throw new System.NotImplementedException ();
+            Contract.Requires(!ReferenceEquals(key, null));
+            throw new System.NotImplementedException();
         }
 
         public bool Delete(TKey key)
         {
-            Contract.Requires (!ReferenceEquals (key, null));
-            throw new System.NotImplementedException ();
+            Contract.Requires(!ReferenceEquals(key, null));
+            throw new System.NotImplementedException();
         }
 
         public void Flush()

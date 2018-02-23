@@ -27,7 +27,7 @@ namespace LibroLib.ConsoleShells
                 }
                 else
                 {
-                    exitCode = ParsePositionalArg (consoleEnvironment, positionalArgsCovered, arg);
+                    exitCode = ParsePositionalArg(consoleEnvironment, positionalArgsCovered, arg);
                     if (exitCode.HasValue)
                         return exitCode;
                     positionalArgsCovered++;
@@ -39,7 +39,7 @@ namespace LibroLib.ConsoleShells
                 ArgInfo arg = positionalArgs[i];
                 if (arg.IsRequired)
                 {
-                    consoleEnvironment.ErrWriter.WriteLine ("Required argument {0} is missing", arg.ArgName);
+                    consoleEnvironment.ErrWriter.WriteLine("Required argument {0} is missing", arg.ArgName);
                     return 2;
                 }
             }
@@ -74,9 +74,9 @@ namespace LibroLib.ConsoleShells
             foreach (ArgInfo arg in settingsArgs.Values.OrderBy(x => x.ArgName))
             {
                 if (!arg.IsSwitch)
-                    completeText.AppendFormat (CultureInfo.InvariantCulture, "{0}{0}-{1}=value: {2}", indentation, arg.ArgName, arg.Description);
+                    completeText.AppendFormat(CultureInfo.InvariantCulture, "{0}{0}-{1}=value: {2}", indentation, arg.ArgName, arg.Description);
                 else
-                    completeText.AppendFormat (CultureInfo.InvariantCulture, "{0}{0}-{1}[=true/false]: {2}", indentation, arg.ArgName, arg.Description);
+                    completeText.AppendFormat(CultureInfo.InvariantCulture, "{0}{0}-{1}[=true/false]: {2}", indentation, arg.ArgName, arg.Description);
 
                 if (arg.Alias != null)
                     completeText.AppendFormat(CultureInfo.InvariantCulture, " (alias: {0})", arg.Alias);
@@ -89,7 +89,7 @@ namespace LibroLib.ConsoleShells
 
         public abstract int Execute(IConsoleEnvironment env);
 
-        protected PositionalArgBuilder AddArg (string argName, string description)
+        protected PositionalArgBuilder AddArg(string argName, string description)
         {
             Contract.Requires(argName != null);
             Contract.Requires(description != null);
@@ -97,14 +97,14 @@ namespace LibroLib.ConsoleShells
             return new PositionalArgBuilder(this, argName, description);
         }
 
-        protected SettingArgBuilder AddSetting (string argName, string description)
+        protected SettingArgBuilder AddSetting(string argName, string description)
         {
             Contract.Requires(argName != null);
             Contract.Ensures(Contract.Result<SettingArgBuilder>() != null);
             return new SettingArgBuilder(this, argName, description);
         }
 
-        protected SwitchArgBuilder AddSwitch (string argName, string description, Action<bool, CommandLineParsingContext> valueAction)
+        protected SwitchArgBuilder AddSwitch(string argName, string description, Action<bool, CommandLineParsingContext> valueAction)
         {
             Contract.Requires(argName != null);
             Contract.Requires(valueAction != null);
@@ -112,14 +112,14 @@ namespace LibroLib.ConsoleShells
             return new SwitchArgBuilder(this, argName, description, valueAction);
         }
 
-        private int? ParsePositionalArg (IConsoleEnvironment consoleEnvironment, int positionalArgsCovered, string arg)
+        private int? ParsePositionalArg(IConsoleEnvironment consoleEnvironment, int positionalArgsCovered, string arg)
         {
             Contract.Requires(consoleEnvironment != null);
-            Contract.Requires (positionalArgsCovered >= 0);
+            Contract.Requires(positionalArgsCovered >= 0);
 
             ArgInfo positionalArg = positionalArgs[positionalArgsCovered];
 
-            CommandLineParsingContext context = new CommandLineParsingContext (consoleEnvironment);
+            CommandLineParsingContext context = new CommandLineParsingContext(consoleEnvironment);
             context.ArgName = positionalArg.ArgName;
 
             if (positionalArg.ArgType == typeof(string))
@@ -131,7 +131,7 @@ namespace LibroLib.ConsoleShells
                     positionalArg.IntValueAction(intValue, context);
                 else
                 {
-                    consoleEnvironment.ErrWriter.WriteLine ("Argument '{0}' has an invalid value ('{1}') - it should be an integer", positionalArg.ArgName, arg);
+                    consoleEnvironment.ErrWriter.WriteLine("Argument '{0}' has an invalid value ('{1}') - it should be an integer", positionalArg.ArgName, arg);
                     return 2;
                 }
             }
@@ -141,19 +141,19 @@ namespace LibroLib.ConsoleShells
             return null;
         }
 
-        private int? ParseNonPositionalArg (IConsoleEnvironment consoleEnvironment, string arg)
+        private int? ParseNonPositionalArg(IConsoleEnvironment consoleEnvironment, string arg)
         {
-            Contract.Requires (consoleEnvironment != null);
-            Contract.Requires (arg != null);
-            Contract.Requires (arg.Length >= 1);
+            Contract.Requires(consoleEnvironment != null);
+            Contract.Requires(arg != null);
+            Contract.Requires(arg.Length >= 1);
 
-            int valueIndex = arg.IndexOf ('=');
+            int valueIndex = arg.IndexOf('=');
 
             string settingName;
             if (valueIndex < 0)
                 settingName = arg.Substring(1).ToLowerInvariant();
             else
-                settingName = arg.Substring (1, valueIndex - 1).ToLowerInvariant ();
+                settingName = arg.Substring(1, valueIndex - 1).ToLowerInvariant();
 
             ArgInfo settingArg;
             if (!settingsArgs.TryGetValue(settingName, out settingArg))
@@ -168,54 +168,54 @@ namespace LibroLib.ConsoleShells
             Contract.Assume(settingArg != null);
             if (!settingArg.IsSwitch)
                 return ParseSettingArg(consoleEnvironment, arg, valueIndex, settingArg);
-            
+
             return ParseSwitchArg(consoleEnvironment, arg, valueIndex, settingArg);
         }
 
         private static int? ParseSettingArg(IConsoleEnvironment consoleEnvironment, string arg, int valueIndex, ArgInfo settingArg)
         {
-            Contract.Requires (consoleEnvironment != null);
-            Contract.Requires (arg != null);
-            Contract.Requires (settingArg != null);
-            Contract.Requires (valueIndex == -1 || (valueIndex + 1) >= 0);
-            Contract.Requires (valueIndex == -1 || (valueIndex + 1) <= arg.Length);
+            Contract.Requires(consoleEnvironment != null);
+            Contract.Requires(arg != null);
+            Contract.Requires(settingArg != null);
+            Contract.Requires(valueIndex == -1 || (valueIndex + 1) >= 0);
+            Contract.Requires(valueIndex == -1 || (valueIndex + 1) <= arg.Length);
 
             if (valueIndex == -1)
             {
-                consoleEnvironment.ErrWriter.WriteLine ("Setting '{0}' is missing the value", settingArg.ArgName);
+                consoleEnvironment.ErrWriter.WriteLine("Setting '{0}' is missing the value", settingArg.ArgName);
                 return 2;
             }
 
             string settingValueStr = arg.Substring(valueIndex + 1);
 
-            CommandLineParsingContext context = new CommandLineParsingContext (consoleEnvironment);
+            CommandLineParsingContext context = new CommandLineParsingContext(consoleEnvironment);
             context.ArgName = settingArg.ArgName;
 
             if (settingArg.ArgType == typeof(string))
-                settingArg.StringValueAction (settingValueStr, context);
+                settingArg.StringValueAction(settingValueStr, context);
             else if (settingArg.ArgType == typeof(int))
             {
                 int intValue;
-                if (int.TryParse (settingValueStr, out intValue))
-                    settingArg.IntValueAction (intValue, context);
+                if (int.TryParse(settingValueStr, out intValue))
+                    settingArg.IntValueAction(intValue, context);
                 else
                 {
-                    consoleEnvironment.ErrWriter.WriteLine ("Setting '{0}' has an invalid value ('{1}') - it should be an integer", settingArg.ArgName, settingValueStr);
+                    consoleEnvironment.ErrWriter.WriteLine("Setting '{0}' has an invalid value ('{1}') - it should be an integer", settingArg.ArgName, settingValueStr);
                     return 2;
                 }
             }
             else
-                throw new NotImplementedException ();
+                throw new NotImplementedException();
 
             return null;
         }
 
         private static int? ParseSwitchArg(IConsoleEnvironment consoleEnvironment, string arg, int valueIndex, ArgInfo switchArg)
         {
-            Contract.Requires (consoleEnvironment != null);
-            Contract.Requires (arg != null);
-            Contract.Requires (switchArg != null);
-            Contract.Requires (valueIndex < 0 || (valueIndex + 1) <= arg.Length);
+            Contract.Requires(consoleEnvironment != null);
+            Contract.Requires(arg != null);
+            Contract.Requires(switchArg != null);
+            Contract.Requires(valueIndex < 0 || (valueIndex + 1) <= arg.Length);
 
             bool switchValue;
             if (valueIndex < 0)
@@ -256,14 +256,14 @@ namespace LibroLib.ConsoleShells
                 command.positionalArgs.Add(argInfo);
             }
 
-            public PositionalArgBuilder IsOptional ()
+            public PositionalArgBuilder IsOptional()
             {
                 Contract.Ensures(Contract.Result<PositionalArgBuilder>() != null);
                 argInfo.IsRequired = false;
                 return this;
             }
 
-            public PositionalArgBuilder IntValue (Action<int, CommandLineParsingContext> valueAction)
+            public PositionalArgBuilder IntValue(Action<int, CommandLineParsingContext> valueAction)
             {
                 Contract.Requires(valueAction != null);
                 Contract.Ensures(Contract.Result<PositionalArgBuilder>() != null);
@@ -272,7 +272,7 @@ namespace LibroLib.ConsoleShells
                 return this;
             }
 
-            public PositionalArgBuilder Value (Action<string, CommandLineParsingContext> valueAction)
+            public PositionalArgBuilder Value(Action<string, CommandLineParsingContext> valueAction)
             {
                 Contract.Requires(valueAction != null);
                 Contract.Ensures(Contract.Result<PositionalArgBuilder>() != null);
@@ -286,7 +286,7 @@ namespace LibroLib.ConsoleShells
 
         public class SettingArgBuilder
         {
-            public SettingArgBuilder (StandardConsoleCommandBase command, string argName, string description)
+            public SettingArgBuilder(StandardConsoleCommandBase command, string argName, string description)
             {
                 Contract.Requires(command != null);
                 Contract.Requires(argName != null);
@@ -297,7 +297,7 @@ namespace LibroLib.ConsoleShells
                 command.settingsArgs.Add(argInfo.ArgName.ToLowerInvariant(), argInfo);
             }
 
-            public SettingArgBuilder Alias (string alias)
+            public SettingArgBuilder Alias(string alias)
             {
                 Contract.Requires(alias != null);
                 Contract.Ensures(Contract.Result<SettingArgBuilder>() != null);
@@ -306,7 +306,7 @@ namespace LibroLib.ConsoleShells
                 return this;
             }
 
-            public SettingArgBuilder IntValue (Action<int, CommandLineParsingContext> valueAction)
+            public SettingArgBuilder IntValue(Action<int, CommandLineParsingContext> valueAction)
             {
                 Contract.Requires(valueAction != null);
                 Contract.Ensures(Contract.Result<SettingArgBuilder>() != null);
@@ -315,7 +315,7 @@ namespace LibroLib.ConsoleShells
                 return this;
             }
 
-            public SettingArgBuilder Value (Action<string, CommandLineParsingContext> valueAction)
+            public SettingArgBuilder Value(Action<string, CommandLineParsingContext> valueAction)
             {
                 Contract.Requires(valueAction != null);
                 Contract.Ensures(Contract.Result<SettingArgBuilder>() != null);
@@ -345,7 +345,7 @@ namespace LibroLib.ConsoleShells
                 command.settingsArgs.Add(argInfo.ArgName.ToLowerInvariant(), argInfo);
             }
 
-            public SwitchArgBuilder Alias (string alias)
+            public SwitchArgBuilder Alias(string alias)
             {
                 Contract.Requires(alias != null);
                 Contract.Ensures(Contract.Result<SwitchArgBuilder>() != null);
@@ -383,7 +383,7 @@ namespace LibroLib.ConsoleShells
 
         private class ArgInfo
         {
-            public ArgInfo (string argName, string description)
+            public ArgInfo(string argName, string description)
             {
                 Contract.Requires(argName != null);
                 this.argName = argName;
@@ -403,7 +403,7 @@ namespace LibroLib.ConsoleShells
             }
 
             public Type ArgType { get; set; }
-            
+
             public bool IsSetting { get; set; }
 
             public bool IsRequired

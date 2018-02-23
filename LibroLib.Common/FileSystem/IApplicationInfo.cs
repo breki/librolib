@@ -3,7 +3,7 @@ using System.Diagnostics.Contracts;
 
 namespace LibroLib.FileSystem
 {
-    [ContractClass (typeof(IApplicationInfoContract))]
+    [ContractClass(typeof(IApplicationInfoContract))]
     public interface IApplicationInfo
     {
         string AppRootDirectory { get; }
@@ -44,8 +44,8 @@ namespace LibroLib.FileSystem
         {
             get
             {
-                Contract.Ensures (Contract.Result<string>() != null);
-                throw new NotImplementedException ();
+                Contract.Ensures(Contract.Result<string>() != null);
+                throw new NotImplementedException();
             }
         }
 

@@ -77,7 +77,7 @@ namespace LibroLib.Threading
 
             if (disposing)
             {
-                // ThreadWrapper no longer uses Thread.Abort() method since it 
+                // ThreadWrapper no longer uses Thread.Abort() method since it
                 // is not supported on.NET Core
 
                 //if (thread != null)

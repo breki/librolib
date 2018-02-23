@@ -6,7 +6,7 @@ namespace LibroLib.Caching
     public interface IDiskCache
     {
         void ClearCacheDirectory(string localCacheDirectoryPath);
-        void DeleteCacheFile (string localCacheFileName);
+        void DeleteCacheFile(string localCacheFileName);
         void EnsureDirectoryPathExists(string localCacheFileName, bool isFilePath);
         string GetFullFilePath(string localCachePath);
 

@@ -4,7 +4,7 @@
     {
         public ISignal CreateAutoResetSignal(bool initialState)
         {
-            return new AutoResetSignal (initialState);
+            return new AutoResetSignal(initialState);
         }
 
         public ISignal CreateManualResetSignal(bool initialState)

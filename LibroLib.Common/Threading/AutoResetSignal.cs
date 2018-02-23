@@ -5,7 +5,7 @@ namespace LibroLib.Threading
 {
     public class AutoResetSignal : WindowsWaitHandleBase, ISignal
     {
-        public AutoResetSignal (bool initialState)
+        public AutoResetSignal(bool initialState)
         {
             wrappedEvent = new AutoResetEvent(initialState);
         }
@@ -22,9 +22,9 @@ namespace LibroLib.Threading
             return wrappedEvent.WaitOne(timeout);
         }
 
-        public void Set ()
+        public void Set()
         {
-            wrappedEvent.Set ();
+            wrappedEvent.Set();
         }
 
         public void Reset()
@@ -32,24 +32,24 @@ namespace LibroLib.Threading
             wrappedEvent.Reset();
         }
 
-        public override void Dispose ()
+        public override void Dispose()
         {
-            Dispose (true);
-            GC.SuppressFinalize (this);
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
-        private void Dispose (bool disposing)
+        private void Dispose(bool disposing)
         {
             if (disposed)
                 return;
 
-            // clean native resources         
+            // clean native resources
 
             if (disposing)
             {
                 if (wrappedEvent != null)
                 {
-                    wrappedEvent.Dispose ();
+                    wrappedEvent.Dispose();
                     wrappedEvent = null;
                 }
             }

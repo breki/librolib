@@ -16,38 +16,38 @@ namespace LibroLib.FileSystem
     {
         bool IsNetworkAvailable { get; }
 
-        void CopyFile (string sourceFileName, string destinationFileName);
-        void CreateDirectory (string dirPath, bool deleteExisting);
-        void DeleteDirectory (string dirPath);
-        void DeleteFile (string path, bool failIfNotExist);
-        object DeserializeObjectFromXmlFile (string filePath, Type objectType, string xmlNamespace);
-        object DeserializeObjectFromXmlFile (string filePath, Type objectType, string xmlNamespace, string xsdFilePath);
-        bool DoesDirectoryExist (string path);
-        bool DoesFileExist (string path);
+        void CopyFile(string sourceFileName, string destinationFileName);
+        void CreateDirectory(string dirPath, bool deleteExisting);
+        void DeleteDirectory(string dirPath);
+        void DeleteFile(string path, bool failIfNotExist);
+        object DeserializeObjectFromXmlFile(string filePath, Type objectType, string xmlNamespace);
+        object DeserializeObjectFromXmlFile(string filePath, Type objectType, string xmlNamespace, string xsdFilePath);
+        bool DoesDirectoryExist(string path);
+        bool DoesFileExist(string path);
         void EnsureDirectoryExists(string directory);
-        IDirectoryInformation GetDirectoryInformation (string dirPath);
-        IFileInformation[] GetDirectoryFiles (string dirPath);
-        IFileInformation[] GetDirectoryFiles (string dirPath, string searchPattern);
-        IDirectoryInformation[] GetDirectorySubdirectories (string dirPath);
-        IFileInformation GetFileInformation (string filePath);
-        bool IsDriveReady (string drive);
-        void MoveFile (string sourceFileName, string destinationFileName);
+        IDirectoryInformation GetDirectoryInformation(string dirPath);
+        IFileInformation[] GetDirectoryFiles(string dirPath);
+        IFileInformation[] GetDirectoryFiles(string dirPath, string searchPattern);
+        IDirectoryInformation[] GetDirectorySubdirectories(string dirPath);
+        IFileInformation GetFileInformation(string filePath);
+        bool IsDriveReady(string drive);
+        void MoveFile(string sourceFileName, string destinationFileName);
         Stream OpenFile(
-            string fileName, 
-            FileMode fileMode, 
-            FileAccess fileAccess, 
-            FileShare fileShare, 
+            string fileName,
+            FileMode fileMode,
+            FileAccess fileAccess,
+            FileShare fileShare,
             int bufferSize,
             FileOptions fileOptions);
-        Stream OpenFileToRead (string fileName);
-        Stream OpenFileToRead (string fileName, FileOptions fileOptions);
-        Stream OpenFileToWrite (string fileName);
-        Stream OpenFileToWrite (string fileName, FileOptions fileOptions);
-        byte[] ReadFileAsBytes (string fileName);
-        string ReadFileAsString (string fileName);
-        [SuppressMessage ("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode")]
-        XmlDocument ReadFileAsXmlDocument (string fileName);
-        IEnumerable<string> ReadFileAsStringLines (string fileName);
+        Stream OpenFileToRead(string fileName);
+        Stream OpenFileToRead(string fileName, FileOptions fileOptions);
+        Stream OpenFileToWrite(string fileName);
+        Stream OpenFileToWrite(string fileName, FileOptions fileOptions);
+        byte[] ReadFileAsBytes(string fileName);
+        string ReadFileAsString(string fileName);
+        [SuppressMessage("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode")]
+        XmlDocument ReadFileAsXmlDocument(string fileName);
+        IEnumerable<string> ReadFileAsStringLines(string fileName);
         [SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "obj")]
         void SerializeObjectIntoXmlFile(string filePath, object obj, string xmlStyleSheetProcessingInstructions);
         void WriteFile(string fileName, byte[] data);
@@ -130,32 +130,32 @@ namespace LibroLib.FileSystem
         public IFileInformation[] GetDirectoryFiles(string dirPath)
         {
             Contract.Requires(dirPath != null);
-            Contract.Ensures (Contract.Result<IFileInformation[]>() != null);
-            Contract.Ensures (Contract.ForAll(Contract.Result<IFileInformation[]>(), x => x != null));
+            Contract.Ensures(Contract.Result<IFileInformation[]>() != null);
+            Contract.Ensures(Contract.ForAll(Contract.Result<IFileInformation[]>(), x => x != null));
             return default(IFileInformation[]);
         }
 
         public IFileInformation[] GetDirectoryFiles(string dirPath, string searchPattern)
         {
-            Contract.Requires (dirPath != null);
-            Contract.Ensures (Contract.Result<IFileInformation[]>() != null);
-            Contract.Ensures (Contract.ForAll (Contract.Result<IFileInformation[]>(), x => x != null));
+            Contract.Requires(dirPath != null);
+            Contract.Ensures(Contract.Result<IFileInformation[]>() != null);
+            Contract.Ensures(Contract.ForAll(Contract.Result<IFileInformation[]>(), x => x != null));
             return default(IFileInformation[]);
         }
 
         public IDirectoryInformation[] GetDirectorySubdirectories(string dirPath)
         {
-            Contract.Requires (dirPath != null);
-            Contract.Ensures (Contract.Result<IDirectoryInformation[]>() != null);
-            Contract.Ensures (Contract.ForAll (Contract.Result<IDirectoryInformation[]>(), x => x != null));
+            Contract.Requires(dirPath != null);
+            Contract.Ensures(Contract.Result<IDirectoryInformation[]>() != null);
+            Contract.Ensures(Contract.ForAll(Contract.Result<IDirectoryInformation[]>(), x => x != null));
             return default(IDirectoryInformation[]);
         }
 
         public IFileInformation GetFileInformation(string filePath)
         {
-            Contract.Requires (filePath != null);
+            Contract.Requires(filePath != null);
             Contract.Ensures(Contract.Result<IFileInformation>() != null);
-            throw new NotImplementedException ();
+            throw new NotImplementedException();
         }
 
         public bool IsDriveReady(string drive)
@@ -173,71 +173,71 @@ namespace LibroLib.FileSystem
         public Stream OpenFile(string fileName, FileMode fileMode, FileAccess fileAccess, FileShare fileShare, int bufferSize, FileOptions fileOptions)
         {
             Contract.Requires(fileName != null);
-            Contract.Ensures (Contract.Result<Stream>() != null);
+            Contract.Ensures(Contract.Result<Stream>() != null);
             throw new NotImplementedException();
         }
 
         public Stream OpenFileToRead(string fileName)
         {
             Contract.Requires(fileName != null);
-            Contract.Ensures (Contract.Result<Stream>() != null);
-            throw new NotImplementedException ();
+            Contract.Ensures(Contract.Result<Stream>() != null);
+            throw new NotImplementedException();
         }
 
         public Stream OpenFileToRead(string fileName, FileOptions fileOptions)
         {
             Contract.Requires(fileName != null);
-            Contract.Ensures (Contract.Result<Stream>() != null);
-            throw new NotImplementedException ();
+            Contract.Ensures(Contract.Result<Stream>() != null);
+            throw new NotImplementedException();
         }
 
         public Stream OpenFileToWrite(string fileName)
         {
             Contract.Requires(fileName != null);
-            Contract.Ensures (Contract.Result<Stream>() != null);
-            throw new NotImplementedException ();
+            Contract.Ensures(Contract.Result<Stream>() != null);
+            throw new NotImplementedException();
         }
 
         public Stream OpenFileToWrite(string fileName, FileOptions fileOptions)
         {
             Contract.Requires(fileName != null);
-            Contract.Ensures (Contract.Result<Stream>() != null);
-            throw new NotImplementedException ();
+            Contract.Ensures(Contract.Result<Stream>() != null);
+            throw new NotImplementedException();
         }
 
         public byte[] ReadFileAsBytes(string fileName)
         {
-            Contract.Requires (fileName != null);
-            Contract.Ensures (Contract.Result<byte[]>() != null);
-            throw new NotImplementedException ();
+            Contract.Requires(fileName != null);
+            Contract.Ensures(Contract.Result<byte[]>() != null);
+            throw new NotImplementedException();
         }
 
         public string ReadFileAsString(string fileName)
         {
-            Contract.Requires (fileName != null);
-            Contract.Ensures (Contract.Result<string>() != null);
-            throw new NotImplementedException ();
+            Contract.Requires(fileName != null);
+            Contract.Ensures(Contract.Result<string>() != null);
+            throw new NotImplementedException();
         }
 
         public XmlDocument ReadFileAsXmlDocument(string fileName)
         {
-            Contract.Requires (fileName != null);
-            Contract.Ensures (Contract.Result<XmlDocument>() != null);
-            throw new NotImplementedException ();
+            Contract.Requires(fileName != null);
+            Contract.Ensures(Contract.Result<XmlDocument>() != null);
+            throw new NotImplementedException();
         }
 
         public IEnumerable<string> ReadFileAsStringLines(string fileName)
         {
-            Contract.Requires (fileName != null);
-            Contract.Ensures (Contract.Result<IEnumerable<string>>() != null);
-            throw new NotImplementedException ();
+            Contract.Requires(fileName != null);
+            Contract.Ensures(Contract.Result<IEnumerable<string>>() != null);
+            throw new NotImplementedException();
         }
 
         public void SerializeObjectIntoXmlFile(string filePath, object obj, string xmlStyleSheetProcessingInstructions)
         {
-            Contract.Requires (filePath != null);
+            Contract.Requires(filePath != null);
             Contract.Requires(obj != null);
-            throw new NotImplementedException ();
+            throw new NotImplementedException();
         }
 
         public void WriteFile(string fileName, byte[] data)

@@ -3,7 +3,7 @@ using System.IO;
 
 namespace LibroLib.ConsoleShells
 {
-    [ContractClass (typeof(IConsoleEnvironmentContract))]
+    [ContractClass(typeof(IConsoleEnvironmentContract))]
     public interface IConsoleEnvironment
     {
         TextWriter OutWriter { get; }
@@ -18,7 +18,7 @@ namespace LibroLib.ConsoleShells
         {
             get
             {
-                Contract.Ensures (Contract.Result<System.IO.TextWriter>() != null); 
+                Contract.Ensures(Contract.Result<System.IO.TextWriter>() != null);
                 return default(TextWriter);
             }
         }
@@ -27,7 +27,7 @@ namespace LibroLib.ConsoleShells
         {
             get
             {
-                Contract.Ensures (Contract.Result<System.IO.TextWriter>() != null);
+                Contract.Ensures(Contract.Result<System.IO.TextWriter>() != null);
                 return default(TextWriter);
             }
         }

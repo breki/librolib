@@ -7,7 +7,7 @@ namespace LibroLib.DataStructures.LruCaching
     /// <summary>
     /// Implementation of the least-recently-used cache algorithm.
     /// </summary>
-    /// <typeparam name="TKey">Type to be used as a cache key. Make sure the <see cref="TKey"/> 
+    /// <typeparam name="TKey">Type to be used as a cache key. Make sure the <see cref="TKey"/>
     /// has an optimal <see cref="object.GetHashCode"/> method implementation.</typeparam>
     /// <typeparam name="TValue">Type to be used as a value to be cached.</typeparam>
     public class LruCache<TKey, TValue> : ILruCache<TKey, TValue>
@@ -76,23 +76,23 @@ namespace LibroLib.DataStructures.LruCaching
                 CachedItem<TKey, TValue> cachedItem = cachedItemNode.Value;
 
                 if (cachedItem.IsDirty)
-                    writeItemAction (cachedItem.Key, cachedItem.Value);
+                    writeItemAction(cachedItem.Key, cachedItem.Value);
             }
 
-            cachedItems.Clear ();
+            cachedItems.Clear();
             cachedItemsByUsage.Clear();
         }
 
         public bool IsCached(TKey key)
         {
-            Contract.Requires (!ReferenceEquals (key, null));
+            Contract.Requires(!ReferenceEquals(key, null));
 
             return cachedItems.ContainsKey(key);
         }
 
         private void SaveNewItemToCache(TKey key, TValue value)
         {
-            Contract.Requires (!ReferenceEquals (key, null));
+            Contract.Requires(!ReferenceEquals(key, null));
 
             CachedItem<TKey, TValue> newItem = new CachedItem<TKey, TValue>(key, value, true);
             LinkedListNode<CachedItem<TKey, TValue>> newItemNode = cachedItemsByUsage.AddLast(newItem);
@@ -120,9 +120,9 @@ namespace LibroLib.DataStructures.LruCaching
 
         private class CachedItem<TItemKey, TItemValue> : IEquatable<CachedItem<TItemKey, TItemValue>>
         {
-            public CachedItem (TItemKey key, TItemValue value, bool isDirty)
+            public CachedItem(TItemKey key, TItemValue value, bool isDirty)
             {
-                Contract.Requires (!ReferenceEquals (key, null));
+                Contract.Requires(!ReferenceEquals(key, null));
 
                 this.key = key;
                 this.value = value;
@@ -159,16 +159,24 @@ namespace LibroLib.DataStructures.LruCaching
 
             public bool Equals(CachedItem<TItemKey, TItemValue> other)
             {
-                if (ReferenceEquals(null, other)) return false;
-                if (ReferenceEquals(this, other)) return true;
-                return EqualityComparer<TItemKey>.Default.Equals(key, other.key);
+                if (ReferenceEquals(null, other))
+                    return false;
+                if (ReferenceEquals(this, other))
+                    return true;
+
+                return EqualityComparer<TItemKey>.Default.Equals(
+                    key,
+                    other.key);
             }
 
             public override bool Equals(object obj)
             {
-                if (ReferenceEquals(null, obj)) return false;
-                if (ReferenceEquals(this, obj)) return true;
-                if (obj.GetType() != GetType()) return false;
+                if (ReferenceEquals(null, obj))
+                    return false;
+                if (ReferenceEquals(this, obj))
+                    return true;
+                if (obj.GetType() != GetType())
+                    return false;
                 return Equals((CachedItem<TItemKey, TItemValue>)obj);
             }
 
@@ -182,7 +190,7 @@ namespace LibroLib.DataStructures.LruCaching
             private void Invariant()
 #pragma warning restore CC0091 // Use static method
             {
-                Contract.Invariant(!ReferenceEquals (key, null));
+                Contract.Invariant(!ReferenceEquals(key, null));
             }
 
             private readonly TItemKey key;

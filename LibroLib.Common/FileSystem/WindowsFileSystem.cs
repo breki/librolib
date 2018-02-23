@@ -9,11 +9,11 @@ namespace LibroLib.FileSystem
 {
     public class WindowsFileSystem : IFileSystem
     {
-        public bool IsNetworkAvailable 
+        public bool IsNetworkAvailable
         {
             get
             {
-                return System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable ();
+                return System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
             }
         }
 
@@ -22,18 +22,18 @@ namespace LibroLib.FileSystem
             File.Copy(sourceFileName, destinationFileName, true);
         }
 
-        public void CreateDirectory (string dirPath, bool deleteExisting)
+        public void CreateDirectory(string dirPath, bool deleteExisting)
         {
-            DirectoryInfo dirInfo = new DirectoryInfo (dirPath);
+            DirectoryInfo dirInfo = new DirectoryInfo(dirPath);
             if (dirInfo.Exists)
             {
                 if (deleteExisting)
-                    dirInfo.Delete (true);
+                    dirInfo.Delete(true);
                 else
                     return;
             }
 
-            dirInfo.Create ();
+            dirInfo.Create();
         }
 
         public void DeleteDirectory(string dirPath)
@@ -51,45 +51,45 @@ namespace LibroLib.FileSystem
             }
         }
 
-        public IFileInformation[] GetDirectoryFiles (string dirPath)
+        public IFileInformation[] GetDirectoryFiles(string dirPath)
         {
-            DirectoryInfo dir = new DirectoryInfo (dirPath);
-            FileInfo[] fileInfos = dir.GetFiles ();
+            DirectoryInfo dir = new DirectoryInfo(dirPath);
+            FileInfo[] fileInfos = dir.GetFiles();
             IFileInformation[] winFileInfos = new IFileInformation[fileInfos.Length];
 
             for (int i = 0; i < fileInfos.Length; i++)
-                winFileInfos[i] = new WindowsFileInformation (fileInfos[i]);
+                winFileInfos[i] = new WindowsFileInformation(fileInfos[i]);
 
             return winFileInfos;
         }
 
-        public IFileInformation[] GetDirectoryFiles (string dirPath, string searchPattern)
+        public IFileInformation[] GetDirectoryFiles(string dirPath, string searchPattern)
         {
-            DirectoryInfo dir = new DirectoryInfo (dirPath);
-            FileInfo[] fileInfos = dir.GetFiles (searchPattern);
+            DirectoryInfo dir = new DirectoryInfo(dirPath);
+            FileInfo[] fileInfos = dir.GetFiles(searchPattern);
             IFileInformation[] winFileInfos = new IFileInformation[fileInfos.Length];
 
             for (int i = 0; i < fileInfos.Length; i++)
-                winFileInfos[i] = new WindowsFileInformation (fileInfos[i]);
+                winFileInfos[i] = new WindowsFileInformation(fileInfos[i]);
 
             return winFileInfos;
         }
 
-        public IDirectoryInformation[] GetDirectorySubdirectories (string dirPath)
+        public IDirectoryInformation[] GetDirectorySubdirectories(string dirPath)
         {
-            DirectoryInfo dir = new DirectoryInfo (dirPath);
-            DirectoryInfo[] dirInfos = dir.GetDirectories ();
+            DirectoryInfo dir = new DirectoryInfo(dirPath);
+            DirectoryInfo[] dirInfos = dir.GetDirectories();
             IDirectoryInformation[] winDirInfos = new IDirectoryInformation[dirInfos.Length];
 
             for (int i = 0; i < dirInfos.Length; i++)
-                winDirInfos[i] = new WindowsDirectoryInformation (dirInfos[i]);
+                winDirInfos[i] = new WindowsDirectoryInformation(dirInfos[i]);
 
             return winDirInfos;
         }
 
-        public IFileInformation GetFileInformation (string filePath)
+        public IFileInformation GetFileInformation(string filePath)
         {
-            return new WindowsFileInformation (new FileInfo (filePath));
+            return new WindowsFileInformation(new FileInfo(filePath));
         }
 
         public void EnsureDirectoryExists(string directory)
@@ -98,77 +98,77 @@ namespace LibroLib.FileSystem
                 Directory.CreateDirectory(directory);
         }
 
-        public IDirectoryInformation GetDirectoryInformation (string dirPath)
+        public IDirectoryInformation GetDirectoryInformation(string dirPath)
         {
-            return new WindowsDirectoryInformation (new DirectoryInfo (dirPath));
+            return new WindowsDirectoryInformation(new DirectoryInfo(dirPath));
         }
 
-        public bool DoesFileExist (string path)
+        public bool DoesFileExist(string path)
         {
-            return File.Exists (path);
+            return File.Exists(path);
         }
 
-        public bool DoesDirectoryExist (string path)
+        public bool DoesDirectoryExist(string path)
         {
-            return Directory.Exists (path);
+            return Directory.Exists(path);
         }
 
-        public void DeleteFile (string path, bool failIfNotExist)
+        public void DeleteFile(string path, bool failIfNotExist)
         {
-            if (failIfNotExist || File.Exists (path))
-                File.Delete (path);
+            if (failIfNotExist || File.Exists(path))
+                File.Delete(path);
         }
 
-        public object DeserializeObjectFromXmlFile (string filePath, Type objectType, string xmlNamespace)
+        public object DeserializeObjectFromXmlFile(string filePath, Type objectType, string xmlNamespace)
         {
-            XmlSerializer serializer = new XmlSerializer (objectType, xmlNamespace);
+            XmlSerializer serializer = new XmlSerializer(objectType, xmlNamespace);
 
-            using (FileStream stream = File.Open (filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                return serializer.Deserialize (stream);
+                return serializer.Deserialize(stream);
             }
         }
 
         public object DeserializeObjectFromXmlFile (
-            string filePath, 
-            Type objectType, 
+            string filePath,
+            Type objectType,
             string xmlNamespace,
             string xsdFilePath)
         {
-            XmlSerializer serializer = new XmlSerializer (objectType, xmlNamespace);
+            XmlSerializer serializer = new XmlSerializer(objectType, xmlNamespace);
 
-            XmlReaderSettings xmlReaderSettings = new XmlReaderSettings ();
+            XmlReaderSettings xmlReaderSettings = new XmlReaderSettings();
             xmlReaderSettings.ValidationType = ValidationType.Schema;
             xmlReaderSettings.IgnoreComments = true;
             xmlReaderSettings.IgnoreWhitespace = true;
-            xmlReaderSettings.Schemas.Add (xmlNamespace, xsdFilePath);
+            xmlReaderSettings.Schemas.Add(xmlNamespace, xsdFilePath);
 
-            using (FileStream stream = File.Open (filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                XmlReader validator = XmlReader.Create (stream, xmlReaderSettings);
-                return serializer.Deserialize (validator);
+                XmlReader validator = XmlReader.Create(stream, xmlReaderSettings);
+                return serializer.Deserialize(validator);
             }
         }
 
-        public void SerializeObjectIntoXmlFile (string filePath, object obj, string xmlStyleSheetProcessingInstructions)
+        public void SerializeObjectIntoXmlFile(string filePath, object obj, string xmlStyleSheetProcessingInstructions)
         {
-            using (FileStream stream = File.Open (filePath, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (FileStream stream = File.Open(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 // define settings for the XML writer
-                XmlWriterSettings writerSettings = new XmlWriterSettings ();
+                XmlWriterSettings writerSettings = new XmlWriterSettings();
                 writerSettings.Indent = true;
                 writerSettings.IndentChars = "\t";
                 writerSettings.NewLineOnAttributes = true;
                 writerSettings.OmitXmlDeclaration = false;
 
-                using (XmlWriter writer = XmlWriter.Create (stream, writerSettings))
+                using (XmlWriter writer = XmlWriter.Create(stream, writerSettings))
                 {
                     // add processing instruction for XSLT transformation
-                    writer.WriteProcessingInstruction ("xml-stylesheet", xmlStyleSheetProcessingInstructions);
+                    writer.WriteProcessingInstruction("xml-stylesheet", xmlStyleSheetProcessingInstructions);
 
-                    XmlSerializer serializer = new XmlSerializer (obj.GetType());
+                    XmlSerializer serializer = new XmlSerializer(obj.GetType());
 
-                    serializer.Serialize (writer, obj);
+                    serializer.Serialize(writer, obj);
                 }
             }
         }
@@ -194,10 +194,10 @@ namespace LibroLib.FileSystem
         }
 
         public Stream OpenFile(
-            string fileName, 
-            FileMode fileMode, 
-            FileAccess fileAccess, 
-            FileShare fileShare, 
+            string fileName,
+            FileMode fileMode,
+            FileAccess fileAccess,
+            FileShare fileShare,
             int bufferSize,
             FileOptions fileOptions)
         {
@@ -206,7 +206,7 @@ namespace LibroLib.FileSystem
 
         public Stream OpenFileToRead(string fileName)
         {
-            return File.Open (fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            return File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
         }
 
         public Stream OpenFileToRead(string fileName, FileOptions fileOptions)
@@ -221,7 +221,7 @@ namespace LibroLib.FileSystem
 
         public Stream OpenFileToWrite(string fileName, FileOptions fileOptions)
         {
-            return new FileStream (fileName, FileMode.Create, FileAccess.Write, FileShare.None, 128 * 1024, fileOptions);
+            return new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None, 128 * 1024, fileOptions);
         }
 
         public byte[] ReadFileAsBytes(string fileName)
@@ -246,9 +246,9 @@ namespace LibroLib.FileSystem
             return File.ReadAllLines(fileName);
         }
 
-        public bool IsDriveReady (string drive)
+        public bool IsDriveReady(string drive)
         {
-            DriveInfo driveInfo = new DriveInfo (drive);
+            DriveInfo driveInfo = new DriveInfo(drive);
             return driveInfo.IsReady;
         }
     }

@@ -32,11 +32,11 @@ namespace LibroLib.ConsoleShells
 
         public int Execute(IConsoleEnvironment env)
         {
-            env.OutWriter.WriteLine ();
-            env.OutWriter.WriteLine ("USAGE: {0} <command> {{<parameters>}}", consoleShell.CommandExeName);
-            env.OutWriter.WriteLine ();
+            env.OutWriter.WriteLine();
+            env.OutWriter.WriteLine("USAGE: {0} <command> {{<parameters>}}", consoleShell.CommandExeName);
+            env.OutWriter.WriteLine();
 
-            env.OutWriter.WriteLine ("COMMANDS:");
+            env.OutWriter.WriteLine("COMMANDS:");
 
             string indentation = "   ";
             foreach (IConsoleCommand cmd in consoleShell.ListCommands().OrderBy(x => x.CommandId))

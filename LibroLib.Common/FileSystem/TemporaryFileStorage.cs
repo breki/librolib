@@ -20,12 +20,12 @@ namespace LibroLib.FileSystem
             this.timeService = timeService;
         }
 
-        [SuppressMessage ("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        public void Clear ()
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        public void Clear()
         {
             try
             {
-                fileSystem.DeleteDirectory (TempDirPath);
+                fileSystem.DeleteDirectory(TempDirPath);
             }
             catch (Exception ex)
             {
@@ -33,7 +33,7 @@ namespace LibroLib.FileSystem
             }
         }
 
-        public string CreateTempDirectory (string prefix)
+        public string CreateTempDirectory(string prefix)
         {
             string fullPath;
 
@@ -60,7 +60,7 @@ namespace LibroLib.FileSystem
 
         public string GetTemporaryFilePath(string fileName)
         {
-            string tempDir = EnsureTempDirExists ();
+            string tempDir = EnsureTempDirExists();
             return Path.Combine(tempDir, fileName);
         }
 
@@ -83,7 +83,7 @@ namespace LibroLib.FileSystem
             get { return applicationInfo.GetAppDirectoryPath("Temp"); }
         }
 
-        private bool DeleteOldStuffFrom (string directoryName, TimeSpan minimumAge)
+        private bool DeleteOldStuffFrom(string directoryName, TimeSpan minimumAge)
         {
             Contract.Requires(directoryName != null);
 
@@ -99,7 +99,7 @@ namespace LibroLib.FileSystem
                 //if (log.IsDebugEnabled)
                 //    log.DebugFormat ("Directory '{0}', last write '{1}'", dirInfo.FullName, dirInfo.LastWriteTimeUtc);
 
-                if (IsFileEntryTooOld (dirInfo, minimumAge))
+                if (IsFileEntryTooOld(dirInfo, minimumAge))
                     fileSystem.DeleteDirectory(dirInfo.FullName);
                 else
                     someFilesRemained = true;
@@ -119,9 +119,9 @@ namespace LibroLib.FileSystem
             return !someFilesRemained;
         }
 
-        private bool IsFileEntryTooOld (IFileEntryInformation fileEntry, TimeSpan minimumAge)
+        private bool IsFileEntryTooOld(IFileEntryInformation fileEntry, TimeSpan minimumAge)
         {
-            Contract.Requires (fileEntry != null);
+            Contract.Requires(fileEntry != null);
 
             if ((timeService.CurrentTimeUtc - fileEntry.CreationTimeUtc) >= minimumAge)
                 return true;

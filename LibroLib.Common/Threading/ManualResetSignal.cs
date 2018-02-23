@@ -43,13 +43,13 @@ namespace LibroLib.Threading
             if (disposed)
                 return;
 
-            // clean native resources         
+            // clean native resources
 
             if (disposing)
             {
                 if (wrappedEvent != null)
                 {
-                    wrappedEvent.Dispose ();
+                    wrappedEvent.Dispose();
                     wrappedEvent = null;
                 }
             }
