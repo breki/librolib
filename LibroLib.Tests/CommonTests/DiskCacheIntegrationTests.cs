@@ -31,7 +31,7 @@ namespace LibroLib.Tests.CommonTests
         [SetUp]
         public void Setup()
         {
-            fileSystem = new WindowsFileSystem();
+            fileSystem = new FileSystem.FileSystemImpl();
             applicationInfo = new TestApplicationInfo();
             cache = new DefaultDiskCache(fileSystem, applicationInfo);
         }

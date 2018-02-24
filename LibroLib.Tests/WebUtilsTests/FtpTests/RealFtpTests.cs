@@ -17,7 +17,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             connectionData.Host = Host;
 
             using (IFtpSession session
-                = new FtpSession(new FtpChannelFactoryUsingSockets(), new FtpCommunicator(), new WindowsFileSystem()))
+                = new FtpSession(new FtpChannelFactoryUsingSockets(), new FtpCommunicator(), new FileSystem.FileSystemImpl()))
             {
                 var ex = Assert.Throws<FtpException>(delegate { session.BeginSession(connectionData); });
                 Assert.AreEqual("Could not log in to the FTP server: 530 User cannot log in.", ex.Message);
@@ -32,7 +32,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             connectionData.Host = Host;
 
             using (IFtpSession session
-                = new FtpSession(new FtpChannelFactoryUsingSockets(), new FtpCommunicator(), new WindowsFileSystem()))
+                = new FtpSession(new FtpChannelFactoryUsingSockets(), new FtpCommunicator(), new FileSystem.FileSystemImpl()))
             {
                 var ex = Assert.Throws<FtpException>(delegate { session.BeginSession(connectionData); });
                 Assert.AreEqual("Could not log in to the FTP server: 530 User cannot log in.", ex.Message);
@@ -92,7 +92,7 @@ namespace LibroLib.Tests.WebUtilsTests.FtpTests
             connectionData.Port = Port;
 
             using (IFtpSession session
-                = new FtpSession(new FtpChannelFactoryUsingSockets(), new FtpCommunicator(), new WindowsFileSystem()))
+                = new FtpSession(new FtpChannelFactoryUsingSockets(), new FtpCommunicator(), new FileSystem.FileSystemImpl()))
             {
                 session.BeginSession(connectionData);
                 action(session);
