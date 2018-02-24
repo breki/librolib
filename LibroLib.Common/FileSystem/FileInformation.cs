@@ -3,9 +3,9 @@ using System.IO;
 
 namespace LibroLib.FileSystem
 {
-    public class WindowsFileInformation : IFileInformation
+    public class FileInformation : IFileInformation
     {
-        public WindowsFileInformation(FileInfo fileInfo)
+        public FileInformation(FileInfo fileInfo)
         {
             this.fileInfo = fileInfo;
         }

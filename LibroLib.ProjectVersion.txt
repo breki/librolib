@@ -1,5 +1,7 @@
 2.0.0.0
 - migrated to .NET Standard
+- BREAKING CHANGE: renamed WindowsFileSystem to FileSystemImpl. Also
+	renamed WindowsDirectoryInformation and WindowsFileInformation
 - ThreadWrapper now sets the thread cultures before running the threadAction
 - ThreadWrapper no longer uses Thread.Abort() method since it is not supported
 	on .NET Core

@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace LibroLib.FileSystem
 {
-    public class WindowsFileSystem : IFileSystem
+    public class FileSystemImpl : IFileSystem
     {
         public bool IsNetworkAvailable
         {
@@ -58,7 +58,7 @@ namespace LibroLib.FileSystem
             IFileInformation[] winFileInfos = new IFileInformation[fileInfos.Length];
 
             for (int i = 0; i < fileInfos.Length; i++)
-                winFileInfos[i] = new WindowsFileInformation(fileInfos[i]);
+                winFileInfos[i] = new FileInformation(fileInfos[i]);
 
             return winFileInfos;
         }
@@ -70,7 +70,7 @@ namespace LibroLib.FileSystem
             IFileInformation[] winFileInfos = new IFileInformation[fileInfos.Length];
 
             for (int i = 0; i < fileInfos.Length; i++)
-                winFileInfos[i] = new WindowsFileInformation(fileInfos[i]);
+                winFileInfos[i] = new FileInformation(fileInfos[i]);
 
             return winFileInfos;
         }
@@ -82,14 +82,14 @@ namespace LibroLib.FileSystem
             IDirectoryInformation[] winDirInfos = new IDirectoryInformation[dirInfos.Length];
 
             for (int i = 0; i < dirInfos.Length; i++)
-                winDirInfos[i] = new WindowsDirectoryInformation(dirInfos[i]);
+                winDirInfos[i] = new DirectoryInformation(dirInfos[i]);
 
             return winDirInfos;
         }
 
         public IFileInformation GetFileInformation(string filePath)
         {
-            return new WindowsFileInformation(new FileInfo(filePath));
+            return new FileInformation(new FileInfo(filePath));
         }
 
         public void EnsureDirectoryExists(string directory)
@@ -100,7 +100,7 @@ namespace LibroLib.FileSystem
 
         public IDirectoryInformation GetDirectoryInformation(string dirPath)
         {
-            return new WindowsDirectoryInformation(new DirectoryInfo(dirPath));
+            return new DirectoryInformation(new DirectoryInfo(dirPath));
         }
 
         public bool DoesFileExist(string path)

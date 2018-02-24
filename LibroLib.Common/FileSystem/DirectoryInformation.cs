@@ -3,9 +3,9 @@ using System.IO;
 
 namespace LibroLib.FileSystem
 {
-    public class WindowsDirectoryInformation : IDirectoryInformation
+    public class DirectoryInformation : IDirectoryInformation
     {
-        public WindowsDirectoryInformation(DirectoryInfo dirInfo)
+        public DirectoryInformation(DirectoryInfo dirInfo)
         {
             this.dirInfo = dirInfo;
         }
